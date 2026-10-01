@@ -3,6 +3,11 @@
   --font-body: "Rubik", sans-serif;
 }
 
+:global(html[data-font-preview="mplus-rounded"]) {
+  --font-heading: "M PLUS Rounded 1c", sans-serif;
+  --font-body: "M PLUS Rounded 1c", sans-serif;
+}
+
 .toolbar {
   padding: 6px 16px;
   border-bottom: 1px solid #e4e1ed;
