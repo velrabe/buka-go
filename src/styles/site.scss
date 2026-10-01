@@ -879,3 +879,19 @@ details p {
 #how-it-works .feature-copy .plain-list { display: none; }
 #how-it-works .feature-copy .text-link { display: flex; align-items: center; justify-content: center; width: 100%; max-width: 420px; min-height: 48px; padding: 8px 16px; border: 0; border-radius: 100px; background: #9279e81a; color: #9279e8; text-decoration: none; font: 800 16px/1.375 "Nunito", sans-serif; letter-spacing: -.02em; }
 #how-it-works .feature-copy .text-link > span { display: none; }
+
+/* Desktop feature rows alternate sides; mobile retains the centered short copy. */
+@media (min-width: 561px) {
+  #how-it-works .feature:nth-child(even) { grid-template-columns: minmax(0, 1fr) 260px; }
+  #how-it-works .feature:nth-child(even) > .feature-copy { grid-column: 1; grid-row: 1; }
+  #how-it-works .feature:nth-child(even) > .feature-image { grid-column: 2; grid-row: 1; }
+  #how-it-works .feature-image { max-width: 100%; justify-self: center; }
+  #how-it-works .feature-copy { align-items: flex-start; padding: 0; text-align: left; }
+  #how-it-works .feature-copy h2,
+  #how-it-works .feature-copy .lead { text-align: left; max-width: none; }
+  #how-it-works .feature-copy .plain-list { display: block; margin: 0; padding-left: 20px; }
+  #how-it-works .feature-copy .text-link { width: auto; padding-inline: 28px; }
+}
+@media (min-width: 561px) and (max-width: 800px) {
+  #how-it-works .feature:nth-child(even) { grid-template-columns: minmax(0, 1fr) 180px; }
+}
