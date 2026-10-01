@@ -1,0 +1,25 @@
+:root {
+  --color-primary: #7460d6;
+  --color-primary-hover: #5945b8;
+  --color-primary-soft: #f2effc;
+  --color-text: #151924;
+  --color-muted: #5c606b;
+  --color-border: #e4e1ed;
+  --color-background: #fff;
+  --color-surface: #f8f7fc;
+  --color-blue: #69a7eb;
+  --color-pink: #ed5bc5;
+  --font-body: "Inter", sans-serif;
+  --font-heading: "Nunito", sans-serif;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --radius: 8px;
+  --container: 1120px;
+  --section-space: clamp(48px, 7vw, 88px);
+}

@@ -1,0 +1,326 @@
+{
+  "common": {
+    "siteTagline": "Ota-ona nazorati va geolokatsiya",
+    "homeAriaLabel": "Bosh sahifa",
+    "openMenuAriaLabel": "Menyuni ochish",
+    "cloudAlt": "Bulut",
+    "tryFree": "Bepul sinab ko‘rish",
+    "try": "Sinab ko‘rish",
+    "downloadAppStore": "App Store’dan yuklab olish",
+    "downloadGooglePlay": "Google Play’dan yuklab olish",
+    "subscribe": "Obuna bo‘lish",
+    "home": "Bosh sahifa",
+    "documents": "Hujjatlar",
+    "coinAlt": "Tanga",
+    "checkAlt": "Belgi",
+    "phoneAlt": "Telefon",
+    "breadcrumbsHome": "Bosh sahifa",
+    "ogrn": "OGRN",
+    "inn": "INN",
+    "kpp": "KPP",
+    "copyright": "© BukaGo, {year}. Barcha huquqlar himoyalangan."
+  },
+  "header": {
+    "howItWorks": "Qanday ishlaydi",
+    "tasks": "Topshiriqlar",
+    "howToConnect": "Qanday ulash mumkin",
+    "forFamily": "Oilaga",
+    "blog": "Blog",
+    "downloadApp": "Ilovani yuklab olish"
+  },
+  "footer": {
+    "newsletterHint": "Yangiliklarni o‘tkazib yubormang — obunaga yoziling",
+    "documentsTitle": "Hujjatlar"
+  },
+  "hero": {
+    "title": "Ota-ona nazorati ",
+    "titleAccent": "bola rivoji uchun aqlli pauzalar bilan",
+    "description": "Aqlli pauza texnologiyasi — o‘qitish, neyrogimnastika va haqiqiy hayotga ehtiyotkor o‘tish orqali bolada yangi neyron bog‘lanishlarini shakllantirish.",
+    "tryFreeAriaLabel": "Bepul sinab ko‘rish"
+  },
+  "control": {
+    "items": {
+      "0": {
+        "title": "Vaqtni boshqaring",
+        "text": "ilovalarni bloklang va internetdagi kontentni bolaning yoshiga qarab nazorat qiling.",
+        "li": {
+          "0": "Haftaning har kuni uchun ekran vaqtining moslashuvchan limitlari",
+          "1": "Bir bosishda pauza va mashg‘ulotni ishga tushirish",
+          "2": "Limit oshganda ota-onaga bildirishnoma"
+        },
+        "images": {
+          "0": "Ota-ona nazorati",
+          "1": "Ota-ona nazorati — batafsil ekran",
+          "2": "Aqlli pauza maslahati"
+        }
+      },
+      "1": {
+        "title": "O‘quv kontenti mavzularini sozlang",
+        "text": "aqlli pauzalarga foydali mavzular qo‘shiladi",
+        "li": {
+          "0": "Mavzularni tanlang: mantiq, o‘qish, diqqat va matematika",
+          "1": "Murakkablikni bolaning yoshiga moslang",
+          "2": "Bir necha bosishda shaxsiy o‘quv yo‘lini tuzing"
+        },
+        "images": {
+          "0": "O‘quv kontenti",
+          "1": "O‘quv topshirig‘i ekrani",
+          "2": "O‘quv kontenti maslahati"
+        }
+      },
+      "2": {
+        "title": "Foydali odatlarni shakllantiring",
+        "text": "darslar va uy ishlari haqida eslatmalar qo‘shing",
+        "li": {
+          "0": "Bola uchun kundalik va bir martalik topshiriqlar yarating",
+          "1": "Darslar va ishlar haqida eslatmalarni sozlang",
+          "2": "O‘yin motivatsiyasi va mukofotlar orqali odatni mustahkamlang"
+        },
+        "images": {
+          "0": "Foydali odatlar",
+          "1": "Odatlar bo‘yicha topshiriq ekrani",
+          "2": "Odatlar haqida maslahat"
+        }
+      },
+      "3": {
+        "title": "Sog‘lom daqiqalar",
+        "text": "diqqatni ko‘z mashqlari yoki o‘yin shaklidagi dam olishga o‘tkazadi",
+        "li": {
+          "0": "Ko‘z va tana uchun tanaffus eslatmalari",
+          "1": "Mini-o‘yin formatidagi qisqa mashqlar",
+          "2": "Turib harakatlanish odatini qo‘llab-quvvatlash"
+        },
+        "images": {
+          "0": "Sog‘lom daqiqalar",
+          "1": "Sog‘lom daqiqa ekrani",
+          "2": "Sog‘lom daqiqa maslahati"
+        }
+      },
+      "4": {
+        "title": "Bolaning geopozitsiyasini kuzating",
+        "text": "va uning marshrutini",
+        "li": {
+          "0": "Bolaning joriy joylashuvi bilan onlayn-xarita",
+          "1": "Belgilangan zonadan chiqqanda ogohlantirish",
+          "2": "Kun va hafta bo‘yicha marshrut tarixi"
+        },
+        "images": {
+          "0": "Bola geopozitsiyasi"
+        }
+      }
+    }
+  },
+  "problem": {
+    "imageAlt": "Ekran vaqti muammolari",
+    "title": "Nega aqlli pauzasiz ekran nazorati ishlamaydi?",
+    "tags": {
+      "0": "Ekran vaqti",
+      "1": "Bola psixologiyasi",
+      "2": "Raqamli odatlar"
+    },
+    "sections": {
+      "0": {
+        "title": "Asabiylik va asabiy tutqanoqlar",
+        "text": "Ekrandan haqiqiy hayotga keskin o‘tish bolalarda stress, isterika va agressiyani keltirib chiqaradi."
+      },
+      "1": {
+        "title": "Diqqatni jamlash muammolari",
+        "text": "Tezkor axborot oqimi dars, o‘qish va o‘yinga e’tibor qaratish qobiliyatini zaiflashtiradi."
+      },
+      "2": {
+        "title": "Apatiya va kayfiyatning pasayishi",
+        "text": "Virtual dunyo yorqinroq ko‘rinadi, haqiqiy hayot esa zerikarli — motivatsiya va qiziqish pasayadi."
+      },
+      "3": {
+        "title": "Sog‘liq muammolari",
+        "text": "Ko‘rish xavfi (qurish, yomonlashish) hamda harakatsizlik va noto‘g‘ri ovqatlanishdan ortiqcha vazn."
+      }
+    },
+    "heading": "Asabiylik va asabiy tutqanoqlar",
+    "intro": "Ekran vaqti keskin tugaganda, bola miyasi yorqin, dinamik kontentdan tinch haqiqatga o‘tishga ulgurmaydi. Shuning uchun g‘azab, ko‘z yosh va gadjetlar butun oila kayfiyatini boshqarayotgandek tuyg‘u paydo bo‘ladi. Aqlli pauzalarda biz bolani o‘z reaksiyasini sezishga, mikroo‘tishlar qilishga va ekrandan nizosiz chiqishga o‘rgatamiz.",
+    "footerTitle": "Bola rivoji haqida batafsil",
+    "footerTitleLine2": "jurnalimizda o‘qing",
+    "goToBlog": "Blogga o‘tish",
+    "goToBlogAriaLabel": "Blogga o‘tish"
+  },
+  "loved": {
+    "title": "Bolalarga BukaGo yoqadi",
+    "description": "Mashq qilmay, bola bilan bir jamoada o‘ynaydigan quvnoq mushukchalar",
+    "cards": {
+      "0": {
+        "title": "Topshiriq",
+        "progress": "1/3",
+        "question": "3 + 2 = ?",
+        "answerAriaLabel": "Natija: {value}",
+        "answerButton": "Javob berish",
+        "subtitle": "Mantiq va diqqat uchun aqlli pauza",
+        "text": "Bola topshiriqni bajaradi yoki o‘quv kontentini ko‘rib, ball to‘playdi."
+      },
+      "1": {
+        "title": "10 sahifa o‘qib ",
+        "titleLine2": "qayta hikoya qilish",
+        "reward": "+50₽",
+        "photoReport": "Foto-hisobot yuborildi",
+        "rewardReceived": "Mukofot olindi",
+        "rewardReceivedAriaLabel": "Mukofot olindi",
+        "subtitle": "Ota-ona topshiriqlari",
+        "text": "O‘z topshiriqlaringizni yarating va pul yoki sovg‘aga almashtiriladigan ball bilan mukofotlang."
+      },
+      "2": {
+        "title": "Sog‘lom daqiqa",
+        "timer": "00:08",
+        "exerciseDescription": "Chapga → yuqoriga → o‘ngga → pastga 10 soniya davomida (tovush signaligacha)",
+        "pause": "Pauza",
+        "pauseAriaLabel": "Pauza",
+        "pauseIconAlt": "Pauza belgisi",
+        "subtitle": "Dam olish va sog‘lom daqiqa",
+        "text": "Bolaning jismoniy salomatligini rivojlantiring va ko‘zni zo‘riqishdan himoya qiling."
+      },
+      "3": {
+        "title": "2:00 qoldi",
+        "breakSoon": "Tez orada tanaffus",
+        "breakOrTask": "Tanaffus yoki topshiriq?",
+        "break": "Tanaffus",
+        "task": "Topshiriq",
+        "breakAriaLabel": "Tanaffus",
+        "taskAriaLabel": "Topshiriq",
+        "subtitle": "Diqqatni ehtiyotkor o‘tkazish",
+        "text": "Vaqt tugashi va diqqatning yaqin orada o‘tishi haqida oldindan ogohlantiramiz."
+      },
+      "4": {
+        "title": "Oila doskasi",
+        "addTask": "Topshiriq qo‘shish",
+        "addTaskAriaLabel": "Topshiriq qo‘shish",
+        "subtitle": "Oila reytingi",
+        "text": "Oila uchun topshiriqlar doskasini yarating va foydali odatlarni birga shakllantiring.",
+        "members": {
+          "0": "Masha",
+          "1": "Vanya",
+          "2": "Dada"
+        }
+      }
+    }
+  },
+  "connect": {
+    "badge": "TEZKOR START",
+    "title": "Bola qurilmasini 5 daqiqada ulang",
+    "subtitle": "Oddiy sozlash va qulay interfeys. ",
+    "subtitleLine2": "Ilovaning istalgan",
+    "subtitleLine3": "kerakli funksiyasiga 1 marta bosib kiring!",
+    "steps": {
+      "0": "BukaGo ilovasini o‘z telefoningizga yuklab oling",
+      "1": "BukaGo ilovasini bola telefoniga o‘rnating",
+      "2": "Qadamlar bo‘yicha o‘ting va BukaGo orqali farzandingizga g‘amxo‘rlikni yoqing"
+    }
+  },
+  "works": {
+    "items": {
+      "0": {
+        "title": "Ota-onalikka yordam beradi:",
+        "list": {
+          "0": "Darslarni eslatib turish shart emas",
+          "1": "Bola bajarilganini o‘zi tasdiqlaydi",
+          "2": "Pul bilan rag‘batlantirish mumkin",
+          "3": "Ekran vaqtini o‘zingiz kuzatish shart emas"
+        }
+      },
+      "1": {
+        "title": "Rivojlanish va sog‘liq — o‘yin shaklida",
+        "list": {
+          "0": "Tez dopamindan diqqatni o‘tkazish",
+          "1": "Uzun neyron bog‘lanishlarini shakllantirish",
+          "2": "Isterika va asabiy tutqanoqlarni kamaytirish",
+          "3": "Xotira va tanqidiy fikrlashni rivojlantirish"
+        }
+      }
+    },
+    "readArticle": "Maqolani o‘qish"
+  },
+  "app": {
+    "title": "BukaGo ilovasini yuklab oling",
+    "subtitle": "Aqlli pauzalar va geopozitsiya bilan bola ekran vaqtini nazorat qilish"
+  },
+  "cookie": {
+    "ariaLabel": "Cookie ishlatilishi haqida xabar",
+    "title": "Biz cookie ishlatamiz",
+    "text": "Sayt xizmatni yaxshilash uchun cookie va analitika (Yandex.Metrica) dan foydalanadi. «Qabul qilish» ni bosish orqali siz ",
+    "privacyPolicy": "Maxfiylik siyosati",
+    "accept": "Qabul qilish"
+  },
+  "modal": {
+    "title": "Birinchi bo‘lib bilmoqchiman",
+    "description": "Ilova allaqachon App Store’da. Email-obunaga yoziling — Android versiyasi chiqqanda xabar beramiz",
+    "emailPlaceholder": "Emailingiz",
+    "submitError": "Formani yuborish xatosi",
+    "socialHint": "O‘tkazib yubormaslik uchun ijtimoiy tarmoqlarda bizga obuna bo‘ling"
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "BukaGo — ongli ota-onalar uchun jurnal",
+    "metaTitle": "Blog | {siteName}",
+    "pageMetaTitle": "{page}-sahifa | Blog | {siteName}",
+    "prevPage": "Orqaga",
+    "nextPage": "Oldinga",
+    "prevPageAriaLabel": "Oldingi sahifa",
+    "nextPageAriaLabel": "Keyingi sahifa",
+    "pageAriaLabel": "{page}-sahifa",
+    "languageVersions": "Maqolaning til versiyalari",
+    "empty": "Bu tilda hozircha maqolalar yo‘q. Keyinroq qaytib keling."
+  },
+  "legal": {
+    "lastUpdated": "Oxirgi yangilanish: ",
+    "translationPending": "Ushbu hujjatning to‘liq tarjimasi tayyorlanmoqda. Quyida rus tilidagi versiya keltirilgan.",
+    "links": {
+      "userAgreement": "Foydalanuvchi kelishuvi",
+      "privacyPolicy": "Maxfiylik siyosati",
+      "personalDataConsent": "Shaxsiy ma’lumotlarni qayta ishlashga rozilik",
+      "offer": "Ommaviy oferta (PRO)",
+      "accountDeletion": "Hisob va ma’lumotlarni o‘chirish",
+      "requisites": "Rekvizitlar va kontaktlar",
+      "itAccreditation": "IT-akkreditatsiya"
+    },
+    "pages": {
+      "userAgreement": {
+        "title": "Foydalanuvchi kelishuvi",
+        "description": "BukaGo xizmatining foydalanuvchi kelishuvi."
+      },
+      "privacyPolicy": {
+        "title": "Maxfiylik siyosati",
+        "description": "BukaGo xizmatining maxfiylik va shaxsiy ma’lumotlarni qayta ishlash siyosati."
+      },
+      "personalDataConsent": {
+        "title": "Shaxsiy ma’lumotlarni qayta ishlashga rozilik",
+        "description": "BukaGo xizmatining shaxsiy ma’lumotlarini qayta ishlashga rozilik."
+      },
+      "offer": {
+        "title": "Ommaviy oferta (PRO)",
+        "description": "BukaGo PRO xizmatlarini ko‘rsatish bo‘yicha ommaviy oferta."
+      },
+      "accountDeletion": {
+        "title": "Hisob va ma’lumotlarni o‘chirish",
+        "description": "BukaGo xizmatida hisob va shaxsiy ma’lumotlarni o‘chirish yo‘riqnomasi."
+      },
+      "requisites": {
+        "title": "Rekvizitlar va kontaktlar",
+        "description": "«Baysic» MChJ rekvizitlari va kontakt ma’lumotlari."
+      },
+      "itAccreditation": {
+        "title": "IT-faoliyat to‘g‘risida ma’lumotni ochish",
+        "description": "«Baysic» MChJ IT-faoliyati va BukaGo dasturiy mahsuloti to‘g‘risida ma’lumotni ochish."
+      }
+    }
+  },
+  "metadata": {
+    "siteName": "BukaGo — Ota-ona nazorati va geolokatsiya",
+    "siteDescription": "Aqlli pauza texnologiyasi — o‘qitish, neyrogimnastika va haqiqiy hayotga ehtiyotkor o‘tish orqali bolada yangi neyron bog‘lanishlarini shakllantirish.",
+    "openGraphLocale": "uz_UZ"
+  },
+  "languageSwitcher": {
+    "label": "Til",
+    "ru": "Русский",
+    "en": "English",
+    "kk": "Қазақша",
+    "uz": "Oʻzbekcha",
+    "az": "AZ"
+  }
+}

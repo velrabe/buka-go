@@ -1,0 +1,17 @@
+{
+  "hero": "/assets/site/_next/static/media/hero-image.38y2saatnbcb1.png",
+  "features": [
+    "/assets/site/images/landing/lock-1.png",
+    "/assets/site/images/landing/edu-1.png",
+    "/assets/site/images/landing/hab-1.png",
+    "/assets/site/images/landing/sport-1.png",
+    "/assets/site/images/landing/geo-1.png"
+  ],
+  "problem": "/assets/site/_next/static/media/problem.0puix8r6x11le.png",
+  "connect": "/assets/site/images/landing/steps-footer.webp",
+  "family": [
+    "/assets/site/images/landing/works/works-1.png",
+    "/assets/site/images/landing/works/works-2.png"
+  ],
+  "download": "/assets/site/images/landing/phone.png"
+}

@@ -1,0 +1,326 @@
+{
+  "common": {
+    "siteTagline": "Parental control and geolocation",
+    "homeAriaLabel": "Home page",
+    "openMenuAriaLabel": "Open menu",
+    "cloudAlt": "Cloud",
+    "tryFree": "Try for free",
+    "try": "Try it",
+    "downloadAppStore": "Download on the App Store",
+    "downloadGooglePlay": "Get it on Google Play",
+    "subscribe": "Subscribe",
+    "home": "Home",
+    "documents": "Documents",
+    "coinAlt": "Coin",
+    "checkAlt": "Checkmark",
+    "phoneAlt": "Phone",
+    "breadcrumbsHome": "Home",
+    "ogrn": "OGRN",
+    "inn": "INN",
+    "kpp": "KPP",
+    "copyright": "© BukaGo, {year}. All rights reserved."
+  },
+  "header": {
+    "howItWorks": "How it works",
+    "tasks": "Tasks",
+    "howToConnect": "How to connect",
+    "forFamily": "For the family",
+    "blog": "Blog",
+    "downloadApp": "Download the app"
+  },
+  "footer": {
+    "newsletterHint": "Don't miss updates — subscribe to our newsletter",
+    "documentsTitle": "Documents"
+  },
+  "hero": {
+    "title": "Parental control ",
+    "titleAccent": "with smart pauses for your child's development",
+    "description": "Smart pause technology helps build new neural connections through learning, neurogymnastics, and a gentle transition back to real life.",
+    "tryFreeAriaLabel": "Try for free"
+  },
+  "control": {
+    "items": {
+      "0": {
+        "title": "Manage screen time",
+        "text": "block apps and control online content based on your child's age.",
+        "li": {
+          "0": "Flexible daily screen time limits for each day of the week",
+          "1": "Instant pause and one-tap activity launch",
+          "2": "Parent notifications when limits are exceeded"
+        },
+        "images": {
+          "0": "Parental control",
+          "1": "Parental control — detail screen",
+          "2": "Smart pause hint"
+        }
+      },
+      "1": {
+        "title": "Set up learning content themes",
+        "text": "useful topics will be integrated into smart pauses",
+        "li": {
+          "0": "Choose topics: logic, reading, attention, and math",
+          "1": "Adjust difficulty to your child's age",
+          "2": "Build a personalized learning track in a few clicks"
+        },
+        "images": {
+          "0": "Learning content",
+          "1": "Learning task screen",
+          "2": "Learning content hint"
+        }
+      },
+      "2": {
+        "title": "Build healthy habits",
+        "text": "add reminders for homework and chores",
+        "li": {
+          "0": "Create daily and one-time tasks for your child",
+          "1": "Set reminders for lessons and chores",
+          "2": "Reinforce habits through gamified motivation and rewards"
+        },
+        "images": {
+          "0": "Healthy habits",
+          "1": "Habit task screen",
+          "2": "Habit hint"
+        }
+      },
+      "3": {
+        "title": "Healthy breaks",
+        "text": "switch attention to eye exercises or stretches in a playful format",
+        "li": {
+          "0": "Reminders for eye and body breaks",
+          "1": "Short exercises in mini-game format",
+          "2": "Support the habit of getting up and moving regularly"
+        },
+        "images": {
+          "0": "Healthy breaks",
+          "1": "Healthy break screen",
+          "2": "Healthy break hint"
+        }
+      },
+      "4": {
+        "title": "Track your child's location",
+        "text": "and their route",
+        "li": {
+          "0": "Live map with your child's current location",
+          "1": "Alerts when leaving designated zones",
+          "2": "Route history for the day and week"
+        },
+        "images": {
+          "0": "Child geolocation"
+        }
+      }
+    }
+  },
+  "problem": {
+    "imageAlt": "Screen time problems",
+    "title": "Why screen control without smart pauses doesn't work",
+    "tags": {
+      "0": "Screen time",
+      "1": "Child psychology",
+      "2": "Digital habits"
+    },
+    "sections": {
+      "0": {
+        "title": "Irritability and meltdowns",
+        "text": "Abrupt switching from screen to reality causes stress, tantrums, and aggression in children."
+      },
+      "1": {
+        "title": "Concentration problems",
+        "text": "A constant stream of fast information weakens the ability to focus on homework, reading, and play."
+      },
+      "2": {
+        "title": "Apathy and low mood",
+        "text": "The virtual world feels brighter while real life seems duller, reducing motivation and interest."
+      },
+      "3": {
+        "title": "Health issues",
+        "text": "Risks to eyesight (dryness, deterioration) and excess weight from sedentary habits and poor nutrition."
+      }
+    },
+    "heading": "Irritability and meltdowns",
+    "intro": "When screen time ends abruptly, a child's brain can't switch from bright, dynamic content to calm reality. The result is outbursts of anger, tears, and the feeling that devices control the whole family's mood. With smart pauses, we help children notice their reactions, make micro-transitions, and gradually leave the screen without conflict.",
+    "footerTitle": "Learn more about child development",
+    "footerTitleLine2": "in our journal",
+    "goToBlog": "Go to blog",
+    "goToBlogAriaLabel": "Go to blog"
+  },
+  "loved": {
+    "title": "Kids love BukaGo",
+    "description": "Fun kittens that don't lecture — they play on the same team as your child",
+    "cards": {
+      "0": {
+        "title": "Task",
+        "progress": "1/3",
+        "question": "3 + 2 = ?",
+        "answerAriaLabel": "Answer: {value}",
+        "answerButton": "Answer",
+        "subtitle": "Smart pause with a logic and attention task",
+        "text": "The child completes a task or watches educational content and earns points."
+      },
+      "1": {
+        "title": "Read 10 pages ",
+        "titleLine2": "and retell",
+        "reward": "+50₽",
+        "photoReport": "Photo report sent",
+        "rewardReceived": "Reward received",
+        "rewardReceivedAriaLabel": "Reward received",
+        "subtitle": "Tasks from parents",
+        "text": "Create your own tasks and assign rewards in money or points that can be exchanged for gifts."
+      },
+      "2": {
+        "title": "Healthy break",
+        "timer": "00:08",
+        "exerciseDescription": "Left → up → right → down for 10 sec (until the sound signal)",
+        "pause": "Pause",
+        "pauseAriaLabel": "Pause",
+        "pauseIconAlt": "Pause icon",
+        "subtitle": "Stretch and healthy break",
+        "text": "Support your child's physical health and protect their eyes from strain."
+      },
+      "3": {
+        "title": "2:00 left",
+        "breakSoon": "Break soon",
+        "breakOrTask": "Break or task?",
+        "break": "Break",
+        "task": "Task",
+        "breakAriaLabel": "Break",
+        "taskAriaLabel": "Task",
+        "subtitle": "Gentle attention switching",
+        "text": "We warn in advance about time running out and an upcoming attention switch."
+      },
+      "4": {
+        "title": "Family board",
+        "addTask": "Add task",
+        "addTaskAriaLabel": "Add task",
+        "subtitle": "Family leaderboard",
+        "text": "Create a family task board and build healthy habits together.",
+        "members": {
+          "0": "Masha",
+          "1": "Vanya",
+          "2": "Dad"
+        }
+      }
+    }
+  },
+  "connect": {
+    "badge": "QUICK START",
+    "title": "Connect your child's device in 5 minutes",
+    "subtitle": "Simple setup and a convenient interface. ",
+    "subtitleLine2": "Access any feature",
+    "subtitleLine3": "you need in one click!",
+    "steps": {
+      "0": "Download the BukaGo app on your phone",
+      "1": "Install the BukaGo app on your child's phone",
+      "2": "Follow the steps and enable care for your child through BukaGo"
+    }
+  },
+  "works": {
+    "items": {
+      "0": {
+        "title": "Helps with parenting:",
+        "list": {
+          "0": "No need to remind about homework",
+          "1": "The child confirms completion themselves",
+          "2": "You can reward with money",
+          "3": "No need to monitor screen time manually"
+        }
+      },
+      "1": {
+        "title": "Development and health — in a playful format",
+        "list": {
+          "0": "Switching attention away from quick dopamine",
+          "1": "Building long neural connections",
+          "2": "Reducing tantrums and meltdowns",
+          "3": "Developing memory and critical thinking"
+        }
+      }
+    },
+    "readArticle": "Read article"
+  },
+  "app": {
+    "title": "Download the BukaGo app",
+    "subtitle": "Screen time control for your child with smart pauses and geolocation"
+  },
+  "cookie": {
+    "ariaLabel": "Cookie usage notice",
+    "title": "We use cookies",
+    "text": "This site uses cookies and analytics (Yandex.Metrica) to improve the service. By clicking \"Accept\", you agree to the ",
+    "privacyPolicy": "Privacy Policy",
+    "accept": "Accept"
+  },
+  "modal": {
+    "title": "I want to know first",
+    "description": "The app is already on the App Store. Subscribe to our email newsletter — we'll let you know when the Android version launches.",
+    "emailPlaceholder": "Your email",
+    "submitError": "Form submission error",
+    "socialHint": "Follow us on social media so you don't miss out"
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "BukaGo — a journal for mindful parents",
+    "metaTitle": "Blog | {siteName}",
+    "pageMetaTitle": "Page {page} | Blog | {siteName}",
+    "prevPage": "Back",
+    "nextPage": "Next",
+    "prevPageAriaLabel": "Previous page",
+    "nextPageAriaLabel": "Next page",
+    "pageAriaLabel": "Page {page}",
+    "languageVersions": "Article language versions",
+    "empty": "No articles in this language yet. Check back soon."
+  },
+  "legal": {
+    "lastUpdated": "Last updated: ",
+    "translationPending": "The full English translation of this document is in progress. The Russian version is shown below.",
+    "links": {
+      "userAgreement": "Terms of Service",
+      "privacyPolicy": "Privacy Policy",
+      "personalDataConsent": "Personal Data Consent",
+      "offer": "Public Offer (PRO)",
+      "accountDeletion": "Account and Data Deletion",
+      "requisites": "Company Details and Contacts",
+      "itAccreditation": "IT Accreditation"
+    },
+    "pages": {
+      "userAgreement": {
+        "title": "Terms of Service",
+        "description": "Terms of Service for the BukaGo service."
+      },
+      "privacyPolicy": {
+        "title": "Privacy Policy",
+        "description": "Privacy policy and personal data processing for the BukaGo service."
+      },
+      "personalDataConsent": {
+        "title": "Personal Data Consent",
+        "description": "Consent to personal data processing for the BukaGo service."
+      },
+      "offer": {
+        "title": "Public Offer (PRO)",
+        "description": "Public offer for BukaGo PRO services."
+      },
+      "accountDeletion": {
+        "title": "Account and Data Deletion",
+        "description": "Instructions for deleting your account and personal data in BukaGo."
+      },
+      "requisites": {
+        "title": "Company Details and Contacts",
+        "description": "Company details and contact information for Baysic LLC."
+      },
+      "itAccreditation": {
+        "title": "IT Activity Disclosure",
+        "description": "Disclosure of IT activities of Baysic LLC and the BukaGo software product."
+      }
+    }
+  },
+  "metadata": {
+    "siteName": "BukaGo — Parental control and geolocation",
+    "siteDescription": "Smart pause technology helps build new neural connections through learning, neurogymnastics, and a gentle transition back to real life.",
+    "openGraphLocale": "en_US"
+  },
+  "languageSwitcher": {
+    "label": "Language",
+    "ru": "Русский",
+    "en": "English",
+    "kk": "Қазақша",
+    "uz": "Oʻzbekcha",
+    "az": "AZ"
+  }
+}
