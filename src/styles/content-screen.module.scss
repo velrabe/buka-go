@@ -7,12 +7,7 @@
   border: 0;
   border-radius: 41px;
   background: #151824;
-  box-shadow:
-    2px 1px 0 #d4d3dc,
-    4px 2px 0 #aaa9b6,
-    6px 3px 0 #777888,
-    8px 4px 0 #505260,
-    15px 20px 30px -12px #37334b30;
+  box-shadow: none;
 }
 .viewport {
   position: relative;
@@ -101,7 +96,7 @@
 .stage[data-focus="minecraft"] [data-demo-target="minecraft"] { z-index: 8; }
 
 /* Light opposing isometric slants; vertical edges stay upright and parallel. */
-.shell { transform: skewY(-6deg) scaleX(.96); transform-origin: center; }
+.shell { transform: rotate(6deg) skewY(-6deg) scaleX(.96); transform-origin: center; }
 @media (max-width: 560px) {
   :global(.time-visual-phone) .stage { position: static; isolation: auto; }
   :global(.time-visual-phone) .shell { position: relative; z-index: 1; }
