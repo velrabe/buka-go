@@ -1,5 +1,5 @@
 import { DemoSkeleton } from "./DemoSkeleton";
-import { DemoValue, DemoSummaryBar } from "./ContentDemoState";
+import { DemoValue, DemoActiveMode, DemoSummaryBar } from "./ContentDemoState";
 import type { CSSProperties } from "react";
 import screen from "@/content/app-content-screen.json";
 import { ScrollingPhone } from "./ScrollingPhone";
@@ -32,8 +32,8 @@ const demoFields: Record<string, string> = {
 
 const visibleLabels = new Set([
   "Экранное время", "Умные режимы", "Приложения", "Добавить время", "Настройки",
-  "Аналитика", "Расписание", "Все приложения (49)", "Roblox", "Minecraft", "Duolingo",
-  "Калькулятор", "Мой Дневник", "Задания", "На карте", "Контент", "Профиль",
+  "Аналитика", "Расписание", "Все приложения (49)", "Minecraft", "PRO",
+  "Задания", "На карте", "Контент", "Профиль",
 ]);
 const modeButtons = new Set(["2829:83615", "2829:83619", "2829:83623", "2829:83628", "2829:83632", "2829:83636"]);
 function Layer({ node, control = false }: { node: ScreenNode; control?: boolean }) {
@@ -50,11 +50,11 @@ function Layer({ node, control = false }: { node: ScreenNode; control?: boolean 
       overflow: "visible", whiteSpace: "pre", lineHeight: 1.2,
     } as CSSProperties : {}),
   };
-  if (node.id === "2829:83603") return <div style={style}><DemoSkeleton width={88} height={12} /></div>;
+  if (node.id === "2829:83603") return <div style={style}><DemoActiveMode /></div>;
   if (node.id === "2799:63574") return <DemoSummaryBar />;
   if (node.text !== undefined && !isControl && !visibleLabels.has(node.text) && demoFields[node.id] !== "clock") {
     return <div className={styles.layer} style={{ ...style, display: "flex", alignItems: "center", overflow: "visible" }} data-figma-node={node.id}>
-      <DemoSkeleton width={Math.max(12, Number(node.style.width) * .86)}
+      <DemoSkeleton width={node.text.toLowerCase().includes("активный режим") ? 110 : Math.max(12, Number(node.style.width) * .86)}
         height={Math.min(12, Math.max(6, Number(node.style.height) * .5))} lines={Number(node.style.height) > 28 ? 2 : 1} />
     </div>;
   }
@@ -63,6 +63,7 @@ function Layer({ node, control = false }: { node: ScreenNode; control?: boolean 
       {node.asset ? (
         <img
           className={styles.asset}
+          data-inactive-nav={node.asset.src.includes("/nav-") && node.asset.src.endsWith("-off.png") ? "true" : undefined}
           src={node.asset.src}
           width={node.asset.width}
           height={node.asset.height}

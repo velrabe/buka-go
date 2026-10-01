@@ -74,16 +74,15 @@ export function ModeConfirmation({ frame }: { frame: ContentDemoFrame }) {
   return <div className={styles.modal} data-figma-node={copy.confirm.sourceNode}>
     <div className={styles.header}><strong>Быстрый режим</strong><span className={styles.close}>×</span></div>
     <div className={styles.confirmModes}>
-      <div><DemoSkeleton width={120} /><strong style={{ color: modes[1].color }}><Icon index={1} /><DemoSkeleton width={48} /></strong><small><DemoSkeleton width={170} /></small></div>
+      <div><DemoSkeleton width={120} /><strong style={{ color: modes[1].color }}><Icon index={1} />Учеба</strong><small><DemoSkeleton width={170} /></small></div>
       <span className={styles.changeArrow}>↓</span>
-      <div><DemoSkeleton width={100} /><strong style={{ color: modes[3].color }}><Icon index={3} /><DemoSkeleton width={48} /></strong><small><DemoSkeleton width={160} /></small></div>
+      <div><DemoSkeleton width={100} /><strong style={{ color: modes[3].color }}><Icon index={3} />Игры</strong><small><DemoSkeleton width={160} /></small></div>
     </div>
     <div className={styles.schedule}>
       <strong>Изменения в расписании</strong>
       {[[3, "17:30 – 18:00"], [1, "18:00 – 18:30"]].map(([mode, time]) => <div key={mode}>
-        <span style={{ color: modes[Number(mode)].color }}><Icon index={Number(mode)} /><DemoSkeleton width={50} /></span><span><DemoSkeleton width={100} /></span>
+        <span style={{ color: modes[Number(mode)].color }}><Icon index={Number(mode)} />{modes[Number(mode)].name}</span><span>{time}</span>
       </div>)}
-      <p><DemoSkeleton width="95%" lines={3} /></p>
     </div>
     <div className={styles.modalBottom}>
       <div className={styles.action} style={{ transform: `scale(${1 - Math.sin(frame.confirmPress * Math.PI) * 0.035})` }}>Подтвердить</div>

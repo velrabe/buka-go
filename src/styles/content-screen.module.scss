@@ -35,6 +35,7 @@
   width: auto;
   height: auto;
 }
+.asset[data-inactive-nav="true"] { filter: grayscale(1); }
 .status { position: relative; height: 66px; z-index: 2; background: #f8fafc; }
 .scrollWindow { position: relative; height: 596px; overflow: hidden; outline-offset: -3px; }
 .track { will-change: transform; }
