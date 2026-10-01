@@ -3,11 +3,16 @@
 .shell {
   width: min(100%, 375px);
   margin-inline: auto;
-  padding: 7px;
-  border: 1px solid #303243;
-  border-radius: 49px;
+  padding: 0;
+  border: 0;
+  border-radius: 41px;
   background: #151824;
-  box-shadow: 0 24px 64px -24px #7460d655, 0 8px 20px -12px #11182766;
+  box-shadow:
+    2px 1px 0 #d4d3dc,
+    4px 2px 0 #aaa9b6,
+    6px 3px 0 #777888,
+    8px 4px 0 #505260,
+    15px 20px 30px -12px #37334b30;
 }
 .viewport {
   position: relative;
@@ -16,6 +21,15 @@
   overflow: hidden;
   border-radius: 41px;
   background: #f8fafc;
+}
+.viewport::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(125deg, transparent 12%, #ffffff08 27%, #ffffff38 35%, #ffffff08 43%, transparent 58%);
 }
 .phone {
   width: 375px;
@@ -74,7 +88,7 @@
 .phone [data-mode-disabled="true"] > div > div { filter: grayscale(1); opacity: .5; }
 
 @media (max-width: 560px) {
-  :global(.time-visual-phone) .shell { width: 100%; padding: 0; border: 0; outline: 4px solid #9279e833; border-radius: 27px; box-shadow: none; }
+  :global(.time-visual-phone) .shell { width: 100%; padding: 0; border: 0; border-radius: 27px; }
   :global(.time-visual-phone) .viewport { border-radius: 27px; aspect-ratio: 207.40547 / 421.19513; }
 }
 
@@ -87,7 +101,7 @@
 .stage[data-focus="minecraft"] [data-demo-target="minecraft"] { z-index: 8; }
 
 /* Light opposing isometric slants; vertical edges stay upright and parallel. */
-.shell { transform: skewY(6deg) scaleX(.96); transform-origin: center; }
+.shell { transform: skewY(-6deg) scaleX(.96); transform-origin: center; }
 @media (max-width: 560px) {
   :global(.time-visual-phone) .stage { position: static; isolation: auto; }
   :global(.time-visual-phone) .shell { position: relative; z-index: 1; }
@@ -95,5 +109,14 @@
   :global(.time-visual-phone) .floating[data-side="left"] { left: calc(248.91553px - 100cqw); right: auto; }
   :global(.time-visual-phone) .floating[data-side="right"] { left: calc(272.91553px - 100cqw); right: auto; }
 }
-.dialogPerspective { transform: skewY(-6deg) scaleX(.96); transform-origin: center; }
+.dialogPerspective { transform: skewY(6deg) scaleX(.96); transform-origin: center; }
 @media (prefers-reduced-motion: reduce) { .shell, .dialogPerspective { transform: none !important; } }
+
+/* The composition owns the device, child and floating cards as separate layers. */
+:global(.time-visual-phone) .stage { position: static; isolation: auto; }
+:global(.time-visual-phone) .shell { position: relative; z-index: 1; width: 100%; }
+@media (min-width: 561px) {
+  :global(.time-visual-phone) .floating { top: 12%; z-index: 6; }
+  :global(.time-visual-phone) .floating[data-side="left"] { left: 2%; right: auto; }
+  :global(.time-visual-phone) .floating[data-side="right"] { right: 1%; left: auto; }
+}
