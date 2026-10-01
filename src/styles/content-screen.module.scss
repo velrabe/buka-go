@@ -5,7 +5,7 @@
   margin-inline: auto;
   padding: 0;
   border: 0;
-  border-radius: 41px;
+  border-radius: 20px;
   background: transparent;
   box-shadow: none;
 }
@@ -15,7 +15,7 @@
   width: 100%;
   aspect-ratio: 375 / 596;
   overflow: hidden;
-  border-radius: 41px;
+  border-radius: 20px;
   background: #f8fafc;
 }
 .viewport::after {
@@ -90,8 +90,8 @@
 .phone [data-mode-disabled="true"] > div > div { filter: grayscale(1); opacity: .5; }
 
 @media (max-width: 560px) {
-  :global(.time-visual-phone) .shell { width: 100%; padding: 0; border: 0; border-radius: 27px; }
-  :global(.time-visual-phone) .viewport { border-radius: 27px; aspect-ratio: 375 / 596; }
+  :global(.time-visual-phone) .shell { width: 100%; padding: 0; border: 0; border-radius: 20px; }
+  :global(.time-visual-phone) .viewport { border-radius: 20px; aspect-ratio: 375 / 596; }
 }
 
 .stage [data-demo-target="add"] { --guide-radius: 999px; }
@@ -109,3 +109,11 @@
 :global(.time-visual-phone) .shell { position: relative; z-index: 1; width: 100%; box-shadow: 0 0 0 1px #e4e1ed; }
 :global(.time-visual-phone) .floating[data-side] { left: 50%; right: auto; top: 28px; z-index: 6; }
 @media (prefers-reduced-motion: reduce) { .shell { transform: none; } }
+
+/* Frosted outer surface belongs to the landing, not the exported app screens. */
+:global(.time-visual-phone) .viewport {
+  background: rgb(255 255 255 / 65%);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+:global(.time-visual-phone) .phone { background: transparent; }
