@@ -1,10 +1,7 @@
 // All motion shares this clock, including focus, taps and the loop reset.
 export const DEMO_DURATION = 36;
-const clamp = (v: number) => Math.max(0, Math.min(1, v));
-const progress = (t: number, a: number, b: number) => clamp((t - a) / (b - a));
-const ease = (v: number) => v < .5 ? 4 * v ** 3 : 1 - (-2 * v + 2) ** 3 / 2;
+import { demoMotion, motionProgress as progress, smoothMotion as ease, scrollMotion, revealMotion as reveal, pressMotion } from "./demo-motion";
 const between = (t: number, a: number, b: number) => t >= a && t < b;
-const reveal = (t: number, a: number, b: number) => Math.min(ease(progress(t, a, a + .3)), 1 - ease(progress(t, b - .3, b)));
 const actions = [
   [0, 2, 2.3, "add"], [3.1, 5.1, 5.4, "mode"], [5.4, 6.4, 6.7, "custom"],
   [7.2, 8.2, 9.7, "wheel"], [9.7, 10.7, 11.3, "submit"],
@@ -20,8 +17,8 @@ export function sampleContentDemo(seconds: number) {
   const resetOverview = t >= 31.8;
   const action = actions.find(([a,,b]) => between(t,a,b));
   const focus = action?.[3] ?? "";
-  const focusAmount = action ? ease(progress(t, action[0], action[0] + 1)) * (1 - ease(progress(t, action[2] - .15, action[2]))) : 0;
-  const tap = action && !["wheel", "usage"].includes(focus) ? Math.sin(progress(t, action[1], Math.min(action[1] + .3, action[2])) * Math.PI) ** 2 : 0;
+  const focusAmount = action ? ease(progress(t, action[0], action[0] + demoMotion.highlightIn)) * (1 - ease(progress(t, action[2] - demoMotion.highlightOut, action[2]))) : 0;
+  const tap = action && !["wheel", "usage"].includes(focus) ? pressMotion(t, action[1], action[2]) : 0;
   const press = ["add", "quick", "minecraft", "back"].includes(focus) && tap > 0 ? focus : "";
   const modal = between(t,2.3,11.6) ? "add" : between(t,13.7,20) ? "quick" : between(t,20,22.6) ? "confirm" : null;
   const modalOpacity = modal === "add" ? reveal(t,2.3,11.6) : modal === "quick" ? reveal(t,13.7,20) : modal === "confirm" ? reveal(t,20,22.6) : 0;
@@ -36,10 +33,10 @@ export function sampleContentDemo(seconds: number) {
   const presetPress = progress(t,17.8,18.1);
   const confirmPress = focus === "submit" ? tap : 0;
   let scroll = 0;
-  if (between(t,11.6,22.6)) scroll = 300 * ease(progress(t,11.6,12.4));
-  else if (between(t,22.6,32.2)) scroll = 300 + 203 * ease(progress(t,22.6,23.4));
-  else if (between(t,32.2,33.2)) scroll = 503 * (1 - ease(progress(t,32.2,33.2)));
-  const card = reveal(t,25.3,32.2);
+  if (between(t,11.6,22.6)) scroll = 300 * scrollMotion(progress(t,11.6,12.4));
+  else if (between(t,22.6,32.2)) scroll = 300 + 203 * scrollMotion(progress(t,22.6,23.4));
+  else if (between(t,32.2,33.2)) scroll = 503 * (1 - scrollMotion(progress(t,32.2,33.2)));
+  const card = reveal(t,25.3,32.2, demoMotion.cardEnter, demoMotion.cardExit);
   const consumption = reset ? 0 : ease(progress(t,27,30));
   const added = Math.round(consumption * 5);
   const activated = !reset && t >= 21.8;

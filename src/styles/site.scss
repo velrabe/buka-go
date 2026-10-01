@@ -873,8 +873,8 @@ details p {
   #how-it-works .feature-copy .text-link { display: flex; align-items: center; justify-content: center; width: 100%; max-width: 420px; min-height: 48px; padding: 8px 16px; border: 0; border-radius: 100px; background: #9279e81a; color: #9279e8; text-decoration: none; font: 800 16px/1.375 "Nunito", sans-serif; letter-spacing: -.02em; }
   #how-it-works .feature-copy .text-link > span { display: none; }
   #how-it-works .feature-image { width: min(100%, 420px); height: auto; justify-self: center; }
-  .time-visual { position: relative; width: 100%; max-width: 420px; height: 491px; justify-self: center; isolation: isolate; overflow: clip; }
+  .time-visual { position: relative; width: 100%; max-width: 420px; height: 491px; justify-self: center; isolation: isolate; overflow: clip; container-type: inline-size; }
   .time-visual-bg { display: block; position: absolute; width: 390px; height: 483px; top: 0; left: 0; max-width: none; }
-  .time-visual-phone { position: absolute; width: 207.40547px; height: 421.19513px; right: 25.51006px; bottom: 41.23633px; z-index: 1; }
+  .time-visual-phone { position: absolute; width: 207.40547px; height: 421.19513px; right: 25.51006px; bottom: 41.23633px; z-index: auto; }
   .time-visual-kid { display: block; position: absolute; width: 248px; height: 178.53316px; left: 0; bottom: 0; max-width: none; z-index: 2; pointer-events: none; }
 }

@@ -2,9 +2,11 @@ import assert from "node:assert/strict";
 import { readFileSync, existsSync } from "node:fs";
 import ts from "typescript";
 
-const source = readFileSync(new URL("../src/lib/content-demo-timeline.ts", import.meta.url), "utf8");
-const { outputText } = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2020 } });
-const { sampleContentDemo: sample, DEMO_DURATION } = await import(`data:text/javascript;base64,${Buffer.from(outputText).toString("base64")}`);
+const compile = (source) => ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2020 } }).outputText;
+const moduleUrl = (source) => `data:text/javascript;base64,${Buffer.from(compile(source)).toString("base64")}`;
+const motionUrl = moduleUrl(readFileSync(new URL("../src/lib/demo-motion.ts", import.meta.url), "utf8"));
+const source = readFileSync(new URL("../src/lib/content-demo-timeline.ts", import.meta.url), "utf8").replace('"./demo-motion"', JSON.stringify(motionUrl));
+const { sampleContentDemo: sample, DEMO_DURATION } = await import(moduleUrl(source));
 
 assert.equal(DEMO_DURATION, 36);
 assert.equal(sample(1).focus, "add");
@@ -103,3 +105,16 @@ assert.ok(sample(26.5).focusAmount > 0);
 assert.ok(sample(4.5).swipeOpacity > .9);
 assert.ok(sample(4.5).selection > 0 && sample(4.5).selection < 1);
 for (const id of ["2799:63568", "2829:83598"]) assert.ok(!ids.has(id), "Remove secondary header actions");
+
+const { pressMotion, demoMotion, smoothMotion } = await import(motionUrl);
+assert.ok(demoMotion.pressDuration > .5);
+assert.equal(smoothMotion(0), 0);
+assert.equal(smoothMotion(1), 1);
+assert.ok(pressMotion(2.2, 2, 2.3) > 0, "Press must release gradually before modal entry");
+for (const width of [320, 375, 390, 420]) {
+  const phoneLeft = width - 25.51006 - 207.40547;
+  for (const offset of [248.91553, 272.91553]) {
+    const left = phoneLeft + offset - width;
+    assert.ok(left >= 15.99 && left + 351 * .68 <= width - 15, "Mobile dialog stays inside the composition with a page margin");
+  }
+}

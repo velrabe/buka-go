@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
+import { demoMotion } from "@/lib/demo-motion";
 import { ContentDemoContext } from "./ContentDemoState";
 import { sampleContentDemo, DEMO_DURATION } from "@/lib/content-demo-timeline";
 import { FloatingTimeCard, ModeConfirmation, MinecraftCard } from "./ContentDemoScenes";
@@ -19,14 +20,13 @@ export function ScrollingPhone({ children, status, navigation, locale }: {
 }) {
   const viewport = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
-  const [paused, setPaused] = useState(false);
   const [inView, setInView] = useState(false);
   const [tabVisible, setTabVisible] = useState(true);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [elapsed, setElapsed] = useState(0);
   const clock = useRef(0);
   const frame = sampleContentDemo(elapsed);
-  const running = !paused && inView && tabVisible && !reducedMotion;
+  const running = inView && tabVisible && !reducedMotion;
   const text = labels[locale] || labels.ru;
 
   useEffect(() => {
@@ -65,7 +65,7 @@ export function ScrollingPhone({ children, status, navigation, locale }: {
     return () => cancelAnimationFrame(request);
   }, [running]);
 
-  const floatingScale = Math.min(0.8, scale * 0.94);
+  const floatingScale = Math.min(0.8, Math.max(0.68, scale * 0.94));
   const confirmation = frame.modal === "confirm";
   return (
     <ContentDemoContext.Provider value={frame}><div className={styles.demo}>
@@ -91,16 +91,14 @@ export function ScrollingPhone({ children, status, navigation, locale }: {
           width: 351 * floatingScale,
           opacity: frame.modalOpacity,
           visibility: frame.modal ? "visible" : "hidden",
-          transform: `translateY(${(1 - frame.modalOpacity) * 16}px)`,
+          transform: `translateY(${(1 - frame.modalOpacity) * demoMotion.modalLift}px)`,
         }}>
           <div style={{ width: 351, transform: `scale(${floatingScale})`, transformOrigin: "top left" }}>
             {confirmation ? <ModeConfirmation frame={frame} /> : <FloatingTimeCard frame={frame} />}
           </div>
         </div>
       </div>
-      <button className={styles.pause} type="button" aria-pressed={paused} onClick={() => setPaused(!paused)}>
-        <span aria-hidden="true">{paused ? "▶" : "Ⅱ"}</span> {paused ? text.play : text.pause}
-      </button>
+
     </div></ContentDemoContext.Provider>
   );
 }
