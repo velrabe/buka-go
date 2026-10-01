@@ -53,7 +53,7 @@ export type ContentDemoFrame = ReturnType<typeof sampleContentDemo>;
 // Single-scene timing: reactions start at the contact point, before release finishes.
 export const ADD_TIME_DURATION = 10.5;
 export const addTimeBeats = {
-  open: [1.15, 1.55], swipe: [2, 2.8], custom: [3.15, 3.55],
+  open: [1.15, 1.9], swipe: [2.15, 2.95], custom: [3.15, 3.55],
   picker: [3.25, 3.7], wheel: [4.05, 5.2],
   apply: 6.05, close: [6.35, 6.75],
   resetFadeOut: [9.25, 9.5], resetFadeIn: [9.5, 9.8],
@@ -72,7 +72,7 @@ export function sampleAddTimeDemo(seconds: number): ContentDemoFrame {
   const contact = action ? progress(t, action[1] - .24, action[1]) : 0;
   const release = action ? progress(t, action[1], action[1] + .24) : 0;
   const tap = clickBackIn(contact) * (1 - ease(release));
-  const modalOpacity = reveal(t, 1.15, 6.75, .4, .4);
+  const modalOpacity = reveal(t, 1.15, 6.75, .75, .55);
   const selection = ease(progress(t, ...addTimeBeats.swipe));
   const picker = ease(progress(t, ...addTimeBeats.picker));
   const reset = t >= 9.5;
@@ -80,9 +80,9 @@ export function sampleAddTimeDemo(seconds: number): ContentDemoFrame {
   return { ...base, t, focus, focusAmount, tap,
     press: focus === "add" && tap > 0 ? "add" : "",
     modal: between(t, 1.15, 6.75) ? "add" : null,
-    modalOpacity, backgroundDim: modalOpacity,
+    modalOpacity, backgroundDim: reveal(t, 1.35, 6.75, .9, .65),
     custom: t >= 3.15, presetBlend: ease(progress(t, ...addTimeBeats.custom)),
-    selection, swipeOpacity: reveal(t, 1.9, 3, .15, .2),
+    selection, swipeOpacity: reveal(t, 2.05, 3.1, .15, .2),
     picker, wheel: ease(progress(t, ...addTimeBeats.wheel)),
     wheelSwipeOpacity: reveal(t, 3.95, 5.45, .15, .25),
     confirmPress: focus === "submit" ? tap : 0,

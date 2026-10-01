@@ -13,7 +13,7 @@
   container-type: inline-size;
   position: relative;
   width: 100%;
-  aspect-ratio: 375 / 596;
+  aspect-ratio: 375 / 286;
   overflow: hidden;
   border-radius: 20px;
   background: #f8fafc;
@@ -29,7 +29,7 @@
 }
 .phone {
   width: 375px;
-  height: 596px;
+  height: 286px;
   transform-origin: top left;
   transform: scale(var(--phone-scale, 0));
   color: #111827;
@@ -53,9 +53,9 @@
 }
 .asset[data-inactive-nav="true"] { filter: grayscale(1); }
 .status { position: relative; height: 66px; z-index: 2; background: #f8fafc; }
-.scrollWindow { position: relative; height: 596px; overflow: hidden; outline-offset: -3px; }
+.scrollWindow { position: relative; height: 286px; overflow: hidden; outline-offset: -3px; }
 .track { will-change: transform; }
-.copy { height: 1099px; overflow: hidden; }
+.copy { height: 286px; overflow: hidden; }
 .detail { position: absolute; inset: 0; background: #f8fafc; overflow: hidden; will-change: transform; }
 .floating { position: absolute; top: 13%; z-index: 4; pointer-events: none; }
 .floating[data-side="right"] { right: 0; }
@@ -91,7 +91,7 @@
 
 @media (max-width: 560px) {
   :global(.time-visual-phone) .shell { width: 100%; padding: 0; border: 0; border-radius: 20px; }
-  :global(.time-visual-phone) .viewport { border-radius: 20px; aspect-ratio: 375 / 596; }
+  :global(.time-visual-phone) .viewport { border-radius: 20px; aspect-ratio: 375 / 286; }
 }
 
 .stage [data-demo-target="add"] { --guide-radius: 999px; }
@@ -103,21 +103,13 @@
 .stage[data-focus="minecraft"] [data-demo-target="minecraft"] { z-index: 8; }
 
 /* The device moves independently; dialogs stay centered in the composition. */
-.shell { transform: translateX(calc(var(--modal-progress, 0) * 24px)); }
+.shell { transform: none; }
 .dialogPerspective { transform: none; }
 :global(.time-visual-phone) .stage { position: static; isolation: auto; }
-:global(.time-visual-phone) .shell { position: relative; z-index: 1; width: 100%; box-shadow: 0 0 0 1px #e4e1ed; }
-:global(.time-visual-phone) .floating[data-side] { left: 50%; right: auto; top: 28px; z-index: 6; }
+:global(.time-visual-phone) .shell { position: relative; z-index: 1; width: 100%; box-shadow: none; }
+:global(.time-visual-phone) .floating[data-side] { left: 50%; right: auto; top: 0; z-index: 6; }
 @media (prefers-reduced-motion: reduce) { .shell { transform: none; } }
 
-/* Frosted outer surface belongs to the landing, not the exported app screens. */
-:global(.time-visual-phone) .viewport {
-  background: rgb(255 255 255 / 65%);
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
-}
+:global(.time-visual-phone) .viewport { background: #f8fafc; }
 :global(.time-visual-phone) .phone { background: transparent; }
-
-@media (min-width: 561px) {
-  :global(.time-visual-phone) .floating[data-side] { left: calc(50% - 22px); }
-}
+:global(.time-visual-phone) .viewport::after { display: none; }

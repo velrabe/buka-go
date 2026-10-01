@@ -72,7 +72,7 @@ export function ScrollingPhone({ children, locale }: {
       <div className={styles.stage} data-press={frame.press} data-focus={frame.focus} style={{ "--tap": frame.tap, "--guide-strength": frame.focusAmount, "--modal-progress": frame.backgroundDim } as CSSProperties}>
         <div className={styles.shell}>
           <div className={styles.viewport} ref={viewport}>
-            <div className={styles.phone} style={{ "--phone-scale": scale ?? 0, opacity: 1 - .7 * frame.backgroundDim } as CSSProperties}>
+            <div className={styles.phone} style={{ "--phone-scale": scale ?? 0, opacity: 1 - .35 * frame.backgroundDim } as CSSProperties}>
               <div className={styles.scrollWindow} tabIndex={0} role="region" aria-label={text.screen}>
                 <div className={styles.track} aria-hidden="true" style={{ transform: `translateY(${-frame.scroll}px)` }}>
                   <div className={styles.copy}><ContentDemoContext.Provider value={frame.resetOverview ? sampleContentDemo(0) : frame}>{children}</ContentDemoContext.Provider></div>

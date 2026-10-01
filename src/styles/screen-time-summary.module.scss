@@ -1,0 +1,22 @@
+.summary { width: 375px; height: 286px; padding: 16px; display: flex; flex-direction: column; gap: 16px; color: #111827; font: 500 14px/1.2 ui-rounded, "SF Pro Rounded", "Nunito", sans-serif; }
+.heading { height: 21px; display: flex; align-items: center; justify-content: space-between; }
+.heading strong { font-size: 18px; font-weight: 600; }
+.heading > span { display: flex; align-items: center; gap: 8px; color: #9279e8; font-weight: 600; }
+.stats { height: 145px; padding: 12px; border-radius: 16px; background: white; display: flex; flex-direction: column; gap: 12px; }
+.date { height: 15px; color: #888d97; text-transform: uppercase; font-size: 12px; font-weight: 600; }
+.total { height: 20px; display: flex; align-items: center; justify-content: space-between; }
+.total strong { font-size: 28px; line-height: 34px; font-weight: 600; letter-spacing: -.4px; }
+.total > span { font-size: 16px; color: #888d97; }
+.bar { display: flex; height: 10px; flex-shrink: 0; border-radius: 8px; overflow: hidden; }
+.bar i { width: 25%; box-shadow: inset 0 2px 4px #ffffff80; background: #559be6; border-right: 1px solid white; }
+.bar i:nth-child(2) { background: #e87979; }
+.bar i:last-child { width: 50%; background: #e7883f; border: 0; }
+.categories { display: flex; gap: 4px; height: 40px; }
+.categories > div { display: flex; align-items: center; gap: 4px; border-radius: 8px; padding: 4px 8px 4px 4px; }
+.icon { width: 32px; height: 32px; background: currentColor; mask-size: 24px; mask-position: center; mask-repeat: no-repeat; }
+.categories strong { font-size: 14px; font-weight: 600; }
+.categories small { display: block; font-size: 12px; color: #6f7489; }
+.add { position: relative; display: flex; align-items: center; gap: 4px; padding: 8px; height: 56px; flex-shrink: 0; border-radius: 34px; color: white; background: radial-gradient(ellipse at right, #9279e8, transparent 85%), radial-gradient(ellipse at top, #cbe9fc80, transparent), #1613c7; box-shadow: inset 0 0 16px white; }
+.add strong { flex: 1; text-align: center; font-size: 14px; font-weight: 600; }
+.clock, .chevron { display: grid; place-items: center; width: 40px; height: 40px; flex-shrink: 0; }
+.clock { background: white; border-radius: 50%; }

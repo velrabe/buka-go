@@ -2,6 +2,7 @@ import { DemoSkeleton } from "./DemoSkeleton";
 import { DemoValue, DemoActiveMode, DemoSummaryBar, DemoModeButton } from "./ContentDemoState";
 import type { CSSProperties } from "react";
 import screen from "@/content/app-content-screen.json";
+import { ScreenTimeSummary } from "./ScreenTimeSummary";
 import { ScrollingPhone } from "./ScrollingPhone";
 import styles from "@/styles/content-screen.module.scss";
 
@@ -83,7 +84,7 @@ export function ContentScreen({ locale }: { locale: string }) {
     <ScrollingPhone
       locale={locale}
     >
-      <Layer node={screen.body} />
+      <ScreenTimeSummary />
     </ScrollingPhone>
   );
 }

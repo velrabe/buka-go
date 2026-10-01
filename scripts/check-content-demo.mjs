@@ -152,3 +152,9 @@ for (const key of ["modalOpacity", "backgroundDim", "selection", "picker", "whee
 assert.ok(sampleAddTimeDemo(1).tap < 0, "Back easing expands the guide before contact");
 assert.equal(sampleAddTimeDemo(1.15).tap, 1);
 assert.equal(sampleAddTimeDemo(1.4).tap, 0);
+
+assert.ok(sampleAddTimeDemo(1.55).modalOpacity < .6, "Modal has a gentle 750ms entrance");
+assert.ok(sampleAddTimeDemo(1.55).backgroundDim < .15, "Original button stays visible during early entrance");
+const landingHtml = readFileSync(new URL("../out/index.html", import.meta.url), "utf8");
+assert.ok(landingHtml.includes('data-figma-node="3874:64675"'), "Landing renders the updated compact Figma frame");
+assert.ok(!landingHtml.includes('data-demo-target="quick"'), "Landing has no smart-mode controls");
