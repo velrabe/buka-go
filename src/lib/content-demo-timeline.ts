@@ -20,7 +20,7 @@ export function sampleContentDemo(seconds: number) {
   const action = actions.find(([a,,b]) => between(t,a,b));
   const focus = action?.[3] ?? "";
   const focusAmount = action ? ease(progress(t, action[0], action[0] + 1)) : 0;
-  const tap = action && !["wheel", "usage"].includes(focus) ? Math.sin(progress(t, action[1], Math.min(action[1] + .3, action[2])) * Math.PI) : 0;
+  const tap = action && !["wheel", "usage"].includes(focus) ? Math.sin(progress(t, action[1], Math.min(action[1] + .3, action[2])) * Math.PI) ** 2 : 0;
   const press = ["add", "quick", "minecraft", "back"].includes(focus) && tap > 0 ? focus : "";
   const modal = between(t,2.3,11.6) ? "add" : between(t,13.7,20) ? "quick" : between(t,20,22.6) ? "confirm" : null;
   const modalOpacity = modal === "add" ? reveal(t,2.3,11.6) : modal === "quick" ? reveal(t,13.7,20) : modal === "confirm" ? reveal(t,20,22.6) : 0;
@@ -35,12 +35,10 @@ export function sampleContentDemo(seconds: number) {
   else if (between(t,22.6,32.2)) scroll = 300 + 203 * ease(progress(t,22.6,23.4));
   else if (between(t,32.2,33.2)) scroll = 503 * (1 - ease(progress(t,32.2,33.2)));
   const card = reveal(t,25.3,32.2);
-  const consumption = reset ? 0 : ease(progress(t,27,30));
+  const consumption = ease(progress(t,27,30)) * (1 - ease(progress(t,34,35)));
   const added = Math.round(consumption * 5);
   const activated = !reset && t >= 21.8;
-  // Reset hidden behind a short fade, so counters and disabled states never jump.
-  const sceneOpacity = t < 34 ? 1 : t < 34.5 ? 1 - ease(progress(t,34,34.5)) : ease(progress(t,34.5,35));
-  return { t, scroll, press, tap, focus, focusAmount, custom, picker, sceneOpacity,
+  return { t, scroll, press, tap, focus, focusAmount, custom, picker,
     modal, modalOpacity, selection, wheel, presetPress, confirmPress, card, consumption,
     minutes: 35 + added, gamesMinutes: 30 + added, clock: `17:${30 + added}`,
     totalMinutes: 135 + added, categoryGames: 35 + added,

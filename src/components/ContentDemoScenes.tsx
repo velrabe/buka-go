@@ -15,10 +15,11 @@ const modes = [
   { name: "Отдых", icon: "98165725ea0b8728.svg", color: "#69c46d" },
   { name: "Сон", icon: "07a95523a0ec277d.svg", color: "#9279e8" },
 ];
-function focusStyle(frame: ContentDemoFrame, target: string): CSSProperties {
-  const active = frame.focus === target;
-  return { opacity: !frame.focus || active ? 1 : 1 - .7 * frame.focusAmount,
-    ...(active && frame.tap > .001 ? { boxShadow: `0 0 0 ${frame.tap * 5}px #9279e850`, transform: `scale(${1 - frame.tap * .04})`, borderRadius: 12 } : {}) };
+function tapStyle(frame: ContentDemoFrame, target: string): CSSProperties {
+  // Preserve the component's shape and shadows throughout the press.
+  return frame.focus === target && frame.tap > 0
+    ? { transform: `scale(${1 - frame.tap * .018})` }
+    : {};
 }
 function text(section: keyof typeof copy, id: string) {
   return (copy[section].text as Record<string, { text: string }>)[id].text;
@@ -47,12 +48,12 @@ export function FloatingTimeCard({ frame }: { frame: ContentDemoFrame }) {
   const minutes = quick ? 10 + frame.wheel * 10 : 5 + frame.wheel * 10;
   const title = text(section, quick ? "I3736:81799;1:636;1:632" : "I3736:81730;1:636;1:632");
   return <div className={styles.modal} data-figma-node={copy[section].sourceNode}>
-    <div className={styles.header} style={focusStyle(frame, "header")}><strong>{title}</strong><span className={styles.close}>×</span></div>
+    <div className={styles.header} style={tapStyle(frame, "header")}><strong>{title}</strong><span className={styles.close}>×</span></div>
     <div className={styles.modeSection}>
       <div className={styles.carousel}>
         <div className={styles.modeTrack} style={{ transform: `translateX(${135.5 - index * 80}px)` }}>
           {modes.map((mode, i) => <div key={mode.name} className={styles.mode} data-selected={i === selected}
-            style={{ ...focusStyle(frame, i === 3 ? "mode" : "other"), "--mode-color": mode.color } as CSSProperties}><Icon index={i} /><span>{mode.name}</span></div>)}
+            style={{ ...tapStyle(frame, i === 3 ? "mode" : "other"), "--mode-color": mode.color } as CSSProperties}><Icon index={i} /><span>{mode.name}</span></div>)}
         </div>
       </div>
     </div>
@@ -60,13 +61,13 @@ export function FloatingTimeCard({ frame }: { frame: ContentDemoFrame }) {
       <div className={styles.presets}>
         {(quick ? ["на 15 мин", "на 30 мин", "на 1 час", "До завтра", "Указать свое"] :
           ["15 мин", "30 мин", "1 час", "До завтра", "Указать свое"]).map((label, i) =>
-          <span key={label} data-selected={quick ? i === (frame.presetPress > 0 ? 1 : 0) : i === (frame.custom ? 4 : 0)} style={focusStyle(frame, i === (quick ? 1 : 4) ? (quick ? "preset" : "custom") : "other")}>{label}</span>)}
+          <span key={label} data-selected={quick ? i === (frame.presetPress > 0 ? 1 : 0) : i === (frame.custom ? 4 : 0)} style={tapStyle(frame, i === (quick ? 1 : 4) ? (quick ? "preset" : "custom") : "other")}>{label}</span>)}
       </div>
-      {!quick && <div className={styles.picker} style={{ ...focusStyle(frame, "wheel"), height: 180 * frame.picker, opacity: frame.picker * (frame.focus === "wheel" || !frame.focus ? 1 : 1 - .7 * frame.focusAmount), borderWidth: frame.picker > 0 ? 1 : 0 }}>
+      {!quick && <div className={styles.picker} style={{ ...tapStyle(frame, "wheel"), height: 180 * frame.picker, borderWidth: frame.picker }}>
         <div className={styles.wheels}><div className={styles.selectedLine} /><Wheel value={hours} maximum={24} /><Wheel value={minutes} maximum={60} /></div>
       </div>}
     </div>
-    {<div className={styles.modalBottom}><div className={styles.action} style={focusStyle(frame, "submit")}>
+    {<div className={styles.modalBottom}><div className={styles.action} style={tapStyle(frame, "submit")}>
       {quick ? text("quick", "I2799:49143;387:4040;1:636;1:632") : text("add", "I2759:31229;387:4040;1:636;1:632")}
     </div></div>}
   </div>;
@@ -74,29 +75,29 @@ export function FloatingTimeCard({ frame }: { frame: ContentDemoFrame }) {
 
 export function ModeConfirmation({ frame }: { frame: ContentDemoFrame }) {
   return <div className={styles.modal} data-figma-node={copy.confirm.sourceNode}>
-    <div className={styles.header} style={focusStyle(frame, "header")}><strong>Быстрый режим</strong><span className={styles.close}>×</span></div>
-    <div className={styles.confirmModes} style={focusStyle(frame, "summary")}>
+    <div className={styles.header} style={tapStyle(frame, "header")}><strong>Быстрый режим</strong><span className={styles.close}>×</span></div>
+    <div className={styles.confirmModes} style={tapStyle(frame, "summary")}>
       <div><span>Текущий режим:<small>До 18:30 · Остался 1 час</small></span><strong style={{ color: modes[1].color }}><Icon index={1} />Учеба</strong></div>
       <span className={styles.changeArrow}>⌄</span>
       <div><span>Новый режим:<small>До 18:00 · На 30 мин</small></span><strong style={{ color: modes[3].color }}><Icon index={3} />Игры</strong></div>
     </div>
-    <details className={styles.schedule} style={focusStyle(frame, "schedule")}><summary>Изменения в расписании</summary>
+    <details className={styles.schedule} style={tapStyle(frame, "schedule")}><summary>Изменения в расписании</summary>
       {[[3, "17:30 – 18:00"], [1, "18:00 – 18:30"]].map(([mode, time]) => <div key={mode}>
         <span style={{ color: modes[Number(mode)].color }}><Icon index={Number(mode)} />{modes[Number(mode)].name}</span><span>{time}</span>
       </div>)}
     </details>
     <div className={styles.modalBottom}>
-      <div className={styles.action} style={focusStyle(frame, "submit")}>Подтвердить</div>
+      <div className={styles.action} style={tapStyle(frame, "submit")}>Подтвердить</div>
     </div>
   </div>;
 }
 
 export function MinecraftCard({ frame }: { frame: ContentDemoFrame }) {
   return <div className={styles.appCard} data-figma-node={copy.app.sourceNode}>
-    <div className={styles.appHeader}><span className={styles.back} style={focusStyle(frame, "back")} data-demo-target="back"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="m14 6-6 6 6 6" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" /></svg></span><strong style={focusStyle(frame, "header")}>{text("app", "I3736:81881;1:636;1:632")}</strong></div>
+    <div className={styles.appHeader}><span className={styles.back} style={tapStyle(frame, "back")} data-demo-target="back"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="m14 6-6 6 6 6" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" /></svg></span><strong style={tapStyle(frame, "header")}>{text("app", "I3736:81881;1:636;1:632")}</strong></div>
     <div className={styles.appSummary}>
-      <div className={styles.appIdentity} style={focusStyle(frame, "identity")}><img src={asset("92ed7e45760bf2c1.svg")} alt="" /><div>Minecraft<small>Игры</small></div></div>
-      <div className={styles.stats} style={focusStyle(frame, "usage")}>
+      <div className={styles.appIdentity} style={tapStyle(frame, "identity")}><img src={asset("92ed7e45760bf2c1.svg")} alt="" /><div>Minecraft<small>Игры</small></div></div>
+      <div className={styles.stats} style={tapStyle(frame, "usage")}>
         <div className={styles.date}><span>Сегодня</span><span><DemoSkeleton width={72} /></span></div>
         <div className={styles.total}><strong>{frame.minutes} мин</strong><span>из 60 мин</span></div>
         <div className={styles.progress}><span style={{ width: `${(30 + frame.consumption * 5) / 60 * 100}%` }} /><span style={{ width: `${5 / 60 * 100}%` }} /></div>
@@ -106,7 +107,7 @@ export function MinecraftCard({ frame }: { frame: ContentDemoFrame }) {
         </div>
       </div>
     </div>
-    <div className={styles.permissions} style={focusStyle(frame, "permissions")}>
+    <div className={styles.permissions} style={tapStyle(frame, "permissions")}>
       <strong>Доступы и лимиты</strong>
       <div className={styles.permissionList}>{[1, 2, 4, 3, 5, 0].map(i => <div key={i}>
         <span style={{ color: modes[i].color }}><Icon index={i} /></span><div>{modes[i].name}</div>

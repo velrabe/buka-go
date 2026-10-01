@@ -17,7 +17,7 @@
 .carousel { height: 95px; overflow: hidden; margin-top: 8px; mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent); }
 .modeTrack { display: flex; width: max-content; }
 .mode { width: 80px; height: 79px; flex: 0 0 80px; display: flex; flex-direction: column; gap: 6px; align-items: center; justify-content: center; border: 2px solid transparent; border-radius: 12px; color: #b1b4bc; transition: color .15s, border-color .15s; font-size: 14px; white-space: nowrap; }
-.mode[data-selected="true"] { color: var(--mode-color); border-color: currentColor; font-size: 16px; }
+.mode[data-selected="true"] { color: var(--mode-color); border-color: currentColor; }
 .icon { display: inline-block; flex: 0 0 24px; width: 24px; height: 24px; background: currentColor; mask-size: contain; mask-repeat: no-repeat; mask-position: center; }
 .timeSection { padding: 20px 12px 12px; }
 .presets { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; padding: 12px 0; color: #9279e8; }

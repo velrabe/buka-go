@@ -44,7 +44,7 @@ assert.equal(sample(22).modeStart, "17:30");
 assert.equal(sample(22).modeEnd, "18:00");
 assert.equal(sample(0).dailyLimit, 240);
 assert.equal(sample(12).dailyLimit, 255);
-assert.equal(sample(34.5).sceneOpacity, 0);
+assert.ok(sample(34.5).minutes > 35 && sample(34.5).minutes < 40);
 assert.equal(sample(35).dailyLimit, 240);
 assert.equal(sample(35).minutes, 35);
 for (const [a, b] of [[0,11.59], [12.4,22.59], [24,32.19]]) {
@@ -55,7 +55,7 @@ for (let t = .01; t <= DEMO_DURATION; t += .01) {
   const frame = sample(t);
   assert.ok(frame.scroll >= 0 && frame.scroll <= 503);
   assert.ok(Math.abs(frame.scroll - previous.scroll) < 20, "No scroll jump at a scene boundary");
-  for (const key of ["card", "modalOpacity", "focusAmount", "picker", "sceneOpacity"]) assert.ok(frame[key] >= 0 && frame[key] <= 1);
+  for (const key of ["card", "modalOpacity", "focusAmount", "picker"]) assert.ok(frame[key] >= 0 && frame[key] <= 1);
   assert.equal(frame.minutes - frame.gamesMinutes, 5);
   assert.equal(frame.categoryGames, frame.minutes);
   assert.equal(frame.totalMinutes, 85 + 15 + frame.categoryGames);
