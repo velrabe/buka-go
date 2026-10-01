@@ -94,7 +94,7 @@ export function ScrollingPhone({ children, status, navigation, locale }: {
           transform: `translateY(${(1 - frame.modalOpacity) * demoMotion.modalLift}px)`,
         }}>
           <div style={{ width: 351, transform: `scale(${floatingScale})`, transformOrigin: "top left" }}>
-            {confirmation ? <ModeConfirmation frame={frame} /> : <FloatingTimeCard frame={frame} />}
+            <div className={styles.dialogPerspective}>{confirmation ? <ModeConfirmation frame={frame} /> : <FloatingTimeCard frame={frame} />}</div>
           </div>
         </div>
       </div>
