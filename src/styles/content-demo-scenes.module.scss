@@ -1,6 +1,6 @@
 .modal, .appCard {
   color: #111827;
-  font: 500 14px/1.35 ui-rounded, "SF Pro Rounded", "Nunito", sans-serif;
+  font: 500 14px/1.35 "Nunito", sans-serif;
   text-align: left;
   letter-spacing: normal;
   box-sizing: border-box;
@@ -126,7 +126,7 @@
 .presets > span, .action, .back { --guide-radius: 999px; }
 .stats { --guide-radius: 12px 12px 28px 28px; }
 .picker { --guide-radius: 36px; }
-.schedule summary { font: 600 16px/1.35 ui-rounded, "SF Pro Rounded", "Nunito", sans-serif; letter-spacing: normal; }
+.schedule summary { font: 600 16px/1.35 "Nunito", sans-serif; letter-spacing: normal; }
 
 .wheelSwipe { position: absolute; inset: 0; width: 100%; height: 180px; z-index: 9; pointer-events: none; }
 .appHeader { z-index: 10; }

@@ -4,7 +4,7 @@ import media from "@/content/media.json";
 import { StoreLinks } from "./StoreLinks";
 import { TaskDemos } from "./TaskDemos";
 import { LandingAdditions } from "./LandingAdditions";
-import { TimeFeaturePreview } from "./TimeFeaturePreview";
+import { ContentScreen } from "./ContentScreen";
 
 export function Landing({
   locale,
@@ -43,7 +43,7 @@ export function Landing({
             <article className={i === 0 ? "feature feature-time" : "feature"} key={i}>
               {i === 0 ? <div className="time-visual">
                 <img className="time-visual-bg" src="/assets/mobile-features/bg1.png" width="390" height="483" alt="" loading="lazy" />
-                <TimeFeaturePreview locale={locale} />
+                <div className="time-visual-phone"><ContentScreen locale={locale} /></div>
                 <img className="time-visual-kid" src="/assets/mobile-features/k1.png" width="248" height="178.533" alt="" loading="lazy" />
               </div> : <img
                 className="feature-image"
