@@ -117,3 +117,7 @@
   backdrop-filter: blur(14px);
 }
 :global(.time-visual-phone) .phone { background: transparent; }
+
+@media (min-width: 561px) {
+  :global(.time-visual-phone) .floating[data-side] { left: calc(50% - 22px); }
+}

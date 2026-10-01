@@ -131,3 +131,7 @@
 .wheelSwipe { position: absolute; inset: 0; width: 100%; height: 180px; z-index: 9; pointer-events: none; }
 .appHeader { z-index: 10; }
 .modal { isolation: isolate; }
+
+/* Continuous carousel selection follows the same timeline as the swipe. */
+.mode { transition: none; color: color-mix(in srgb, var(--mode-color) calc(var(--mode-weight, 0) * 100%), #b1b4bc); border-color: color-mix(in srgb, var(--mode-color) calc(var(--mode-weight, 0) * 100%), transparent); }
+.mode[data-selected="true"] { color: color-mix(in srgb, var(--mode-color) calc(var(--mode-weight, 0) * 100%), #b1b4bc); border-color: color-mix(in srgb, var(--mode-color) calc(var(--mode-weight, 0) * 100%), transparent); }

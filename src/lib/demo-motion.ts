@@ -22,3 +22,10 @@ export function pressMotion(t: number, at: number, end: number) {
   const p = motionProgress(t, at - demoMotion.pressLead, Math.min(at - demoMotion.pressLead + demoMotion.pressDuration, end));
   return p < .4 ? smoothMotion(p / .4) : 1 - smoothMotion((p - .4) / .6);
 }
+
+/** Brief outward anticipation before the guide compresses at contact. */
+export function clickBackIn(v: number) {
+  const p = clampMotion(v);
+  const overshoot = 2.4;
+  return (overshoot + 1) * p ** 3 - overshoot * p ** 2;
+}

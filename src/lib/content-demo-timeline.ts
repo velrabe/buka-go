@@ -1,6 +1,6 @@
 // All motion shares this clock, including focus, taps and the loop reset.
 export const DEMO_DURATION = 36;
-import { demoMotion, motionProgress as progress, smoothMotion as ease, scrollMotion, revealMotion as reveal, pressMotion } from "./demo-motion";
+import { demoMotion, motionProgress as progress, smoothMotion as ease, scrollMotion, revealMotion as reveal, pressMotion, clickBackIn } from "./demo-motion";
 const between = (t: number, a: number, b: number) => t >= a && t < b;
 const actions = [
   [0, 2, 2.3, "add"], [3.1, 5.1, 5.4, "mode"], [5.4, 6.4, 6.7, "custom"],
@@ -42,7 +42,7 @@ export function sampleContentDemo(seconds: number) {
   const activated = !reset && t >= 21.8;
   return { t, scroll, press, tap, focus, focusAmount, custom, picker, swipeOpacity, presetBlend, wheelSwipeOpacity, resetOverview,
     modal, modalOpacity, backgroundDim, selection, wheel, presetPress, confirmPress, card, consumption,
-    minutes: 35 + added, gamesMinutes: 30 + added, clock: `17:${30 + added}`,
+    limitOpacity: 1, minutes: 35 + added, gamesMinutes: 30 + added, clock: `17:${30 + added}`,
     totalMinutes: 135 + added, categoryGames: 35 + added,
     dailyLimit: !reset && t >= 11 ? 255 : 240, activated,
     mode: activated ? "Игры" : "Учеба", modeStart: activated ? "17:30" : "17:00", modeEnd: activated ? "18:00" : "18:30",
@@ -50,16 +50,43 @@ export function sampleContentDemo(seconds: number) {
 }
 export type ContentDemoFrame = ReturnType<typeof sampleContentDemo>;
 
-// Landing shows only the original add-time interaction; full scenes remain for review.
-export const ADD_TIME_DURATION = 14;
+// Single-scene timing: reactions start at the contact point, before release finishes.
+export const ADD_TIME_DURATION = 10.5;
+export const addTimeBeats = {
+  open: [1.15, 1.55], swipe: [2, 2.8], custom: [3.15, 3.55],
+  picker: [3.25, 3.7], wheel: [4.05, 5.2],
+  apply: 6.05, close: [6.35, 6.75],
+  resetFadeOut: [9.25, 9.5], resetFadeIn: [9.5, 9.8],
+} as const;
+const landingActions = [
+  [.45, 1.15, 1.65, "add"], [2.85, 3.15, 3.65, "custom"],
+  [5.45, 6.05, 6.55, "submit"],
+] as const;
 export function sampleAddTimeDemo(seconds: number): ContentDemoFrame {
   const t = ((seconds % ADD_TIME_DURATION) + ADD_TIME_DURATION) % ADD_TIME_DURATION;
-  const frame = sampleContentDemo(Math.min(t, 11.6));
-  return { ...frame, t, scroll: 0, card: 0, consumption: 0,
-    modal: t < 11.6 ? frame.modal : null,
-    modalOpacity: t < 11.6 ? frame.modalOpacity : 0,
-    backgroundDim: t < 11.6 ? frame.backgroundDim : 0,
-    focus: t < 11.6 ? frame.focus : "", press: t < 11.6 ? frame.press : "",
-    tap: t < 11.6 ? frame.tap : 0, focusAmount: t < 11.6 ? frame.focusAmount : 0,
+  const base = sampleContentDemo(0);
+  const action = landingActions.find(([a,,b]) => between(t, a, b));
+  const focus = action?.[3] ?? "";
+  const focusAmount = action ? reveal(t, action[0], action[2], .3, .3) : 0;
+  // 240ms back-eased anticipation/contact + 240ms smooth release; only the guide scales.
+  const contact = action ? progress(t, action[1] - .24, action[1]) : 0;
+  const release = action ? progress(t, action[1], action[1] + .24) : 0;
+  const tap = clickBackIn(contact) * (1 - ease(release));
+  const modalOpacity = reveal(t, 1.15, 6.75, .4, .4);
+  const selection = ease(progress(t, ...addTimeBeats.swipe));
+  const picker = ease(progress(t, ...addTimeBeats.picker));
+  const reset = t >= 9.5;
+  const limitOpacity = t < 9.5 ? 1 - ease(progress(t, ...addTimeBeats.resetFadeOut)) : ease(progress(t, ...addTimeBeats.resetFadeIn));
+  return { ...base, t, focus, focusAmount, tap,
+    press: focus === "add" && tap > 0 ? "add" : "",
+    modal: between(t, 1.15, 6.75) ? "add" : null,
+    modalOpacity, backgroundDim: modalOpacity,
+    custom: t >= 3.15, presetBlend: ease(progress(t, ...addTimeBeats.custom)),
+    selection, swipeOpacity: reveal(t, 1.9, 3, .15, .2),
+    picker, wheel: ease(progress(t, ...addTimeBeats.wheel)),
+    wheelSwipeOpacity: reveal(t, 3.95, 5.45, .15, .25),
+    confirmPress: focus === "submit" ? tap : 0,
+    dailyLimit: t >= addTimeBeats.apply && !reset ? 255 : 240,
+    limitOpacity,
   };
 }

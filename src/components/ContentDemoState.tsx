@@ -10,7 +10,7 @@ export function DemoValue({ field }: { field: string }) {
     study: "85 мин", games: `${frame.categoryGames} мин`, minecraft: `${frame.minutes} мин за сегодня`,
     modeStart: frame.modeStart, modeEnd: frame.modeEnd,
   };
-  return <>{values[field]}</>;
+  return field === "limit" ? <span style={{ opacity: frame.limitOpacity }}>{values[field]}</span> : <>{values[field]}</>;
 }
 export function DemoActiveMode() {
   const frame = useContext(ContentDemoContext);
@@ -20,7 +20,7 @@ export function DemoActiveMode() {
 }
 export function DemoSummaryBar() {
   const frame = useContext(ContentDemoContext);
-  return <div style={{ display: "flex", width: 319, height: 10, borderRadius: 99, overflow: "hidden", background: "#eeecf7" }}>
+  return <div style={{ display: "flex", width: 319, height: 10, borderRadius: 99, overflow: "hidden", opacity: frame.limitOpacity, background: "#eeecf7" }}>
     {[ [85, "#3f98e7"], [15, "#e87979"], [frame.categoryGames, "#e7883f"] ].map(([value, color]) =>
       <span key={color} style={{ width: `${Number(value) / frame.dailyLimit * 100}%`, height: "100%", background: String(color), borderRight: "1px solid white" }} />)}
   </div>;

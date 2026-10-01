@@ -124,10 +124,10 @@ for (const width of [320, 375, 390, 420, 460]) {
   }
 }
 
-assert.equal(ADD_TIME_DURATION, 14);
+assert.equal(ADD_TIME_DURATION, 10.5);
 assert.equal(sampleAddTimeDemo(3).modal, "add");
-assert.equal(sampleAddTimeDemo(12).dailyLimit, 255);
-assert.deepEqual(sampleAddTimeDemo(14), sampleAddTimeDemo(0));
+assert.equal(sampleAddTimeDemo(7).dailyLimit, 255);
+assert.deepEqual(sampleAddTimeDemo(10.5), sampleAddTimeDemo(0));
 for (let t = 0; t < ADD_TIME_DURATION; t += .1) {
   const frame = sampleAddTimeDemo(t);
   assert.ok(frame.modal === null || frame.modal === "add");
@@ -135,3 +135,20 @@ for (let t = 0; t < ADD_TIME_DURATION; t += .1) {
   assert.equal(frame.card, 0);
   assert.equal(frame.activated, false);
 }
+
+assert.equal(sampleAddTimeDemo(9.5).limitOpacity, 0, "Reset is hidden at the value switch");
+assert.equal(sampleAddTimeDemo(9.5).dailyLimit, 240);
+assert.equal(sampleAddTimeDemo(6.05).dailyLimit, 255, "Apply at contact, not after release");
+assert.ok(sampleAddTimeDemo(1.2).modalOpacity > 0 && sampleAddTimeDemo(1.2).tap > 0);
+for (const key of ["modalOpacity", "backgroundDim", "selection", "picker", "wheel", "presetBlend", "limitOpacity", "tap", "focusAmount"]) {
+  let previous = sampleAddTimeDemo(0)[key];
+  for (let t = .001; t <= ADD_TIME_DURATION + .01; t += .001) {
+    const value = sampleAddTimeDemo(t)[key];
+    assert.ok((sampleAddTimeDemo(t).modalOpacity === 0 && ["selection", "picker", "wheel", "presetBlend"].includes(key)) || Math.abs(value - previous) < .025, `${key} must remain continuous, including the loop seam`);
+    previous = value;
+  }
+}
+
+assert.ok(sampleAddTimeDemo(1).tap < 0, "Back easing expands the guide before contact");
+assert.equal(sampleAddTimeDemo(1.15).tap, 1);
+assert.equal(sampleAddTimeDemo(1.4).tap, 0);

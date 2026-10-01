@@ -54,7 +54,7 @@ export function FloatingTimeCard({ frame }: { frame: ContentDemoFrame }) {
       <div className={styles.carousel}>
         <div className={styles.modeTrack} style={{ transform: `translateX(${135.5 - index * 80}px)` }}>
           {modes.map((mode, i) => <div key={mode.name} className={styles.mode} data-selected={i === selected}
-            style={{ "--mode-color": mode.color } as CSSProperties}><Icon index={i} /><span>{mode.name}</span></div>)}
+            style={{ "--mode-color": mode.color, "--mode-weight": Math.max(0, 1 - Math.abs(index - i)) } as CSSProperties}><Icon index={i} /><span>{mode.name}</span></div>)}
         </div>
         <svg className={styles.swipe} viewBox="0 0 351 95" aria-hidden="true" style={{ opacity: frame.swipeOpacity }}>
           <path d={`M ${255 - frame.selection * (quick ? 80 : 160) + 44 * Math.sin(frame.selection * Math.PI)} 65 H ${255 - frame.selection * (quick ? 80 : 160)}`} fill="none" stroke="#9279e8" strokeWidth="8" strokeLinecap="round" opacity=".3" />
