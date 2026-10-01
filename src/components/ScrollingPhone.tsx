@@ -69,7 +69,7 @@ export function ScrollingPhone({ children, status, navigation, locale }: {
   const confirmation = frame.modal === "confirm";
   return (
     <ContentDemoContext.Provider value={frame}><div className={styles.demo}>
-      <div className={styles.stage} data-press={frame.press} data-focus={frame.focus} style={{ "--tap": frame.tap, "--guide-strength": frame.focusAmount } as CSSProperties}>
+      <div className={styles.stage} data-press={frame.press} data-focus={frame.focus} style={{ "--tap": frame.tap, "--guide-strength": frame.focusAmount, "--modal-progress": frame.backgroundDim } as CSSProperties}>
         <div className={styles.shell}>
           <div className={styles.viewport} ref={viewport}>
             <div className={styles.phone} style={{ "--phone-scale": scale ?? 0, opacity: 1 - .7 * frame.backgroundDim } as CSSProperties}>
@@ -91,7 +91,7 @@ export function ScrollingPhone({ children, status, navigation, locale }: {
           width: 351 * floatingScale,
           opacity: frame.modalOpacity,
           visibility: frame.modal ? "visible" : "hidden",
-          transform: `translateY(${(1 - frame.modalOpacity) * demoMotion.modalLift}px)`,
+          transform: `translate(-50%, ${(1 - frame.modalOpacity) * demoMotion.modalLift}px)`,
         }}>
           <div style={{ width: 351, transform: `scale(${floatingScale})`, transformOrigin: "top left" }}>
             <div className={styles.dialogPerspective}>{confirmation ? <ModeConfirmation frame={frame} /> : <FloatingTimeCard frame={frame} />}</div>

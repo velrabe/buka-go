@@ -864,23 +864,23 @@ details p {
 .time-visual { min-width: 0; }
 .time-visual-bg, .time-visual-kid { display: none; }
 @media (min-width: 561px) {
-  .time-visual { position: relative; width: 100%; aspect-ratio: 520 / 620; isolation: isolate; }
+  .time-visual { position: relative; width: 100%; max-width: 460px; height: 480px; justify-self: center; isolation: isolate; }
   .time-visual-bg { display: block; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
-  .time-visual-phone { position: absolute; width: 49%; right: 9%; bottom: 9%; }
-  .time-visual-kid { display: block; position: absolute; width: 68%; height: auto; left: 0; bottom: 0; z-index: 2; pointer-events: none; }
+  .time-visual-phone { position: absolute; width: 200px; left: 50%; transform: translateX(-50%); bottom: 40px; }
+  .time-visual-kid { display: block; position: absolute; width: 48%; max-width: 220px; height: auto; left: 0; bottom: 0; z-index: 2; pointer-events: none; }
 }
 @media (max-width: 560px) {
   #how-it-works > .feature-list { width: 100%; }
   #how-it-works .feature { grid-template-columns: minmax(0, 1fr); gap: 0; }
-  #how-it-works .feature-copy { display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 16px; min-width: 0; font-family: "Nunito", sans-serif; }
-  #how-it-works .feature-copy h2 { width: 100%; max-width: 420px; margin: 0 0 -8px; color: #000; font: 700 24px/1.375 "Nunito", sans-serif; letter-spacing: -.02em; text-align: center; }
-  #how-it-works .feature-copy .lead { width: 100%; max-width: 420px; margin: 0; color: #5a4a8f; font: 400 16px/1.15 "Nunito", sans-serif; letter-spacing: -.01em; text-align: center; }
-  #how-it-works .feature-copy .plain-list { display: none; }
-  #how-it-works .feature-copy .text-link { display: flex; align-items: center; justify-content: center; width: 100%; max-width: 420px; min-height: 48px; padding: 8px 16px; border: 0; border-radius: 100px; background: #9279e81a; color: #9279e8; text-decoration: none; font: 800 16px/1.375 "Nunito", sans-serif; letter-spacing: -.02em; }
-  #how-it-works .feature-copy .text-link > span { display: none; }
   #how-it-works .feature-image { width: min(100%, 420px); height: auto; justify-self: center; }
   .time-visual { position: relative; width: 100%; max-width: 420px; height: 491px; justify-self: center; isolation: isolate; overflow: clip; container-type: inline-size; }
   .time-visual-bg { display: block; position: absolute; width: 390px; height: 483px; top: 0; left: 0; max-width: none; }
-  .time-visual-phone { position: absolute; width: 207.40547px; height: 421.19513px; right: 25.51006px; bottom: 41.23633px; z-index: auto; }
+  .time-visual-phone { position: absolute; width: 207.40547px; height: 421.19513px; left: 50%; transform: translateX(-50%); bottom: 41.23633px; z-index: auto; }
   .time-visual-kid { display: block; position: absolute; width: 248px; height: 178.53316px; left: 0; bottom: 0; max-width: none; z-index: 2; pointer-events: none; }
 }
+#how-it-works .feature-copy { display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 16px; min-width: 0; font-family: "Nunito", sans-serif; }
+#how-it-works .feature-copy h2 { width: 100%; max-width: 420px; margin: 0 0 -8px; color: #000; font: 700 24px/1.375 "Nunito", sans-serif; letter-spacing: -.02em; text-align: center; }
+#how-it-works .feature-copy .lead { width: 100%; max-width: 420px; margin: 0; color: #5a4a8f; font: 400 16px/1.15 "Nunito", sans-serif; letter-spacing: -.01em; text-align: center; }
+#how-it-works .feature-copy .plain-list { display: none; }
+#how-it-works .feature-copy .text-link { display: flex; align-items: center; justify-content: center; width: 100%; max-width: 420px; min-height: 48px; padding: 8px 16px; border: 0; border-radius: 100px; background: #9279e81a; color: #9279e8; text-decoration: none; font: 800 16px/1.375 "Nunito", sans-serif; letter-spacing: -.02em; }
+#how-it-works .feature-copy .text-link > span { display: none; }

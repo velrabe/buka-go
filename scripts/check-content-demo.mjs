@@ -111,10 +111,15 @@ assert.ok(demoMotion.pressDuration > .5);
 assert.equal(smoothMotion(0), 0);
 assert.equal(smoothMotion(1), 1);
 assert.ok(pressMotion(2.2, 2, 2.3) > 0, "Press must release gradually before modal entry");
-for (const width of [320, 375, 390, 420]) {
-  const phoneLeft = width - 25.51006 - 207.40547;
-  for (const offset of [248.91553, 272.91553]) {
-    const left = phoneLeft + offset - width;
-    assert.ok(left >= 15.99 && left + 351 * .68 <= width - 15, "Mobile dialog stays inside the composition with a page margin");
+for (const width of [320, 375, 390, 420, 460]) {
+  const phoneWidth = width === 460 ? 200 : 207.40547;
+  const phoneLeft = (width - phoneWidth) / 2;
+  const modalWidth = 351 * .68;
+  const modalLeft = (width - modalWidth) / 2;
+  assert.ok(modalLeft >= 15 && modalLeft + modalWidth <= width - 15, "Centered dialog keeps page margins");
+  assert.ok(phoneLeft + phoneWidth + 40 <= width, "Shifted phone stays inside composition");
+  for (const time of [2.3, 2.5, 2.75, 11.3, 11.5, 11.6]) {
+    const shift = sample(time).backgroundDim * 40;
+    assert.ok(shift >= 0 && shift <= 40, "Device shift follows modal dimming without overshoot");
   }
 }

@@ -34,7 +34,7 @@
   transform: scale(var(--phone-scale, 0));
   color: #111827;
   background: #f8fafc;
-  font: 500 14px/normal ui-rounded, "SF Pro Rounded", "Nunito", sans-serif;
+  font: 500 14px/normal "Nunito", sans-serif;
   text-align: left;
   letter-spacing: normal;
 }
@@ -102,25 +102,10 @@
 .stage[data-focus="quick"] [data-demo-target="quick"],
 .stage[data-focus="minecraft"] [data-demo-target="minecraft"] { z-index: 8; }
 
-/* A small rotation without shear preserves the screen proportions. */
-.shell { transform: rotate(3deg); transform-origin: center; }
-@media (max-width: 560px) {
-  :global(.time-visual-phone) .stage { position: static; isolation: auto; }
-  :global(.time-visual-phone) .shell { position: relative; z-index: 1; }
-  :global(.time-visual-phone) .floating { top: 48px; z-index: 6; }
-  :global(.time-visual-phone) .floating[data-side="left"] { left: calc(248.91553px - 100cqw); right: auto; }
-  :global(.time-visual-phone) .floating[data-side="right"] { left: calc(272.91553px - 100cqw); right: auto; }
-}
-.dialogPerspective { transform: none; transform-origin: center; }
-@media (prefers-reduced-motion: reduce) { .shell, .dialogPerspective { transform: none !important; } }
-
-/* The composition owns the device, child and floating cards as separate layers. */
+/* The device moves independently; dialogs stay centered in the composition. */
+.shell { transform: translateX(calc(var(--modal-progress, 0) * 40px)); }
+.dialogPerspective { transform: none; }
 :global(.time-visual-phone) .stage { position: static; isolation: auto; }
 :global(.time-visual-phone) .shell { position: relative; z-index: 1; width: 100%; }
-@media (min-width: 561px) {
-  // Percentages are relative to the positioned phone, not the full composition.
-  :global(.time-visual-phone) .floating { top: 14%; z-index: 6; }
-  :global(.time-visual-phone) .dialogPerspective { transform: none; }
-  :global(.time-visual-phone) .floating[data-side="left"] { left: -55%; right: auto; }
-  :global(.time-visual-phone) .floating[data-side="right"] { right: -18%; left: auto; }
-}
+:global(.time-visual-phone) .floating[data-side] { left: 50%; right: auto; top: 28px; z-index: 6; }
+@media (prefers-reduced-motion: reduce) { .shell { transform: none; } }
