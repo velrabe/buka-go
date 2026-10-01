@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: isHome(path)
       ? {
           languages: Object.fromEntries(
-            languages.map((l) => [l.locale, l.home]),
+            languages.map((l) => [l.locale, siteUrl(l.home)]),
           ),
         }
       : undefined,
