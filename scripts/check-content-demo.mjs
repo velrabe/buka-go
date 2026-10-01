@@ -89,3 +89,10 @@ for (const [time, top, height] of [[2.1, 230, 48], [13.5, 488, 75], [25.1, 705, 
   const y = top - sample(time).scroll;
   assert.ok(y >= 0 && y + height <= 596, "Animated target must remain in the phone viewport");
 }
+
+assert.equal(sample(20).backgroundDim, 1, "No background flash between quick-mode steps");
+assert.equal(sample(26.5).consumption, 0, "Highlight usage before increasing minutes");
+assert.ok(sample(26.5).focusAmount > 0);
+assert.ok(sample(4.5).swipeOpacity > .9);
+assert.ok(sample(4.5).selection > 0 && sample(4.5).selection < 1);
+for (const id of ["2799:63568", "2829:83598"]) assert.ok(!ids.has(id), "Remove secondary header actions");

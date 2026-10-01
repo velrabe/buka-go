@@ -4,8 +4,8 @@ import { sampleContentDemo } from "@/lib/content-demo-timeline";
 import styles from "@/styles/screen-review.module.scss";
 
 export function ScreenReview() {
-  const add = { ...sampleContentDemo(9.7), selection: 1, wheel: 1, custom: true, picker: 1, focus: "" as const, focusAmount: 0, tap: 0, confirmPress: 0 };
-  const quick = { ...sampleContentDemo(18.2), selection: 1, presetPress: 1, focus: "" as const, focusAmount: 0, tap: 0, confirmPress: 0 };
+  const add = { ...sampleContentDemo(9.7), selection: 1, wheel: 1, custom: true, picker: 1, focus: "" as const, focusAmount: 0, swipeOpacity: 0, tap: 0, confirmPress: 0 };
+  const quick = { ...sampleContentDemo(18.2), selection: 1, presetPress: 1, focus: "" as const, focusAmount: 0, swipeOpacity: 0, tap: 0, confirmPress: 0 };
   const confirm = { ...sampleContentDemo(20.4), confirmPress: 0 };
   const screens = [
     { name: "01 · Контент — полный экран", view: <StaticContentScreen /> },

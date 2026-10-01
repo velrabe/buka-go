@@ -19,12 +19,14 @@ export function sampleContentDemo(seconds: number) {
   const reset = t >= 34.5;
   const action = actions.find(([a,,b]) => between(t,a,b));
   const focus = action?.[3] ?? "";
-  const focusAmount = action ? ease(progress(t, action[0], action[0] + 1)) : 0;
+  const focusAmount = action ? ease(progress(t, action[0], action[0] + 1)) * (1 - ease(progress(t, action[2] - .15, action[2]))) : 0;
   const tap = action && !["wheel", "usage"].includes(focus) ? Math.sin(progress(t, action[1], Math.min(action[1] + .3, action[2])) * Math.PI) ** 2 : 0;
   const press = ["add", "quick", "minecraft", "back"].includes(focus) && tap > 0 ? focus : "";
   const modal = between(t,2.3,11.6) ? "add" : between(t,13.7,20) ? "quick" : between(t,20,22.6) ? "confirm" : null;
   const modalOpacity = modal === "add" ? reveal(t,2.3,11.6) : modal === "quick" ? reveal(t,13.7,20) : modal === "confirm" ? reveal(t,20,22.6) : 0;
+  const backgroundDim = Math.max(reveal(t,2.3,11.6), reveal(t,13.7,22.6));
   const selection = ease(modal === "add" ? progress(t,4.1,5.1) : progress(t,15.5,16.5));
+  const swipeOpacity = modal === "add" ? reveal(t,3.95,5.35) : modal === "quick" ? reveal(t,15.35,16.75) : 0;
   const custom = modal === "add" && t >= 6.4;
   const picker = modal === "add" ? ease(progress(t,6.7,7.2)) : 0;
   const wheel = ease(progress(t,8.2,9.7));
@@ -38,8 +40,8 @@ export function sampleContentDemo(seconds: number) {
   const consumption = ease(progress(t,27,30)) * (1 - ease(progress(t,34,35)));
   const added = Math.round(consumption * 5);
   const activated = !reset && t >= 21.8;
-  return { t, scroll, press, tap, focus, focusAmount, custom, picker,
-    modal, modalOpacity, selection, wheel, presetPress, confirmPress, card, consumption,
+  return { t, scroll, press, tap, focus, focusAmount, custom, picker, swipeOpacity,
+    modal, modalOpacity, backgroundDim, selection, wheel, presetPress, confirmPress, card, consumption,
     minutes: 35 + added, gamesMinutes: 30 + added, clock: `17:${30 + added}`,
     totalMinutes: 135 + added, categoryGames: 35 + added,
     dailyLimit: !reset && t >= 11 ? 255 : 240, activated,

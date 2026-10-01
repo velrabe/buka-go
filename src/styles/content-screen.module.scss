@@ -44,11 +44,17 @@
 .floating { position: absolute; top: 13%; z-index: 4; pointer-events: none; }
 .floating[data-side="right"] { right: 0; }
 .floating[data-side="left"] { left: 0; }
+// Only the guide overlay compresses. The underlying control keeps its geometry.
 .stage[data-press="add"] [data-demo-target="add"],
 .stage[data-press="quick"] [data-demo-target="quick"],
-.stage[data-press="minecraft"] [data-demo-target="minecraft"],
-.stage[data-press="back"] [data-demo-target="back"] {
-  transform: scale(calc(1 - var(--tap) * .018));
+.stage[data-press="minecraft"] [data-demo-target="minecraft"] { filter: brightness(calc(1 - var(--tap) * .1)); }
+.stage[data-focus="add"] [data-demo-target="add"]::after,
+.stage[data-focus="quick"] [data-demo-target="quick"]::after,
+.stage[data-focus="minecraft"] [data-demo-target="minecraft"]::after {
+  content: ""; position: absolute; inset: 2px; border-radius: inherit; pointer-events: none; z-index: 5;
+  border: 2px solid #a48aff; background: #a48aff12;
+  box-shadow: 0 0 12px #9279e85c, inset 0 0 10px #9279e830;
+  opacity: var(--guide-strength, 0); transform: scale(calc(1 - var(--tap, 0) * .07));
 }
 .navigation { position: relative; z-index: 2; height: 98px; background: #f8fafc; }
 .pause {

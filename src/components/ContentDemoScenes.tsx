@@ -16,10 +16,11 @@ const modes = [
   { name: "Сон", icon: "07a95523a0ec277d.svg", color: "#9279e8" },
 ];
 function tapStyle(frame: ContentDemoFrame, target: string): CSSProperties {
-  // Preserve the component's shape and shadows throughout the press.
-  return frame.focus === target && frame.tap > 0
-    ? { transform: `scale(${1 - frame.tap * .018})` }
-    : {};
+  const active = frame.focus === target;
+  const press = active ? frame.tap : 0;
+  return { "--guide-strength": active ? frame.focusAmount : 0, "--guide-press": press,
+    filter: press > 0 ? `brightness(${1 + press * (target === "submit" ? .12 : -.1)})` : undefined,
+  } as CSSProperties;
 }
 function text(section: keyof typeof copy, id: string) {
   return (copy[section].text as Record<string, { text: string }>)[id].text;
@@ -55,6 +56,10 @@ export function FloatingTimeCard({ frame }: { frame: ContentDemoFrame }) {
           {modes.map((mode, i) => <div key={mode.name} className={styles.mode} data-selected={i === selected}
             style={{ ...tapStyle(frame, i === 3 ? "mode" : "other"), "--mode-color": mode.color } as CSSProperties}><Icon index={i} /><span>{mode.name}</span></div>)}
         </div>
+        <svg className={styles.swipe} viewBox="0 0 351 95" aria-hidden="true" style={{ opacity: frame.swipeOpacity }}>
+          <path d={`M ${255 - frame.selection * (quick ? 80 : 160) + 44 * Math.sin(frame.selection * Math.PI)} 65 H ${255 - frame.selection * (quick ? 80 : 160)}`} fill="none" stroke="#9279e8" strokeWidth="8" strokeLinecap="round" opacity=".3" />
+          <circle cx={255 - frame.selection * (quick ? 80 : 160)} cy="65" r="7" fill="#9279e8" stroke="white" strokeWidth="2" />
+        </svg>
       </div>
     </div>
     <div className={styles.timeSection}>
