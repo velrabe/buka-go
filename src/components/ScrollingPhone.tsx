@@ -19,7 +19,7 @@ export function ScrollingPhone({ children, status, navigation, locale }: {
   children: ReactNode; status: ReactNode; navigation: ReactNode; locale: string;
 }) {
   const viewport = useRef<HTMLDivElement>(null);
-  const [scale, setScale] = useState(1);
+  const [scale, setScale] = useState<number | null>(null);
   const [inView, setInView] = useState(false);
   const [tabVisible, setTabVisible] = useState(true);
   const [reducedMotion, setReducedMotion] = useState(false);
@@ -65,14 +65,14 @@ export function ScrollingPhone({ children, status, navigation, locale }: {
     return () => cancelAnimationFrame(request);
   }, [running]);
 
-  const floatingScale = Math.min(0.8, Math.max(0.68, scale * 0.94));
+  const floatingScale = Math.min(0.8, Math.max(0.68, (scale ?? 0.68) * 0.94));
   const confirmation = frame.modal === "confirm";
   return (
     <ContentDemoContext.Provider value={frame}><div className={styles.demo}>
       <div className={styles.stage} data-press={frame.press} data-focus={frame.focus} style={{ "--tap": frame.tap, "--guide-strength": frame.focusAmount } as CSSProperties}>
         <div className={styles.shell}>
           <div className={styles.viewport} ref={viewport}>
-            <div className={styles.phone} style={{ transform: `scale(${scale})`, opacity: 1 - .7 * frame.backgroundDim }}>
+            <div className={styles.phone} style={{ "--phone-scale": scale ?? 0, opacity: 1 - .7 * frame.backgroundDim } as CSSProperties}>
               <div className={styles.status} aria-hidden="true">{status}</div>
               <div className={styles.scrollWindow} tabIndex={0} role="region" aria-label={text.screen}>
                 <div className={styles.track} aria-hidden="true" style={{ transform: `translateY(${-frame.scroll}px)` }}>

@@ -10,6 +10,7 @@
   box-shadow: none;
 }
 .viewport {
+  container-type: inline-size;
   position: relative;
   width: 100%;
   aspect-ratio: 375 / 760;
@@ -30,11 +31,17 @@
   width: 375px;
   height: 760px;
   transform-origin: top left;
+  transform: scale(var(--phone-scale, 0));
   color: #111827;
   background: #f8fafc;
   font: 500 14px/normal ui-rounded, "SF Pro Rounded", "Nunito", sans-serif;
   text-align: left;
   letter-spacing: normal;
+}
+/* Fit the exported 375px canvas on the first paint, before hydration.
+   Older browsers use the measured scale; keep that fallback hidden until ready. */
+@supports (transform: scale(calc(1px / 1px))) {
+  .phone { transform: scale(calc(100cqw / 375px)); }
 }
 .layer { max-width: none; }
 .asset {
