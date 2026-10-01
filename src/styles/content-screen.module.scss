@@ -86,14 +86,14 @@
 .stage[data-focus="quick"] [data-demo-target="quick"],
 .stage[data-focus="minecraft"] [data-demo-target="minecraft"] { z-index: 8; }
 
-/* Both surfaces lean away; their top edges tilt in opposite directions. */
-.shell { transform: perspective(1100px) rotateX(6deg) rotateY(3deg) rotateZ(2.5deg); transform-origin: 50% 55%; }
+/* Light opposing isometric slants; vertical edges stay upright and parallel. */
+.shell { transform: skewY(6deg) scaleX(.96); transform-origin: center; }
 @media (max-width: 560px) {
   :global(.time-visual-phone) .stage { position: static; isolation: auto; }
-  :global(.time-visual-phone) .shell { position: relative; z-index: 1; transform: perspective(900px) rotateX(6deg) rotateY(3deg) rotateZ(2.5deg); }
+  :global(.time-visual-phone) .shell { position: relative; z-index: 1; }
   :global(.time-visual-phone) .floating { top: 48px; z-index: 6; }
   :global(.time-visual-phone) .floating[data-side="left"] { left: calc(248.91553px - 100cqw); right: auto; }
   :global(.time-visual-phone) .floating[data-side="right"] { left: calc(272.91553px - 100cqw); right: auto; }
 }
-.dialogPerspective { transform: perspective(1100px) rotateX(6deg) rotateY(-3deg) rotateZ(-2.5deg); transform-origin: 50% 55%; }
+.dialogPerspective { transform: skewY(-6deg) scaleX(.96); transform-origin: center; }
 @media (prefers-reduced-motion: reduce) { .shell, .dialogPerspective { transform: none !important; } }
