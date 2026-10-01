@@ -1,3 +1,4 @@
+import { DemoValue, DemoActiveMode, DemoSummaryBar } from "./ContentDemoState";
 import type { CSSProperties } from "react";
 import screen from "@/content/app-content-screen.json";
 import { ScrollingPhone } from "./ScrollingPhone";
@@ -13,8 +14,19 @@ type ScreenNode = {
 
 const demoTargets: Record<string, string> = {
   "3736:57391": "add",
-  "2829:83623": "quick",
+  "2829:83615": "quick",
   "2829:71940": "minecraft",
+};
+
+const demoFields: Record<string, string> = {
+  "I2799:62446;81:1242;839:7108": "clock",
+  "I2799:63572;1:636;1:632": "total",
+  "I2799:63573;1:636;1:632": "limit",
+  "I2799:63585;1:636;1:632": "study",
+  "I2799:63597;1:636;1:632": "games",
+  "I2829:71950;1:636;1:632": "minecraft",
+  "I2829:83605;1:636;1:632": "modeStart",
+  "I2829:83608;1:636;1:632": "modeEnd",
 };
 
 function Layer({ node }: { node: ScreenNode }) {
@@ -30,6 +42,8 @@ function Layer({ node }: { node: ScreenNode }) {
       overflow: "visible", whiteSpace: "pre", lineHeight: 1.2,
     } as CSSProperties : {}),
   };
+  if (node.id === "2829:83603") return <div style={style}><DemoActiveMode /></div>;
+  if (node.id === "2799:63574") return <DemoSummaryBar />;
   return (
     <div className={styles.layer} style={style} data-figma-node={node.id} data-demo-target={demoTargets[node.id]}>
       {node.asset ? (
@@ -43,7 +57,7 @@ function Layer({ node }: { node: ScreenNode }) {
           loading="lazy"
           draggable={false}
         />
-      ) : node.text !== undefined ? node.text : node.children?.map((child) => <Layer key={child.id} node={child} />)}
+      ) : node.text !== undefined ? (demoFields[node.id] ? <DemoValue field={demoFields[node.id]} /> : node.text) : node.children?.map((child) => <Layer key={child.id} node={child} />)}
     </div>
   );
 }

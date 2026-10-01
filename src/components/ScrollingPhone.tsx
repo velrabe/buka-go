@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
+import { ContentDemoContext } from "./ContentDemoState";
 import { sampleContentDemo, DEMO_DURATION } from "@/lib/content-demo-timeline";
 import { FloatingTimeCard, ModeConfirmation, MinecraftCard } from "./ContentDemoScenes";
 import styles from "@/styles/content-screen.module.scss";
@@ -67,7 +68,7 @@ export function ScrollingPhone({ children, status, navigation, locale }: {
   const floatingScale = Math.min(0.8, scale * 0.94);
   const confirmation = frame.modal === "confirm";
   return (
-    <div className={styles.demo}>
+    <ContentDemoContext.Provider value={frame}><div className={styles.demo}>
       <div className={styles.stage} data-press={frame.press} style={{ "--tap": frame.tap } as CSSProperties}>
         <div className={styles.shell}>
           <div className={styles.viewport} ref={viewport}>
@@ -100,6 +101,6 @@ export function ScrollingPhone({ children, status, navigation, locale }: {
       <button className={styles.pause} type="button" aria-pressed={paused} onClick={() => setPaused(!paused)}>
         <span aria-hidden="true">{paused ? "▶" : "Ⅱ"}</span> {paused ? text.play : text.pause}
       </button>
-    </div>
+    </div></ContentDemoContext.Provider>
   );
 }

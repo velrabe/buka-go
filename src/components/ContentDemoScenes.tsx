@@ -10,7 +10,7 @@ const modes = [
   { name: "Мой режим", icon: "433123a6c53ccade.svg", color: "#9279e8" },
   { name: "Учеба", icon: "6b4d5c7803e11793.svg", color: "#559be6" },
   { name: "Уроки", icon: "a357b3331b8b7c1f.svg", color: "#f37178" },
-  { name: "Игры", icon: "91eeac1c863bf070.svg", color: "#e7883f" },
+  { name: "Игры", icon: "game-solid.svg", color: "#e7883f" },
   { name: "Отдых", icon: "98165725ea0b8728.svg", color: "#69c46d" },
   { name: "Сон", icon: "07a95523a0ec277d.svg", color: "#9279e8" },
 ];
@@ -35,7 +35,7 @@ function Wheel({ value, maximum }: { value: number; maximum: number }) {
 export function FloatingTimeCard({ frame }: { frame: ContentDemoFrame }) {
   const quick = frame.modal === "quick";
   const section = quick ? "quick" : "add";
-  const index = (quick ? 2 : 1) + frame.selection * 2;
+  const index = (quick ? 2 : 1) + frame.selection * (quick ? 1 : 2);
   const selected = Math.round(index);
   const hours = quick ? 5 + frame.wheel : 0;
   const minutes = quick ? 10 + frame.wheel * 10 : 5 + frame.wheel * 10;
@@ -56,16 +56,16 @@ export function FloatingTimeCard({ frame }: { frame: ContentDemoFrame }) {
       <div className={styles.presets}>
         {(quick ? ["на 15 мин", "на 30 мин", "на 1 час", "До завтра", "Указать свое"] :
           ["15 мин", "30 мин", "1 час", "До завтра", "Указать свое"]).map((label, i) =>
-          <span key={label} data-selected={i === 4}>{label}</span>)}
+          <span key={label} data-selected={quick ? i === 1 && frame.presetPress > 0 : i === 4} style={{ transform: quick && i === 1 ? `scale(${1 - Math.sin(frame.presetPress * Math.PI) * .06})` : undefined }}>{label}</span>)}
       </div>
-      <div className={styles.picker}>
+      {!quick && <div className={styles.picker}>
         <div className={styles.pickerHeading}><span>Укажите время</span><strong>{Math.round(hours)}ч {Math.round(minutes)}мин</strong><span className={styles.check}>✓</span></div>
         <div className={styles.wheels}><div className={styles.selectedLine} /><Wheel value={hours} maximum={24} /><Wheel value={minutes} maximum={60} /></div>
-      </div>
+      </div>}
     </div>
-    <div className={styles.modalBottom}><div className={styles.action} style={{ transform: `scale(${1 - Math.sin(frame.confirmPress * Math.PI) * 0.035})`, opacity: 0.65 + frame.wheel * 0.35 }}>
+    {!quick && <div className={styles.modalBottom}><div className={styles.action} style={{ transform: `scale(${1 - Math.sin(frame.confirmPress * Math.PI) * 0.035})`, opacity: 0.65 + frame.wheel * 0.35 }}>
       {quick ? text("quick", "I2799:49143;387:4040;1:636;1:632") : text("add", "I2759:31229;387:4040;1:636;1:632")}
-    </div></div>
+    </div></div>}
   </div>;
 }
 
@@ -73,16 +73,16 @@ export function ModeConfirmation({ frame }: { frame: ContentDemoFrame }) {
   return <div className={styles.modal} data-figma-node={copy.confirm.sourceNode}>
     <div className={styles.header}><strong>Быстрый режим</strong><span className={styles.close}>×</span></div>
     <div className={styles.confirmModes}>
-      <div><span>Текущий режим:</span><strong style={{ color: modes[3].color }}><Icon index={3} />Игры</strong><small>До 18:00 · Осталось 20 мин</small></div>
+      <div><span>Текущий режим:</span><strong style={{ color: modes[1].color }}><Icon index={1} />Учеба</strong><small>До 18:30 · Осталось 60 мин</small></div>
       <span className={styles.changeArrow}>↓</span>
-      <div><span>Новый режим:</span><strong style={{ color: modes[4].color }}><Icon index={4} />Отдых</strong><small>До 23:00 · На 6ч 20мин</small></div>
+      <div><span>Новый режим:</span><strong style={{ color: modes[3].color }}><Icon index={3} />Игры</strong><small>17:30 – 18:00 · На 30 мин</small></div>
     </div>
     <div className={styles.schedule}>
       <strong>Изменения в расписании</strong>
-      {[[3, "19:00 – 20:00"], [4, "20:00 – 23:00"], [5, "23:00 – 7:00"]].map(([mode, time]) => <div key={mode}>
+      {[[3, "17:30 – 18:00"], [1, "18:00 – 18:30"]].map(([mode, time]) => <div key={mode}>
         <span style={{ color: modes[Number(mode)].color }}><Icon index={Number(mode)} />{modes[Number(mode)].name}</span><span>{time}</span>
       </div>)}
-      <p>Подтвердите обновления в расписании. Изменения вступят в силу немедленно</p>
+      <p>Подтвердите обновления в расписании. Игры на 30 минут, затем возвращаемся к учёбе. Остальные интервалы без изменений.</p>
     </div>
     <div className={styles.modalBottom}>
       <div className={styles.action} style={{ transform: `scale(${1 - Math.sin(frame.confirmPress * Math.PI) * 0.035})` }}>Подтвердить</div>
@@ -111,7 +111,7 @@ export function MinecraftCard({ frame }: { frame: ContentDemoFrame }) {
       <strong>Доступы и лимиты</strong>
       <p>{text("app", "I2757:32650;1:636;1:632")}</p>
       <div className={styles.permissionList}>{[1, 2, 4, 3, 5, 0].map(i => <div key={i}>
-        <span style={{ color: modes[i].color }}><Icon index={i} /></span><div>{modes[i].name}{(i === 3 || i === 0) && <small>{i === 3 ? "30" : "10"} мин <em>Изменить</em></small>}</div>
+        <span style={{ color: modes[i].color }}><Icon index={i} /></span><div>{modes[i].name}{(i === 3 || i === 0) && <small>{i === 3 ? "60" : "10"} мин <em>Изменить</em></small>}</div>
         <span className={styles.toggle} data-on={i === 0 || i === 3} />
       </div>)}</div>
       <strong>Дневной лимит</strong><p>{text("app", "I2758:24995;1:636;1:632")}</p>
