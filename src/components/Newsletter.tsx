@@ -1,4 +1,6 @@
 "use client";
+import { siteUrl } from "@/lib/site-url";
+
 
 import { useRef, useState, type FormEvent } from "react";
 import type { Locale, Messages } from "@/lib/content";
@@ -142,7 +144,7 @@ export function Newsletter({
                 <input type="checkbox" required />{" "}
                 <span>
                   {t.consent} ·{" "}
-                  <a href={privacyPath}>{m.cookie.privacyPolicy}</a>
+                  <a href={siteUrl(privacyPath)}>{m.cookie.privacyPolicy}</a>
                 </span>
               </label>
               <button className="button" type="submit" disabled={busy}>
@@ -155,7 +157,7 @@ export function Newsletter({
               <p>{t.fallback}</p>
               <a
                 className="button"
-                href="https://bukago.app/"
+                href={siteUrl("https://bukago.app/")}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -165,7 +167,7 @@ export function Newsletter({
           )}
           <p>{m.modal.socialHint}</p>
           <a
-            href={settings.telegram}
+            href={siteUrl(settings.telegram)}
             target="_blank"
             rel="noopener noreferrer"
             data-goal="click-social-network"

@@ -1,3 +1,5 @@
+
+import { siteUrl } from "@/lib/site-url";
 import type { Locale, Messages } from "@/lib/content";
 import { blogPath } from "@/lib/content";
 import media from "@/content/media.json";
@@ -23,13 +25,13 @@ export function Landing({
               <span className="accent">{m.hero.titleAccent}</span>
             </h1>
             <p className="lead">{m.hero.description}</p>
-            <a className="button" href="#download">
+            <a className="button" href={siteUrl("#download")}>
               {m.common.tryFree}
             </a>
           </div>
           <img
             className="hero-image"
-            src={media.hero}
+            src={siteUrl(media.hero)}
             width="1267"
             height="1021"
             alt="BukaGo"
@@ -42,12 +44,12 @@ export function Landing({
           {Object.values(m.control.items).map((item, i) => (
             <article className={i === 0 ? "feature feature-time" : "feature"} key={i}>
               {i === 0 ? <div className="time-visual">
-                <img className="time-visual-bg" src="/assets/mobile-features/bg1.png" width="390" height="483" alt="" loading="lazy" />
+                <img className="time-visual-bg" src={siteUrl("/assets/mobile-features/bg1.png")} width="390" height="483" alt="" loading="lazy" />
                 <div className="time-visual-phone"><ContentScreen locale={locale} /></div>
-                <img className="time-visual-kid" src="/assets/mobile-features/k1.png" width="248" height="178.533" alt="" loading="lazy" />
+                <img className="time-visual-kid" src={siteUrl("/assets/mobile-features/k1.png")} width="248" height="178.533" alt="" loading="lazy" />
               </div> : <img
                 className="feature-image"
-                src={media.features[i]}
+                src={siteUrl(media.features[i])}
                 alt={item.images[0]}
                 width="385"
                 height="385"
@@ -61,7 +63,7 @@ export function Landing({
                     <li key={text}>{text}</li>
                   ))}
                 </ul>
-                <a className="text-link" href="#download">
+                <a className="text-link" href={siteUrl("#download")}>
                   {m.common.try} <span aria-hidden="true">→</span>
                 </a>
               </div>
@@ -104,7 +106,7 @@ export function Landing({
                 <br />
                 {m.problem.footerTitleLine2}
               </p>
-              <a className="text-link" href={blogPath(locale)}>
+              <a className="text-link" href={siteUrl(blogPath(locale))}>
                 {m.problem.goToBlog} →
               </a>
             </div>
@@ -151,7 +153,7 @@ export function Landing({
                   <li key={text}>{text}</li>
                 ))}
               </ul>
-              <a className="text-link" href={blogPath(locale)}>
+              <a className="text-link" href={siteUrl(blogPath(locale))}>
                 {m.works.readArticle} →
               </a>
             </article>
@@ -167,7 +169,7 @@ export function Landing({
             <StoreLinks messages={m} />
           </div>
           <img
-            src={media.download}
+            src={siteUrl(media.download)}
             alt={m.common.phoneAlt}
             width="350"
             height="450"

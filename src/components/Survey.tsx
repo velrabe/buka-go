@@ -1,3 +1,5 @@
+
+import { siteUrl } from "@/lib/site-url";
 import survey from "@/content/survey.json";
 
 export function Survey() {
@@ -9,13 +11,13 @@ export function Survey() {
         <div className="store-links">
           <a
             className="button"
-            href={survey.formUrl}
+            href={siteUrl(survey.formUrl)}
             target="_blank"
             rel="noopener noreferrer"
           >
             {survey.button} ↗
           </a>
-          <a className="button button-secondary" href="/">
+          <a className="button button-secondary" href={siteUrl("/")}>
             {survey.more}
           </a>
         </div>
@@ -27,7 +29,7 @@ export function Survey() {
 export function SurveyLink() {
   return (
     <aside className="survey-link">
-      <a href="/survey/" data-goal="click-banner-survey">
+      <a href={siteUrl("/survey/")} data-goal="click-banner-survey">
         {survey.title} →
       </a>
     </aside>

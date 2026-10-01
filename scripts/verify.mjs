@@ -3,6 +3,11 @@ import { resolve, join } from "node:path";
 import assert from "node:assert/strict";
 
 const root = resolve("out");
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+const unprefix = path => {
+  assert(!basePath || path.startsWith(basePath + "/"), `Unprefixed URL: ${path}`);
+  return basePath ? path.slice(basePath.length) : path;
+};
 const files = await readdir(root, { recursive: true });
 const htmlFiles = files.filter((f) => f.endsWith(".html"));
 assert(htmlFiles.length > 200, "Expected complete static route export");
@@ -15,7 +20,7 @@ for (const file of htmlFiles) {
     /\b(href|src|poster)="([^"]+)"/g,
   )) {
     if (!value.startsWith("/") || value.startsWith("//")) continue;
-    const path = decodeURIComponent(value.split(/[?#]/)[0]);
+    const path = unprefix(decodeURIComponent(value.split(/[?#]/)[0]));
     if (!path) continue;
     let found = cache.get(path);
     if (found === undefined) {
@@ -60,7 +65,7 @@ assert(
 for (const file of files.filter((f) => f.endsWith(".css"))) {
   const css = await readFile(join(root, file), "utf8");
   for (const [, url] of css.matchAll(/url\(["']?(\/[^)"']+)["']?\)/g)) {
-    if (!(await exists(join(root, decodeURIComponent(url)))))
+    if (!(await exists(join(root, unprefix(decodeURIComponent(url))))))
       issues.push(`${file}: CSS asset ${url}`);
   }
 }

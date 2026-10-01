@@ -1,3 +1,5 @@
+
+import { siteUrl } from "@/lib/site-url";
 import { DemoSkeleton } from "./DemoSkeleton";
 import { DemoValue, DemoActiveMode, DemoSummaryBar, DemoModeButton } from "./ContentDemoState";
 import type { CSSProperties } from "react";
@@ -66,7 +68,7 @@ function Layer({ node, control = false, wrapped = false }: { node: ScreenNode; c
         <img
           className={styles.asset}
           data-inactive-nav={node.asset.src.includes("/nav-") && node.asset.src.endsWith("-off.png") ? "true" : undefined}
-          src={node.asset.src}
+          src={siteUrl(node.asset.src)}
           width={node.asset.width}
           height={node.asset.height}
           style={{ left: node.asset.left, top: node.asset.top, width: node.asset.width, height: node.asset.height }}

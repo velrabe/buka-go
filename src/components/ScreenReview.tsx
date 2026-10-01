@@ -1,3 +1,5 @@
+
+import { siteUrl } from "@/lib/site-url";
 import { StaticContentScreen } from "./ContentScreen";
 import { FloatingTimeCard, ModeConfirmation, MinecraftCard } from "./ContentDemoScenes";
 import { sampleContentDemo } from "@/lib/content-demo-timeline";
@@ -16,7 +18,7 @@ export function ScreenReview() {
     { name: "06 · Minecraft — после +5 минут", view: <MinecraftCard frame={{ ...sampleContentDemo(30.1), focus: "", focusAmount: 0 }} /> },
   ];
   return <main id="main-content" className={styles.page}>
-    <header><a href="/">← На сайт</a><h1>Экраны для сверки</h1><p>Все экраны целиком, без анимации. Прокрутите ряд вправо; номера помогут указать, где нужны правки.</p></header>
+    <header><a href={siteUrl("/")}>← На сайт</a><h1>Экраны для сверки</h1><p>Все экраны целиком, без анимации. Прокрутите ряд вправо; номера помогут указать, где нужны правки.</p></header>
     <div className={styles.row} tabIndex={0} role="region" aria-label="Экраны приложения, горизонтальная прокрутка">
       {screens.map(({name, view}) => <section key={name} className={styles.screen}><h2>{name}</h2><div className={styles.canvas}>{view}</div></section>)}
     </div>

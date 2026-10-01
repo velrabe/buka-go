@@ -1,4 +1,6 @@
 "use client";
+import { siteUrl } from "@/lib/site-url";
+
 
 import { useEffect, useState } from "react";
 import { settings } from "@/lib/settings";
@@ -79,7 +81,7 @@ export function Analytics({
         <strong>{m.cookie.title}</strong>
         <p>
           {m.cookie.text}
-          <a href={privacyPath}>{m.cookie.privacyPolicy}</a>.
+          <a href={siteUrl(privacyPath)}>{m.cookie.privacyPolicy}</a>.
         </p>
       </div>
       <button

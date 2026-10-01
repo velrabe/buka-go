@@ -1,4 +1,5 @@
 "use client";
+import { siteUrl } from "@/lib/site-url";
 import { createContext, useContext, type ReactNode } from "react";
 import { sampleContentDemo } from "@/lib/content-demo-timeline";
 export const ContentDemoContext = createContext(sampleContentDemo(0));
@@ -15,7 +16,7 @@ export function DemoValue({ field }: { field: string }) {
 export function DemoActiveMode() {
   const frame = useContext(ContentDemoContext);
   return <span style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 20, lineHeight: "24px", color: frame.activated ? "#e7883f" : "#559be6", whiteSpace: "nowrap" }}>
-    <span style={{ width: 16, height: 16, background: "currentColor", mask: `url(/assets/app-content/${frame.activated ? "game-solid.svg" : "6b4d5c7803e11793.svg"}) center / contain no-repeat` }} />{frame.mode}
+    <span style={{ width: 16, height: 16, background: "currentColor", mask: `url(${siteUrl(`/assets/app-content/${frame.activated ? "game-solid.svg" : "6b4d5c7803e11793.svg"}`)}) center / contain no-repeat` }} />{frame.mode}
   </span>;
 }
 export function DemoSummaryBar() {

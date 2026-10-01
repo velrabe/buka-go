@@ -1,3 +1,5 @@
+
+import { siteUrl, siteHtml } from "@/lib/site-url";
 import {
   articles,
   blogPath,
@@ -27,7 +29,7 @@ export function Blog({
     <main id="main-content" className="section">
       <div className="container">
         <nav className="breadcrumbs">
-          <a href={languageFor(locale).home}>{m.common.home}</a>
+          <a href={siteUrl(languageFor(locale).home)}>{m.common.home}</a>
           <span aria-hidden="true">/</span>
           <span>{m.blog.title}</span>
         </nav>
@@ -40,10 +42,10 @@ export function Blog({
           <div className="blog-grid">
             {visible.map((article) => (
               <article key={article.path}>
-                <a href={`${article.path}/`}>
+                <a href={siteUrl(`${article.path}/`)}>
                   {article.cover && (
                     <img
-                      src={article.cover}
+                      src={siteUrl(article.cover)}
                       alt=""
                       width="640"
                       height="360"
@@ -63,11 +65,9 @@ export function Blog({
           <nav className="pagination" aria-label={m.blog.title}>
             {page > 1 && (
               <a
-                href={
-                  page === 2
+                href={siteUrl(page === 2
                     ? blogPath(locale)
-                    : `${blogPath(locale)}page-${page - 1}/`
-                }
+                    : `${blogPath(locale)}page-${page - 1}/`)}
               >
                 {m.blog.prevPage}
               </a>
@@ -75,11 +75,9 @@ export function Blog({
             {Array.from({ length: count }, (_, i) => (
               <a
                 key={i}
-                href={
-                  i === 0
+                href={siteUrl(i === 0
                     ? blogPath(locale)
-                    : `${blogPath(locale)}page-${i + 1}/`
-                }
+                    : `${blogPath(locale)}page-${i + 1}/`)}
                 aria-current={page === i + 1 ? "page" : undefined}
                 aria-label={m.blog.pageAriaLabel.replace(
                   "{page}",
@@ -90,7 +88,7 @@ export function Blog({
               </a>
             ))}
             {page < count && (
-              <a href={`${blogPath(locale)}page-${page + 1}/`}>
+              <a href={siteUrl(`${blogPath(locale)}page-${page + 1}/`)}>
                 {m.blog.nextPage}
               </a>
             )}
@@ -115,14 +113,12 @@ export function Content({
     <main id="main-content" className="section">
       <div className="container reading-width">
         <nav className="breadcrumbs">
-          <a href={lang.home}>{m.common.home}</a>
+          <a href={siteUrl(lang.home)}>{m.common.home}</a>
           <span aria-hidden="true">/</span>
           <a
-            href={
-              page.kind === "article"
+            href={siteUrl(page.kind === "article"
                 ? blogPath(locale)
-                : `${lang.prefix}/legal/requisites/`
-            }
+                : `${lang.prefix}/legal/requisites/`)}
           >
             {page.kind === "article" ? m.blog.title : m.common.documents}
           </a>
@@ -149,7 +145,7 @@ export function Content({
             {page.cover && (
               <img
                 className="article-cover"
-                src={page.cover}
+                src={siteUrl(page.cover)}
                 alt={page.title}
                 width="1300"
                 height="600"
@@ -158,7 +154,7 @@ export function Content({
           </header>
           <div
             className="prose"
-            dangerouslySetInnerHTML={{ __html: page.body }}
+            dangerouslySetInnerHTML={{ __html: siteHtml(page.body) }}
           />
         </article>
         {page.kind === "article" && (
@@ -166,7 +162,7 @@ export function Content({
             <p>{m.modal.socialHint}</p>
             <a
               className="button button-secondary"
-              href={settings.telegram}
+              href={siteUrl(settings.telegram)}
               target="_blank"
               rel="noopener noreferrer"
               data-goal="click-banner-telegram"

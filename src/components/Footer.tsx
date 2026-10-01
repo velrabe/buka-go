@@ -1,3 +1,5 @@
+
+import { siteUrl } from "@/lib/site-url";
 import type { Locale, Messages } from "@/lib/content";
 import { languageFor, legalSlugs } from "@/lib/content";
 import { settings } from "@/lib/settings";
@@ -17,9 +19,9 @@ export function Footer({
       <div className="container">
         <div className="footer-top">
           <div>
-            <a className="brand" href={lang.home}>
+            <a className="brand" href={siteUrl(lang.home)}>
               <img
-                src="/assets/site/images/logo.png"
+                src={siteUrl("/assets/site/images/logo.png")}
                 alt=""
                 width="36"
                 height="36"
@@ -37,18 +39,18 @@ export function Footer({
             [m.header.howToConnect, "#how-to-connect"],
             [m.header.forFamily, "#why-works"],
           ].map(([label, id]) => (
-            <a key={id} href={`${lang.home}${id}`}>
+            <a key={id} href={siteUrl(`${lang.home}${id}`)}>
               {label}
             </a>
           ))}
-          <a href={`${lang.prefix}/blog/`}>{m.header.blog}</a>
+          <a href={siteUrl(`${lang.prefix}/blog/`)}>{m.header.blog}</a>
         </nav>
         <div className="footer-grid">
           <div>
             <h3>{m.common.documents}</h3>
             <nav className="legal-links" aria-label={m.common.documents}>
               {Object.values(m.legal.links).map((label, i) => (
-                <a key={label} href={`${lang.prefix}/legal/${legalSlugs[i]}/`}>
+                <a key={label} href={siteUrl(`${lang.prefix}/legal/${legalSlugs[i]}/`)}>
                   {label}
                 </a>
               ))}
@@ -63,7 +65,7 @@ export function Footer({
             />
             <p>
               <a
-                href={settings.telegram}
+                href={siteUrl(settings.telegram)}
                 data-goal="click-social-network"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -85,7 +87,7 @@ export function Footer({
         </div>
         <a
           className="back-top"
-          href="#top"
+          href={siteUrl("#top")}
           aria-label={locale === "ru" ? "Наверх" : "Back to top"}
         >
           ↑

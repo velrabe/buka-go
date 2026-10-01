@@ -1,4 +1,6 @@
 "use client";
+import { siteUrl } from "@/lib/site-url";
+
 
 import { DemoSkeleton } from "./DemoSkeleton";
 import type { CSSProperties } from "react";
@@ -6,7 +8,7 @@ import copy from "@/content/app-demo.json";
 import type { ContentDemoFrame } from "@/lib/content-demo-timeline";
 import styles from "@/styles/content-demo-scenes.module.scss";
 
-const asset = (name: string) => `/assets/app-content/${name}`;
+const asset = (name: string) => siteUrl(`/assets/app-content/${name}`);
 const modes = [
   { name: "Мой режим", icon: "433123a6c53ccade.svg", color: "#9279e8" },
   { name: "Учеба", icon: "6b4d5c7803e11793.svg", color: "#559be6" },
@@ -105,7 +107,7 @@ export function MinecraftCard({ frame }: { frame: ContentDemoFrame }) {
   return <div className={styles.appCard} data-figma-node={copy.app.sourceNode}>
     <div className={styles.appHeader}><span className={styles.back} style={tapStyle(frame, "back")} data-demo-target="back"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="m14 6-6 6 6 6" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" /></svg></span><strong style={tapStyle(frame, "header")}>{text("app", "I3736:81881;1:636;1:632")}</strong></div>
     <div className={styles.appSummary}>
-      <div className={styles.appIdentity} style={tapStyle(frame, "identity")}><img src={asset("92ed7e45760bf2c1.svg")} alt="" /><div>Minecraft<small>Игры</small></div></div>
+      <div className={styles.appIdentity} style={tapStyle(frame, "identity")}><img src={siteUrl(asset("92ed7e45760bf2c1.svg"))} alt="" /><div>Minecraft<small>Игры</small></div></div>
       <div className={styles.stats} style={tapStyle(frame, "usage")}>
         <div className={styles.date}><span>Сегодня</span><span><DemoSkeleton width={72} /></span></div>
         <div className={styles.total}><strong>{frame.minutes} мин</strong><span>из 60 мин</span></div>

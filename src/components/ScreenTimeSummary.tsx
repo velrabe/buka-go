@@ -1,4 +1,6 @@
 "use client";
+import { siteUrl } from "@/lib/site-url";
+
 
 import { useContext } from "react";
 import { ContentDemoContext } from "./ContentDemoState";
@@ -14,20 +16,20 @@ const categories = [
 export function ScreenTimeSummary() {
   const frame = useContext(ContentDemoContext);
   return <div className={styles.summary} data-figma-node="3874:64675">
-    <div className={styles.heading}><strong>Экранное время</strong><span>Аналитика <img src="/assets/app-content/7c5e9813fdfd1404.svg" width="6" height="10" alt="" /></span></div>
+    <div className={styles.heading}><strong>Экранное время</strong><span>Аналитика <img src={siteUrl("/assets/app-content/7c5e9813fdfd1404.svg")} width="6" height="10" alt="" /></span></div>
     <div className={styles.stats}>
       <div className={styles.date}>Сегодня, 9 июля</div>
       <div className={styles.total}><strong>2ч 15мин</strong><span style={{ opacity: frame.limitOpacity }}>из 4ч {frame.dailyLimit === 255 ? "15" : "00"}мин</span></div>
       <div className={styles.bar} aria-hidden="true"><i /><i /><i /></div>
       <div className={styles.categories}>{categories.map(category => <div key={category.title} style={{ color: category.color, background: `${category.color}1a` }}>
-        <span className={styles.icon} style={{ maskImage: `url(/assets/app-content/${category.icon})` }} />
+        <span className={styles.icon} style={{ maskImage: `url(${siteUrl(`/assets/app-content/${category.icon}`)})` }} />
         <span><strong>{category.title}</strong><small>{category.minutes} мин</small></span>
       </div>)}</div>
     </div>
     <div className={styles.add} data-demo-target="add" data-demo-button="true">
-      <span className={styles.clock}><img src="/assets/app-content/026cc3bf14ea7730.svg" width="16" height="16" alt="" /></span>
+      <span className={styles.clock}><img src={siteUrl("/assets/app-content/026cc3bf14ea7730.svg")} width="16" height="16" alt="" /></span>
       <strong>Добавить время</strong>
-      <span className={styles.chevron}><img src="/assets/app-content/349b472d0de52d09.svg" width="8" height="12" alt="" /></span>
+      <span className={styles.chevron}><img src={siteUrl("/assets/app-content/349b472d0de52d09.svg")} width="8" height="12" alt="" /></span>
     </div>
   </div>;
 }

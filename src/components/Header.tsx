@@ -1,4 +1,6 @@
 "use client";
+import { siteUrl } from "@/lib/site-url";
+
 
 import { useState } from "react";
 import type { Locale, Messages } from "@/lib/content";
@@ -35,11 +37,11 @@ export function Header({
       <div className="container header-inner">
         <a
           className="brand"
-          href={lang.home}
+          href={siteUrl(lang.home)}
           aria-label={m.common.homeAriaLabel}
         >
           <img
-            src="/assets/site/images/logo.png"
+            src={siteUrl("/assets/site/images/logo.png")}
             width="36"
             height="36"
             alt=""
@@ -53,11 +55,11 @@ export function Header({
           onClick={() => setOpen(false)}
         >
           {links.map(([label, href]) => (
-            <a key={href} href={href}>
+            <a key={href} href={siteUrl(href)}>
               {label}
             </a>
           ))}
-          <a className="button nav-download" href={`${lang.home}#download`}>
+          <a className="button nav-download" href={siteUrl(`${lang.home}#download`)}>
             {m.header.downloadApp}
           </a>
         </nav>
@@ -77,7 +79,7 @@ export function Header({
                 localStorage.setItem("bukago-language", target.locale);
               } catch {}
               window.location.assign(
-                destination +
+                siteUrl(destination) +
                   (path.includes("/blog") || legal ? "" : window.location.hash),
               );
             }}

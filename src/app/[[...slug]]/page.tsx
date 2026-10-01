@@ -1,3 +1,4 @@
+import { siteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import {
@@ -46,8 +47,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description,
     robots: { index: false, follow: false },
     icons: {
-      icon: "/assets/site/favicon.svg",
-      apple: "/assets/site/apple-touch-icon.png",
+      icon: siteUrl("/assets/site/favicon.svg"),
+      apple: siteUrl("/assets/site/apple-touch-icon.png"),
     },
     alternates: isHome(path)
       ? {
