@@ -15,8 +15,8 @@ const labels: Record<string, { pause: string; play: string; screen: string }> = 
   az: { pause: "Dayandır", play: "Davam et", screen: "Tətbiq: ekran vaxtı və uşağın tətbiqləri" },
 };
 
-export function ScrollingPhone({ children, status, navigation, locale }: {
-  children: ReactNode; status: ReactNode; navigation: ReactNode; locale: string;
+export function ScrollingPhone({ children, locale }: {
+  children: ReactNode; locale: string;
 }) {
   const viewport = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState<number | null>(null);
@@ -73,7 +73,6 @@ export function ScrollingPhone({ children, status, navigation, locale }: {
         <div className={styles.shell}>
           <div className={styles.viewport} ref={viewport}>
             <div className={styles.phone} style={{ "--phone-scale": scale ?? 0, opacity: 1 - .7 * frame.backgroundDim } as CSSProperties}>
-              <div className={styles.status} aria-hidden="true">{status}</div>
               <div className={styles.scrollWindow} tabIndex={0} role="region" aria-label={text.screen}>
                 <div className={styles.track} aria-hidden="true" style={{ transform: `translateY(${-frame.scroll}px)` }}>
                   <div className={styles.copy}><ContentDemoContext.Provider value={frame.resetOverview ? sampleContentDemo(0) : frame}>{children}</ContentDemoContext.Provider></div>
@@ -83,7 +82,6 @@ export function ScrollingPhone({ children, status, navigation, locale }: {
                   transform: `translateX(${(1 - frame.card) * 100}%)`,
                 }}><MinecraftCard frame={frame} /></div>
               </div>
-              <div className={styles.navigation} aria-hidden="true">{navigation}</div>
             </div>
           </div>
         </div>

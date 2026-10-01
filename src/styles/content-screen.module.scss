@@ -13,7 +13,7 @@
   container-type: inline-size;
   position: relative;
   width: 100%;
-  aspect-ratio: 375 / 760;
+  aspect-ratio: 375 / 596;
   overflow: hidden;
   border-radius: 41px;
   background: #f8fafc;
@@ -29,7 +29,7 @@
 }
 .phone {
   width: 375px;
-  height: 760px;
+  height: 596px;
   transform-origin: top left;
   transform: scale(var(--phone-scale, 0));
   color: #111827;
@@ -91,7 +91,7 @@
 
 @media (max-width: 560px) {
   :global(.time-visual-phone) .shell { width: 100%; padding: 0; border: 0; border-radius: 27px; }
-  :global(.time-visual-phone) .viewport { border-radius: 27px; aspect-ratio: 207.40547 / 421.19513; }
+  :global(.time-visual-phone) .viewport { border-radius: 27px; aspect-ratio: 375 / 596; }
 }
 
 .stage [data-demo-target="add"] { --guide-radius: 999px; }

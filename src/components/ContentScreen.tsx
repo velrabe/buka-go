@@ -82,8 +82,6 @@ export function ContentScreen({ locale }: { locale: string }) {
   return (
     <ScrollingPhone
       locale={locale}
-      status={<Layer node={screen.status} />}
-      navigation={<><Layer node={screen.tabs} /><Layer node={screen.indicator} /></>}
     >
       <Layer node={screen.body} />
     </ScrollingPhone>

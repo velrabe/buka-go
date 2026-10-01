@@ -875,7 +875,7 @@ details p {
   #how-it-works .feature-image { width: min(100%, 420px); height: auto; justify-self: center; }
   .time-visual { position: relative; width: 100%; max-width: 420px; height: 491px; justify-self: center; isolation: isolate; overflow: clip; container-type: inline-size; }
   .time-visual-bg { display: block; position: absolute; width: 390px; height: 483px; top: 0; left: 0; max-width: none; }
-  .time-visual-phone { position: absolute; width: 207.40547px; height: 421.19513px; left: 50%; transform: translateX(-50%); bottom: 41.23633px; z-index: auto; }
+  .time-visual-phone { position: absolute; width: 207.40547px; height: auto; left: 50%; transform: translateX(-50%); bottom: 41.23633px; z-index: auto; }
   .time-visual-kid { display: block; position: absolute; width: 248px; height: 178.53316px; left: 0; bottom: 0; max-width: none; z-index: 2; pointer-events: none; }
 }
 #how-it-works .feature-copy { display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 16px; min-width: 0; font-family: "Nunito", sans-serif; }
