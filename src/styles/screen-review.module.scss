@@ -1,0 +1,9 @@
+.page { padding-block: 32px; background: #eeedf3; min-height: 100vh; }
+.page > header { padding: 0 24px 24px; }
+.page h1 { font-size: 28px; margin: 16px 0 8px; }
+.page header p { max-width: 740px; margin: 0; font-size: 16px; }
+.row { display: flex; align-items: flex-start; gap: 32px; overflow-x: auto; padding: 0 24px 48px; }
+.screen { flex: 0 0 375px; width: 375px; }
+.screen h2 { margin: 0 0 16px; font: 600 15px/1.5 var(--font-body); min-height: 45px; }
+.canvas { width: 375px; display: flex; justify-content: center; align-items: flex-start; }
+.canvas *, .canvas *::before, .canvas *::after { animation: none !important; transition: none !important; }

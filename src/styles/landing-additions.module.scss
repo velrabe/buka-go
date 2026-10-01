@@ -1,0 +1,28 @@
+.section { scroll-margin-top: 100px; }
+.pair, .reviews { display: grid; gap: 20px; }
+.card, .plan { min-width: 0; margin: 0; padding: 24px; border: 1px solid var(--color-border); border-radius: 16px; background: var(--color-background); }
+.card h3, .plan h3 { margin: 0 0 16px; font-size: 24px; }
+.card p, .plan p, .note p, .promo p { color: var(--color-muted); }
+.card p:last-child { margin-bottom: 0; }
+.note { margin: 24px 0; max-width: 820px; }
+.note h3 { font-size: 20px; }
+.card blockquote { margin: 0 0 24px; }
+.card blockquote p { color: var(--color-text); font-size: 20px; line-height: 1.5; margin: 0; }
+.reviews .card { display: flex; flex-direction: column; }
+.card figcaption { display: grid; gap: 8px; margin-top: auto; overflow-wrap: anywhere; }
+.card figcaption a, .fine, .links { font-size: 14px; }
+.fine { color: var(--color-muted); line-height: 1.6; margin-top: 20px; }
+.plan { display: flex; flex-direction: column; align-items: flex-start; }
+.plan ul { padding-left: 20px; margin: 0 0 24px; }
+.plan li { margin-bottom: 12px; }
+.plan > a { margin-top: auto; }
+.pro { border-color: var(--color-primary); background: var(--color-primary-soft); }
+.pro h3 span { font-size: 14px; color: white; background: var(--color-primary); border-radius: 20px; padding: 4px 10px; vertical-align: middle; }
+.promo { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; padding: 28px; margin-top: 32px; border-radius: 16px; background: var(--color-primary-soft); }
+.promo h3 { font-size: 28px; margin: 0; }
+.promo > div { max-width: 680px; }
+.promo > a { flex-shrink: 0; }
+.faq { max-width: 860px; }
+.links { display: flex; flex-wrap: wrap; gap: 16px 24px; margin-top: 24px; }
+@media (min-width: 720px) { .pair { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1000px) { .reviews { grid-template-columns: repeat(3, minmax(0, 1fr)); } .promo { flex-direction: row; align-items: center; justify-content: space-between; } }

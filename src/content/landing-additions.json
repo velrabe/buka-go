@@ -1,0 +1,337 @@
+{
+  "ru": {
+    "compatTitle": "Подойдёт ли BukaGo вашей семье?",
+    "parent": "Телефон родителя",
+    "child": "Телефон ребёнка",
+    "ios": "iPhone · iOS 15.1 и новее",
+    "android": "Android · совместимость конкретного устройства смотрите в Google Play.",
+    "permissionsTitle": "Разрешения для работы",
+    "permissions": "Для геопозиции нужен доступ к местоположению. На Android защита от удаления использует специальные возможности и права администратора устройства — с разрешения родителя.",
+    "platformNote": "Минимум iOS указан по App Store. Доступность отдельных функций зависит от платформы и версии приложения.",
+    "reviewsTitle": "Что говорят родители после подключения",
+    "reviewNote": "Короткие фрагменты отзывов в оригинале. Имена сохранены как в App Store; возраст детей в источнике не указан.",
+    "reviewLink": "Отзыв в App Store",
+    "plansTitle": "Начните бесплатно. Выберите подходящий доступ позже",
+    "free": "Бесплатно",
+    "freeIntro": "Создавайте задания для ребёнка вручную.",
+    "freeNote": "Дополнительные функции и лимиты бесплатного доступа уточняются.",
+    "proIntro": "Дополнительные возможности для развития и безопасности.",
+    "proFeatures": [
+      "Умные режимы — управление временем и переключением занятий",
+      "Программы развития — готовые библиотеки заданий",
+      "Геозоны — уведомления о входе и выходе",
+      "Расширенная фильтрация и настройка ограничений",
+      "Семья — приглашайте родителей, родственников и нянь"
+    ],
+    "useFree": "Скачать приложение",
+    "viewPro": "Посмотреть PRO",
+    "planNote": "Набор функций зависит от платформы. Актуальные условия доступа доступны в приложении.",
+    "promoTitle": "Первая неделя PRO за 1 ₽",
+    "promoLead": "Познакомьтесь с дополнительными возможностями BukaGo.",
+    "promoNote": "Проверьте доступность предложения при подключении. Условия продления и сумма следующего списания показываются до оплаты.",
+    "promoCta": "Проверить предложение",
+    "partnersTitle": "BukaGo развивается вместе с партнёрами",
+    "partnerRoles": [
+      "Казахстан · региональный партнёр и получатель локальных платежей.",
+      "Узбекистан · региональный партнёр и получатель локальных платежей."
+    ],
+    "sourceLabel": "Роль партнёров в публичной оферте",
+    "faqTitle": "Вопросы и ответы",
+    "faq": [
+      [
+        "Нужно ли приложение на двух телефонах?",
+        "Да. Установите BukaGo на телефон родителя и телефон ребёнка, затем свяжите устройства по инструкции в приложении."
+      ],
+      [
+        "Какие устройства поддерживаются?",
+        "BukaGo доступен для iPhone и Android. В App Store указан минимум iOS 15.1. Совместимость Android проверяйте в Google Play на устройстве, которое будете подключать."
+      ],
+      [
+        "Что доступно бесплатно?",
+        "Бесплатно можно создавать задания для ребёнка вручную. Умные режимы, программы развития и совместное управление семьёй доступны в PRO. Остальные функции и лимиты уточняются."
+      ],
+      [
+        "Может ли ребёнок удалить приложение?",
+        "На Android предусмотрена защита от удаления через специальные возможности и права администратора. Её нужно включить родителю. Поведение и ограничения на iPhone могут отличаться."
+      ],
+      [
+        "Зачем нужны разрешения?",
+        "Они обеспечивают выбранные функции: например, доступ к местоположению нужен для геопозиции, а специальные возможности Android — для защиты родительского контроля от отключения."
+      ],
+      [
+        "Как защищаются данные и отменяется подписка?",
+        "Обработка данных описана в политике конфиденциальности. Автопродление отключается в магазине или сервисе, где оформлена подписка. Удаление приложения само по себе не отменяет подписку."
+      ]
+    ],
+    "privacy": "Политика конфиденциальности",
+    "terms": "Условия PRO"
+  },
+  "en": {
+    "compatTitle": "Is BukaGo right for your family?",
+    "parent": "Parent’s phone",
+    "child": "Child’s phone",
+    "ios": "iPhone · iOS 15.1 or later",
+    "android": "Android · check device compatibility on Google Play.",
+    "permissionsTitle": "Permissions",
+    "permissions": "Location features need location access. On Android, uninstall protection uses accessibility and device administrator permissions with the parent’s consent.",
+    "platformNote": "The iOS minimum is listed on the App Store. Features vary by platform and app version.",
+    "reviewsTitle": "What parents say after getting started",
+    "reviewNote": "Short excerpts in their original language. Usernames match the App Store; children’s ages are not provided in the source.",
+    "reviewLink": "Review on the App Store",
+    "plansTitle": "Start free. Choose your access later",
+    "free": "Free",
+    "freeIntro": "Create tasks for your child manually.",
+    "freeNote": "Other free features and limits are being confirmed.",
+    "proIntro": "More options for development and safety.",
+    "proFeatures": [
+      "Smart modes — manage time and switch activities",
+      "Development programs — ready-made task libraries",
+      "Geofences — entry and exit notifications",
+      "Advanced filtering and restriction settings",
+      "Family — invite parents, relatives and caregivers"
+    ],
+    "useFree": "Download the app",
+    "viewPro": "Explore PRO",
+    "planNote": "Features depend on the platform. Current access terms are available in the app.",
+    "promoTitle": "Your first week of PRO for ₽1",
+    "promoLead": "Explore BukaGo’s additional features.",
+    "promoNote": "Check whether the offer is available when subscribing. Renewal terms and the next charge are shown before payment.",
+    "promoCta": "Check the offer",
+    "partnersTitle": "BukaGo grows with its partners",
+    "partnerRoles": [
+      "Kazakhstan · regional partner and local payment recipient.",
+      "Uzbekistan · regional partner and local payment recipient."
+    ],
+    "sourceLabel": "Partner roles in the public offer",
+    "faqTitle": "Questions and answers",
+    "faq": [
+      [
+        "Do I need the app on both phones?",
+        "Yes. Install BukaGo on the parent’s and child’s phones, then link the devices using the in-app instructions."
+      ],
+      [
+        "Which devices are supported?",
+        "BukaGo is available for iPhone and Android. The App Store lists iOS 15.1 as the minimum. Check Android compatibility on Google Play using the device you plan to connect."
+      ],
+      [
+        "What is free?",
+        "You can create tasks manually for free. Smart modes, development programs and shared family management require PRO. Other features and limits are being confirmed."
+      ],
+      [
+        "Can my child uninstall the app?",
+        "Android offers uninstall protection using accessibility and device administrator permissions. A parent needs to enable it. Behaviour and restrictions on iPhone may differ."
+      ],
+      [
+        "Why are permissions needed?",
+        "They enable the features you choose: location access supports location tracking, while Android accessibility helps prevent parental controls from being disabled."
+      ],
+      [
+        "How is data protected, and how do I cancel?",
+        "The privacy policy describes data handling. Turn off renewal in the store or service where you subscribed. Deleting the app does not automatically cancel the subscription."
+      ]
+    ],
+    "privacy": "Privacy policy",
+    "terms": "PRO terms"
+  },
+  "kk": {
+    "compatTitle": "BukaGo отбасыңызға сай келе ме?",
+    "parent": "Ата-ананың телефоны",
+    "child": "Баланың телефоны",
+    "ios": "iPhone · iOS 15.1 немесе жаңарақ",
+    "android": "Android · құрылғының үйлесімділігін Google Play-ден тексеріңіз.",
+    "permissionsTitle": "Жұмысқа қажетті рұқсаттар",
+    "permissions": "Геолокация үшін орналасқан жерге қолжетімділік қажет. Android-та жоюдан қорғау ата-ананың рұқсатымен арнайы мүмкіндіктер мен құрылғы әкімшісінің құқықтарын пайдаланады.",
+    "platformNote": "iOS минимумы App Store деректеріне негізделген. Функциялар платформа мен қолданба нұсқасына байланысты.",
+    "reviewsTitle": "Қосылғаннан кейін ата-аналар не дейді?",
+    "reviewNote": "Пікірлердің қысқа үзінділері түпнұсқа тілінде берілген. Авторлардың аттары App Store-дағыдай сақталған; балалардың жасы көрсетілмеген.",
+    "reviewLink": "App Store-дағы пікір",
+    "plansTitle": "Тегін бастаңыз. Қолжетімділік түрін кейін таңдаңыз",
+    "free": "Тегін",
+    "freeIntro": "Балаға тапсырмаларды өзіңіз жасаңыз.",
+    "freeNote": "Тегін қолжетімділіктің басқа мүмкіндіктері мен шектеулері нақтылануда.",
+    "proIntro": "Даму мен қауіпсіздікке арналған қосымша мүмкіндіктер.",
+    "proFeatures": [
+      "Ақылды режимдер — уақытты және әрекеттерді ауыстыруды басқару",
+      "Даму бағдарламалары — дайын тапсырмалар жинақтары",
+      "Геоаймақтар — кіру және шығу туралы хабарландырулар",
+      "Кеңейтілген сүзгілеу және шектеулерді баптау",
+      "Отбасы — ата-аналарды, туыстарды және күтушілерді шақырыңыз"
+    ],
+    "useFree": "Қолданбаны жүктеу",
+    "viewPro": "PRO мүмкіндіктері",
+    "planNote": "Функциялар платформаға байланысты. Қолжетімділіктің өзекті шарттары қолданбада көрсетіледі.",
+    "promoTitle": "PRO-ның алғашқы аптасы — 1 ₽",
+    "promoLead": "BukaGo-ның қосымша мүмкіндіктерімен танысыңыз.",
+    "promoNote": "Қосылғанда ұсыныстың қолжетімділігін тексеріңіз. Ұзарту шарттары мен келесі төлем сомасы төлемге дейін көрсетіледі.",
+    "promoCta": "Ұсынысты тексеру",
+    "partnersTitle": "BukaGo серіктестерімен бірге дамиды",
+    "partnerRoles": [
+      "Қазақстан · өңірлік серіктес және жергілікті төлем алушы.",
+      "Өзбекстан · өңірлік серіктес және жергілікті төлем алушы."
+    ],
+    "sourceLabel": "Жария офертадағы серіктестердің рөлі",
+    "faqTitle": "Сұрақтар мен жауаптар",
+    "faq": [
+      [
+        "Қолданба екі телефонға да қажет пе?",
+        "Иә. BukaGo-ны ата-ананың және баланың телефонына орнатып, қолданбадағы нұсқаулық бойынша құрылғыларды байланыстырыңыз."
+      ],
+      [
+        "Қандай құрылғылар қолдау табады?",
+        "BukaGo iPhone және Android үшін қолжетімді. App Store-да iOS 15.1 минимумы көрсетілген. Android үйлесімділігін қосылатын құрылғыда Google Play арқылы тексеріңіз."
+      ],
+      [
+        "Тегін не қолжетімді?",
+        "Балаға тапсырмаларды қолмен тегін жасауға болады. Ақылды режимдер, даму бағдарламалары және отбасымен бірге басқару PRO ішінде қолжетімді. Басқа мүмкіндіктер мен шектеулер нақтылануда."
+      ],
+      [
+        "Бала қолданбаны жоя ала ма?",
+        "Android-та арнайы мүмкіндіктер мен әкімші құқықтары арқылы жоюдан қорғау қарастырылған. Оны ата-ана қосуы керек. iPhone-дағы шектеулер өзгеше болуы мүмкін."
+      ],
+      [
+        "Рұқсаттар не үшін қажет?",
+        "Олар таңдалған функцияларды іске қосады: орналасқан жерге қолжетімділік геолокацияға, Android арнайы мүмкіндіктері ата-ана бақылауын өшіруден қорғауға қажет."
+      ],
+      [
+        "Деректер қалай қорғалады және жазылым қалай тоқтатылады?",
+        "Деректерді өңдеу құпиялылық саясатында сипатталған. Автоматты ұзартуды жазылым рәсімделген дүкенде немесе сервисте өшіріңіз. Қолданбаны жою жазылымды тоқтатпайды."
+      ]
+    ],
+    "privacy": "Құпиялылық саясаты",
+    "terms": "PRO шарттары"
+  },
+  "uz": {
+    "compatTitle": "BukaGo oilangizga mos keladimi?",
+    "parent": "Ota-onaning telefoni",
+    "child": "Bolaning telefoni",
+    "ios": "iPhone · iOS 15.1 yoki yangiroq",
+    "android": "Android · qurilma mosligini Google Play orqali tekshiring.",
+    "permissionsTitle": "Kerakli ruxsatlar",
+    "permissions": "Joylashuv funksiyalari uchun joylashuvga ruxsat kerak. Android’da o‘chirishdan himoya ota-ona roziligi bilan maxsus imkoniyatlar va qurilma administratori huquqlaridan foydalanadi.",
+    "platformNote": "iOS minimumi App Store ma’lumotiga asoslangan. Funksiyalar platforma va ilova versiyasiga bog‘liq.",
+    "reviewsTitle": "Ilovani ulagan ota-onalar nima deydi?",
+    "reviewNote": "Sharhlardan qisqa parchalar asl tilida berilgan. Ismlar App Store’dagidek saqlangan; bolalarning yoshi ko‘rsatilmagan.",
+    "reviewLink": "App Store’dagi sharh",
+    "plansTitle": "Bepul boshlang. Kerakli imkoniyatlarni keyin tanlang",
+    "free": "Bepul",
+    "freeIntro": "Farzandingiz uchun vazifalarni qo‘lda yarating.",
+    "freeNote": "Boshqa bepul imkoniyatlar va cheklovlar aniqlashtirilmoqda.",
+    "proIntro": "Rivojlanish va xavfsizlik uchun qo‘shimcha imkoniyatlar.",
+    "proFeatures": [
+      "Aqlli rejimlar — vaqt va mashg‘ulotlar almashinuvini boshqarish",
+      "Rivojlanish dasturlari — tayyor vazifalar to‘plamlari",
+      "Geozonalar — kirish va chiqish bildirishnomalari",
+      "Kengaytirilgan filtrlash va cheklovlarni sozlash",
+      "Oila — ota-onalar, qarindoshlar va enagalarni taklif qiling"
+    ],
+    "useFree": "Ilovani yuklab olish",
+    "viewPro": "PRO imkoniyatlari",
+    "planNote": "Funksiyalar platformaga bog‘liq. Amaldagi shartlar ilovada ko‘rsatiladi.",
+    "promoTitle": "PRO’ning birinchi haftasi — 1 ₽",
+    "promoLead": "BukaGo’ning qo‘shimcha imkoniyatlarini sinab ko‘ring.",
+    "promoNote": "Ulanishda taklif mavjudligini tekshiring. Uzaytirish shartlari va keyingi to‘lov summasi to‘lovdan oldin ko‘rsatiladi.",
+    "promoCta": "Taklifni tekshirish",
+    "partnersTitle": "BukaGo hamkorlar bilan rivojlanadi",
+    "partnerRoles": [
+      "Qozog‘iston · hududiy hamkor va mahalliy to‘lovlarni qabul qiluvchi.",
+      "O‘zbekiston · hududiy hamkor va mahalliy to‘lovlarni qabul qiluvchi."
+    ],
+    "sourceLabel": "Ommaviy ofertada hamkorlar vazifalari",
+    "faqTitle": "Savollar va javoblar",
+    "faq": [
+      [
+        "Ilova ikkala telefonda ham kerakmi?",
+        "Ha. BukaGo’ni ota-ona va bolaning telefoniga o‘rnating, so‘ng ilovadagi ko‘rsatma asosida qurilmalarni bog‘lang."
+      ],
+      [
+        "Qaysi qurilmalar qo‘llab-quvvatlanadi?",
+        "BukaGo iPhone va Android uchun mavjud. App Store’da eng kam versiya iOS 15.1 deb ko‘rsatilgan. Android mosligini ulanadigan qurilmada Google Play orqali tekshiring."
+      ],
+      [
+        "Nimalar bepul?",
+        "Vazifalarni qo‘lda bepul yaratish mumkin. Aqlli rejimlar, rivojlanish dasturlari va oilaviy boshqaruv PRO tarkibida. Boshqa imkoniyatlar va cheklovlar aniqlashtirilmoqda."
+      ],
+      [
+        "Bola ilovani o‘chirishi mumkinmi?",
+        "Android’da maxsus imkoniyatlar va administrator huquqlari orqali o‘chirishdan himoya bor. Uni ota-ona yoqishi kerak. iPhone’dagi cheklovlar farq qilishi mumkin."
+      ],
+      [
+        "Ruxsatlar nima uchun kerak?",
+        "Ular tanlangan funksiyalarni ishlatadi: joylashuv ruxsati geolokatsiya uchun, Android maxsus imkoniyatlari esa ota-ona nazoratini o‘chirib qo‘yishdan himoya uchun kerak."
+      ],
+      [
+        "Ma’lumotlar qanday himoyalanadi va obuna qanday bekor qilinadi?",
+        "Ma’lumotlarni qayta ishlash maxfiylik siyosatida yozilgan. Avtomatik uzaytirishni obuna rasmiylashtirilgan do‘kon yoki servisda o‘chiring. Ilovani o‘chirish obunani bekor qilmaydi."
+      ]
+    ],
+    "privacy": "Maxfiylik siyosati",
+    "terms": "PRO shartlari"
+  },
+  "az": {
+    "compatTitle": "BukaGo ailənizə uyğundurmu?",
+    "parent": "Valideynin telefonu",
+    "child": "Uşağın telefonu",
+    "ios": "iPhone · iOS 15.1 və ya daha yeni",
+    "android": "Android · cihazın uyğunluğunu Google Play-də yoxlayın.",
+    "permissionsTitle": "Lazım olan icazələr",
+    "permissions": "Məkan funksiyaları üçün məkan icazəsi lazımdır. Android-də silinmədən qoruma valideynin razılığı ilə xüsusi imkanlar və cihaz administratoru hüquqlarından istifadə edir.",
+    "platformNote": "Minimum iOS versiyası App Store məlumatına əsaslanır. Funksiyalar platforma və tətbiq versiyasından asılıdır.",
+    "reviewsTitle": "Qoşulduqdan sonra valideynlər nə deyir?",
+    "reviewNote": "Rəylərdən qısa parçalar orijinal dildə verilib. Adlar App Store-dakı kimi saxlanılıb; uşaqların yaşı göstərilməyib.",
+    "reviewLink": "App Store-da rəy",
+    "plansTitle": "Pulsuz başlayın. Uyğun imkanları sonra seçin",
+    "free": "Pulsuz",
+    "freeIntro": "Övladınız üçün tapşırıqları əl ilə yaradın.",
+    "freeNote": "Digər pulsuz imkanlar və limitlər dəqiqləşdirilir.",
+    "proIntro": "İnkişaf və təhlükəsizlik üçün əlavə imkanlar.",
+    "proFeatures": [
+      "Ağıllı rejimlər — vaxtı və fəaliyyət dəyişikliklərini idarə edin",
+      "İnkişaf proqramları — hazır tapşırıq kitabxanaları",
+      "Geozonalar — giriş və çıxış bildirişləri",
+      "Genişləndirilmiş filtrləmə və məhdudiyyət parametrləri",
+      "Ailə — valideynləri, qohumları və dayələri dəvət edin"
+    ],
+    "useFree": "Tətbiqi yükləyin",
+    "viewPro": "PRO imkanları",
+    "planNote": "Funksiyalar platformadan asılıdır. Cari şərtlər tətbiqdə göstərilir.",
+    "promoTitle": "PRO-nun ilk həftəsi — 1 ₽",
+    "promoLead": "BukaGo-nun əlavə imkanları ilə tanış olun.",
+    "promoNote": "Qoşularkən təklifin mövcudluğunu yoxlayın. Yenilənmə şərtləri və növbəti ödəniş məbləği ödənişdən əvvəl göstərilir.",
+    "promoCta": "Təklifi yoxlayın",
+    "partnersTitle": "BukaGo tərəfdaşlarla birlikdə inkişaf edir",
+    "partnerRoles": [
+      "Qazaxıstan · regional tərəfdaş və yerli ödənişləri qəbul edən.",
+      "Özbəkistan · regional tərəfdaş və yerli ödənişləri qəbul edən."
+    ],
+    "sourceLabel": "İctimai ofertada tərəfdaşların rolu",
+    "faqTitle": "Suallar və cavablar",
+    "faq": [
+      [
+        "Tətbiq hər iki telefonda olmalıdırmı?",
+        "Bəli. BukaGo-nu valideynin və uşağın telefonuna quraşdırın, sonra tətbiqdəki təlimata əsasən cihazları əlaqələndirin."
+      ],
+      [
+        "Hansı cihazlar dəstəklənir?",
+        "BukaGo iPhone və Android üçün mövcuddur. App Store minimum iOS 15.1 tələb edir. Android uyğunluğunu qoşacağınız cihazda Google Play vasitəsilə yoxlayın."
+      ],
+      [
+        "Nələr pulsuzdur?",
+        "Tapşırıqları əl ilə pulsuz yaratmaq olar. Ağıllı rejimlər, inkişaf proqramları və birgə ailə idarəetməsi PRO-da mövcuddur. Digər imkanlar və limitlər dəqiqləşdirilir."
+      ],
+      [
+        "Uşaq tətbiqi silə bilərmi?",
+        "Android-də xüsusi imkanlar və administrator hüquqları ilə silinmədən qoruma var. Onu valideyn aktivləşdirməlidir. iPhone-dakı məhdudiyyətlər fərqlənə bilər."
+      ],
+      [
+        "İcazələr nə üçün lazımdır?",
+        "Onlar seçilmiş funksiyaları təmin edir: məkan icazəsi geolokasiya üçün, Android xüsusi imkanları isə valideyn nəzarətinin söndürülməsindən qorumaq üçün lazımdır."
+      ],
+      [
+        "Məlumatlar necə qorunur və abunə necə ləğv edilir?",
+        "Məlumatların emalı məxfilik siyasətində təsvir olunur. Avtomatik yenilənməni abunə olduğunuz mağaza və ya servisdə söndürün. Tətbiqi silmək abunəni ləğv etmir."
+      ]
+    ],
+    "privacy": "Məxfilik siyasəti",
+    "terms": "PRO şərtləri"
+  }
+}

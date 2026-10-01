@@ -3,6 +3,7 @@ import { blogPath } from "@/lib/content";
 import media from "@/content/media.json";
 import { StoreLinks } from "./StoreLinks";
 import { TaskDemos } from "./TaskDemos";
+import { LandingAdditions } from "./LandingAdditions";
 import { ContentScreen } from "./ContentScreen";
 
 export function Landing({
@@ -153,6 +154,7 @@ export function Landing({
           ))}
         </div>
       </section>
+      <LandingAdditions locale={locale} messages={m} />
       <section id="download" className="section section-tint">
         <div className="container download-grid">
           <div>

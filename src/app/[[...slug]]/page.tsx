@@ -17,12 +17,13 @@ import { Landing } from "@/components/Landing";
 import { Blog, Content } from "@/components/Blog";
 import { Analytics } from "@/components/Analytics";
 import { Survey } from "@/components/Survey";
+import { ScreenReview } from "@/components/ScreenReview";
 import survey from "@/content/survey.json";
 
 type Props = { params: Promise<{ slug?: string[] }> };
 export const dynamicParams = false;
 export function generateStaticParams() {
-  return routes.map((path) => ({ slug: path.split("/").filter(Boolean) }));
+  return [...routes, "/screens"].map((path) => ({ slug: path.split("/").filter(Boolean) }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -31,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     locale = localeFor(path),
     m = messages[locale],
     page = getPage(path);
-  const title =
+  const title = path === "/screens" ? "Экраны для сверки | BukaGo" :
     path === "/survey"
       ? `${survey.title} | BukaGo`
       : page
@@ -74,6 +75,7 @@ export default async function Page({ params }: Props) {
     lang = languageFor(locale);
   const home = isHome(path),
     blog = isBlog(path);
+  if (path === "/screens") return <ScreenReview />;
   if (!home && !blog && !page && path !== "/survey") notFound();
   return (
     <>

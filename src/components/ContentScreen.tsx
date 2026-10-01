@@ -88,3 +88,12 @@ export function ContentScreen({ locale }: { locale: string }) {
     </ScrollingPhone>
   );
 }
+
+/** The same screen layers, expanded for static visual review. */
+export function StaticContentScreen() {
+  return <div className={styles.phone} style={{ height: "auto" }}>
+    <div className={styles.status}><Layer node={screen.status} /></div>
+    <Layer node={screen.body} />
+    <div className={styles.navigation}><Layer node={screen.tabs} /><Layer node={screen.indicator} /></div>
+  </div>;
+}
