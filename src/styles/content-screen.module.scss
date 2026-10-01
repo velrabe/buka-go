@@ -87,3 +87,9 @@
 .phone [data-mode-disabled="true"] > div { pointer-events: none; }
 .phone [data-mode-disabled="true"] > div { background: rgba(17,24,39,.05) !important; border-color: transparent !important; }
 .phone [data-mode-disabled="true"] > div > div { filter: grayscale(1); opacity: .5; }
+
+@media (max-width: 560px) {
+  :global(.time-visual-phone) .shell { width: 100%; padding: 0; border: 0; outline: 4px solid #9279e833; border-radius: 27px; box-shadow: none; }
+  :global(.time-visual-phone) .viewport { border-radius: 27px; aspect-ratio: 207.40547 / 421.19513; }
+  :global(.time-visual-phone) .pause { position: absolute; right: 0; top: 100%; padding: 4px 8px; margin: 4px 0 0; min-height: 28px; font-size: 10px; z-index: 3; }
+}
