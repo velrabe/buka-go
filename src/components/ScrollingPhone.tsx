@@ -1,6 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
+import { sampleContentDemo, DEMO_DURATION } from "@/lib/content-demo-timeline";
+import { FloatingTimeCard, ModeConfirmation, MinecraftCard } from "./ContentDemoScenes";
 import styles from "@/styles/content-screen.module.scss";
 
 const labels: Record<string, { pause: string; play: string; screen: string }> = {
@@ -19,6 +21,11 @@ export function ScrollingPhone({ children, status, navigation, locale }: {
   const [paused, setPaused] = useState(false);
   const [inView, setInView] = useState(false);
   const [tabVisible, setTabVisible] = useState(true);
+  const [reducedMotion, setReducedMotion] = useState(false);
+  const [elapsed, setElapsed] = useState(0);
+  const clock = useRef(0);
+  const frame = sampleContentDemo(elapsed);
+  const running = !paused && inView && tabVisible && !reducedMotion;
   const text = labels[locale] || labels.ru;
 
   useEffect(() => {
@@ -27,30 +34,66 @@ export function ScrollingPhone({ children, status, navigation, locale }: {
     const resize = new ResizeObserver(([entry]) => setScale(entry.contentRect.width / 375));
     const visibility = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), { threshold: 0.1 });
     const onVisibility = () => setTabVisible(!document.hidden);
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const onMotion = () => setReducedMotion(motion.matches);
+    onMotion();
+    motion.addEventListener("change", onMotion);
     resize.observe(element);
     visibility.observe(element);
     onVisibility();
     document.addEventListener("visibilitychange", onVisibility);
     return () => {
+      motion.removeEventListener("change", onMotion);
       resize.disconnect();
       visibility.disconnect();
       document.removeEventListener("visibilitychange", onVisibility);
     };
   }, []);
 
+  useEffect(() => {
+    if (!running) return;
+    let previous: number | undefined;
+    let request = 0;
+    const tick = (now: number) => {
+      if (previous !== undefined) clock.current = (clock.current + (now - previous) / 1000) % DEMO_DURATION;
+      previous = now;
+      setElapsed(clock.current);
+      request = requestAnimationFrame(tick);
+    };
+    request = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(request);
+  }, [running]);
+
+  const floatingScale = Math.min(0.8, scale * 0.94);
+  const confirmation = frame.modal === "confirm";
   return (
     <div className={styles.demo}>
-      <div className={styles.shell} data-paused={paused || !inView || !tabVisible}>
-        <div className={styles.viewport} ref={viewport}>
-          <div className={styles.phone} style={{ transform: `scale(${scale})` }}>
-            <div className={styles.status} aria-hidden="true">{status}</div>
-            <div className={styles.scrollWindow} tabIndex={0} role="region" aria-label={text.screen}>
-              <div className={styles.track} aria-hidden="true">
-                <div className={styles.copy}>{children}</div>
-                <div className={`${styles.copy} ${styles.duplicate}`}>{children}</div>
+      <div className={styles.stage} data-press={frame.press} style={{ "--tap": frame.tap } as CSSProperties}>
+        <div className={styles.shell}>
+          <div className={styles.viewport} ref={viewport}>
+            <div className={styles.phone} style={{ transform: `scale(${scale})` }}>
+              <div className={styles.status} aria-hidden="true">{status}</div>
+              <div className={styles.scrollWindow} tabIndex={0} role="region" aria-label={text.screen}>
+                <div className={styles.track} aria-hidden="true" style={{ transform: `translateY(${-frame.scroll}px)` }}>
+                  <div className={styles.copy}>{children}</div>
+                </div>
+                <div className={styles.detail} aria-hidden="true" style={{
+                  opacity: frame.card, visibility: frame.card > 0 ? "visible" : "hidden",
+                  transform: `translateX(${(1 - frame.card) * 100}%)`,
+                }}><MinecraftCard frame={frame} /></div>
               </div>
+              <div className={styles.navigation} aria-hidden="true">{navigation}</div>
             </div>
-            <div className={styles.navigation} aria-hidden="true">{navigation}</div>
+          </div>
+        </div>
+        <div className={styles.floating} data-side={frame.modal === "add" ? "right" : "left"} aria-hidden="true" style={{
+          width: 351 * floatingScale,
+          opacity: frame.modalOpacity,
+          visibility: frame.modal ? "visible" : "hidden",
+          transform: `translateY(${(1 - frame.modalOpacity) * 16}px)`,
+        }}>
+          <div style={{ width: 351, transform: `scale(${floatingScale})`, transformOrigin: "top left" }}>
+            {confirmation ? <ModeConfirmation frame={frame} /> : <FloatingTimeCard frame={frame} />}
           </div>
         </div>
       </div>

@@ -7,7 +7,7 @@
     "build": "next build",
     "preview": "node scripts/serve.mjs",
     "typecheck": "tsc --noEmit",
-    "check": "npm run typecheck && node scripts/verify.mjs"
+    "check": "npm run typecheck && node scripts/verify.mjs && node scripts/check-content-demo.mjs"
   },
   "dependencies": {
     "next": "16.3.8",

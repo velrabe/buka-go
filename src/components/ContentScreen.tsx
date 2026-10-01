@@ -11,6 +11,12 @@ type ScreenNode = {
   asset?: { src: string; width: number; height: number; left: number; top: number };
 };
 
+const demoTargets: Record<string, string> = {
+  "3736:57391": "add",
+  "2829:83623": "quick",
+  "2829:71940": "minecraft",
+};
+
 function Layer({ node }: { node: ScreenNode }) {
   // Figma can trim text bounds below the font size. Keep the layout slot,
   // but center a full line box instead of clipping the glyphs to those bounds.
@@ -25,7 +31,7 @@ function Layer({ node }: { node: ScreenNode }) {
     } as CSSProperties : {}),
   };
   return (
-    <div className={styles.layer} style={style} data-figma-node={node.id}>
+    <div className={styles.layer} style={style} data-figma-node={node.id} data-demo-target={demoTargets[node.id]}>
       {node.asset ? (
         <img
           className={styles.asset}
