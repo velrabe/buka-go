@@ -3,6 +3,7 @@ import { blogPath } from "@/lib/content";
 import media from "@/content/media.json";
 import { StoreLinks } from "./StoreLinks";
 import { TaskDemos } from "./TaskDemos";
+import { ContentScreen } from "./ContentScreen";
 
 export function Landing({
   locale,
@@ -38,15 +39,15 @@ export function Landing({
       <section id="how-it-works" className="section">
         <div className="container feature-list">
           {Object.values(m.control.items).map((item, i) => (
-            <article className="feature" key={i}>
-              <img
+            <article className={i === 0 ? "feature feature-time" : "feature"} key={i}>
+              {i === 0 ? <ContentScreen locale={locale} /> : <img
                 className="feature-image"
                 src={media.features[i]}
                 alt={item.images[0]}
                 width="385"
                 height="385"
                 loading="lazy"
-              />
+              />}
               <div>
                 <h2>{item.title}</h2>
                 <p className="lead">{item.text}</p>
