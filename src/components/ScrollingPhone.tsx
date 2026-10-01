@@ -76,7 +76,7 @@ export function ScrollingPhone({ children, status, navigation, locale }: {
               <div className={styles.status} aria-hidden="true">{status}</div>
               <div className={styles.scrollWindow} tabIndex={0} role="region" aria-label={text.screen}>
                 <div className={styles.track} aria-hidden="true" style={{ transform: `translateY(${-frame.scroll}px)` }}>
-                  <div className={styles.copy}>{children}</div>
+                  <div className={styles.copy}><ContentDemoContext.Provider value={frame.resetOverview ? sampleContentDemo(0) : frame}>{children}</ContentDemoContext.Provider></div>
                 </div>
                 <div className={styles.detail} aria-hidden="true" style={{
                   opacity: frame.card, visibility: frame.card > 0 ? "visible" : "hidden",

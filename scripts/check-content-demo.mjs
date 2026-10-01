@@ -44,7 +44,14 @@ assert.equal(sample(22).modeStart, "17:30");
 assert.equal(sample(22).modeEnd, "18:00");
 assert.equal(sample(0).dailyLimit, 240);
 assert.equal(sample(12).dailyLimit, 255);
-assert.ok(sample(34.5).minutes > 35 && sample(34.5).minutes < 40);
+assert.equal(sample(31.8).resetOverview, true);
+assert.equal(sample(31.8).card, 1, "Reset background only while fully covered");
+assert.equal(sample(31.8).minutes, 40, "Keep foreground card unchanged during reset");
+assert.equal(sample(32.2).minutes, 35);
+assert.equal(sample(34.5).minutes, 35);
+assert.ok(sample(6.7).presetBlend > 0 && sample(6.7).presetBlend < 1);
+assert.ok(sample(18.1).presetBlend > 0 && sample(18.1).presetBlend < 1);
+assert.ok(sample(8.7).wheelSwipeOpacity > .9);
 assert.equal(sample(35).dailyLimit, 240);
 assert.equal(sample(35).minutes, 35);
 for (const [a, b] of [[0,11.59], [12.4,22.59], [24,32.19]]) {

@@ -97,3 +97,7 @@
 .stage [data-demo-target="add"] { --guide-radius: 999px; }
 .stage [data-demo-target="quick"] { --guide-radius: 24px; }
 .stage [data-demo-target="minecraft"] { --guide-radius: 20px; }
+
+.stage[data-focus="add"] [data-demo-target="add"],
+.stage[data-focus="quick"] [data-demo-target="quick"],
+.stage[data-focus="minecraft"] [data-demo-target="minecraft"] { z-index: 8; }

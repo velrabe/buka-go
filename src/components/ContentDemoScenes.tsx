@@ -18,7 +18,7 @@ const modes = [
 function tapStyle(frame: ContentDemoFrame, target: string): CSSProperties {
   const active = frame.focus === target;
   const press = active ? frame.tap : 0;
-  return { "--guide-strength": active ? frame.focusAmount : 0, "--guide-press": press,
+  return { zIndex: active && frame.focusAmount > 0 ? 8 : undefined, "--guide-strength": active ? frame.focusAmount : 0, "--guide-press": press,
     filter: press > 0 ? `brightness(${1 + press * (target === "submit" ? .12 : -.1)})` : undefined,
   } as CSSProperties;
 }
@@ -54,7 +54,7 @@ export function FloatingTimeCard({ frame }: { frame: ContentDemoFrame }) {
       <div className={styles.carousel}>
         <div className={styles.modeTrack} style={{ transform: `translateX(${135.5 - index * 80}px)` }}>
           {modes.map((mode, i) => <div key={mode.name} className={styles.mode} data-selected={i === selected}
-            style={{ ...tapStyle(frame, i === 3 ? "mode" : "other"), "--mode-color": mode.color } as CSSProperties}><Icon index={i} /><span>{mode.name}</span></div>)}
+            style={{ "--mode-color": mode.color } as CSSProperties}><Icon index={i} /><span>{mode.name}</span></div>)}
         </div>
         <svg className={styles.swipe} viewBox="0 0 351 95" aria-hidden="true" style={{ opacity: frame.swipeOpacity }}>
           <path d={`M ${255 - frame.selection * (quick ? 80 : 160) + 44 * Math.sin(frame.selection * Math.PI)} 65 H ${255 - frame.selection * (quick ? 80 : 160)}`} fill="none" stroke="#9279e8" strokeWidth="8" strokeLinecap="round" opacity=".3" />
@@ -66,10 +66,14 @@ export function FloatingTimeCard({ frame }: { frame: ContentDemoFrame }) {
       <div className={styles.presets}>
         {(quick ? ["на 15 мин", "на 30 мин", "на 1 час", "До завтра", "Указать свое"] :
           ["15 мин", "30 мин", "1 час", "До завтра", "Указать свое"]).map((label, i) =>
-          <span key={label} data-selected={quick ? i === (frame.presetPress > 0 ? 1 : 0) : i === (frame.custom ? 4 : 0)} style={tapStyle(frame, i === (quick ? 1 : 4) ? (quick ? "preset" : "custom") : "other")}>{label}</span>)}
+          <span key={label} data-selected={quick ? i === (frame.presetPress > 0 ? 1 : 0) : i === (frame.custom ? 4 : 0)} style={{ ...tapStyle(frame, i === (quick ? 1 : 4) ? (quick ? "preset" : "custom") : "other"), "--selection-weight": i === 0 ? 1 - frame.presetBlend : i === (quick ? 1 : 4) ? frame.presetBlend : 0 } as CSSProperties}><span>{label}</span></span>)}
       </div>
-      {!quick && <div className={styles.picker} style={{ ...tapStyle(frame, "wheel"), height: 180 * frame.picker, borderWidth: frame.picker }}>
+      {!quick && <div className={styles.picker} style={{ height: 180 * frame.picker, borderWidth: frame.picker }}>
         <div className={styles.wheels} style={{ height: 180 * frame.picker }}><div className={styles.selectedLine} /><Wheel value={hours} maximum={24} /><Wheel value={minutes} maximum={60} /></div>
+        <svg className={styles.wheelSwipe} viewBox="0 0 327 180" aria-hidden="true" style={{ opacity: frame.wheelSwipeOpacity }}>
+          <path d={`M 196 ${140 - frame.wheel * 100 + 40 * Math.sin(frame.wheel * Math.PI)} V ${140 - frame.wheel * 100}`} fill="none" stroke="#9279e8" strokeWidth="8" strokeLinecap="round" opacity=".3" />
+          <circle cx="196" cy={140 - frame.wheel * 100} r="7" fill="#9279e8" stroke="white" strokeWidth="2" />
+        </svg>
       </div>}
     </div>
     {<div className={styles.modalBottom}><div className={styles.action} style={tapStyle(frame, "submit")}>

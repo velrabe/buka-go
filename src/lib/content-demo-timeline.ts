@@ -16,7 +16,8 @@ const actions = [
 export function sampleContentDemo(seconds: number) {
   const remainder = seconds % DEMO_DURATION;
   const t = remainder < 0 ? remainder + DEMO_DURATION : remainder;
-  const reset = t >= 34.5;
+  const reset = t >= 32.2;
+  const resetOverview = t >= 31.8;
   const action = actions.find(([a,,b]) => between(t,a,b));
   const focus = action?.[3] ?? "";
   const focusAmount = action ? ease(progress(t, action[0], action[0] + 1)) * (1 - ease(progress(t, action[2] - .15, action[2]))) : 0;
@@ -28,6 +29,8 @@ export function sampleContentDemo(seconds: number) {
   const selection = ease(modal === "add" ? progress(t,4.1,5.1) : progress(t,15.5,16.5));
   const swipeOpacity = modal === "add" ? reveal(t,3.95,5.35) : modal === "quick" ? reveal(t,15.35,16.75) : 0;
   const custom = modal === "add" && t >= 6.4;
+  const presetBlend = ease(modal === "quick" ? progress(t,17.8,18.4) : progress(t,6.4,7));
+  const wheelSwipeOpacity = modal === "add" ? reveal(t,8,9.95) : 0;
   const picker = modal === "add" ? ease(progress(t,6.7,7.2)) : 0;
   const wheel = ease(progress(t,8.2,9.7));
   const presetPress = progress(t,17.8,18.1);
@@ -37,10 +40,10 @@ export function sampleContentDemo(seconds: number) {
   else if (between(t,22.6,32.2)) scroll = 300 + 203 * ease(progress(t,22.6,23.4));
   else if (between(t,32.2,33.2)) scroll = 503 * (1 - ease(progress(t,32.2,33.2)));
   const card = reveal(t,25.3,32.2);
-  const consumption = ease(progress(t,27,30)) * (1 - ease(progress(t,34,35)));
+  const consumption = reset ? 0 : ease(progress(t,27,30));
   const added = Math.round(consumption * 5);
   const activated = !reset && t >= 21.8;
-  return { t, scroll, press, tap, focus, focusAmount, custom, picker, swipeOpacity,
+  return { t, scroll, press, tap, focus, focusAmount, custom, picker, swipeOpacity, presetBlend, wheelSwipeOpacity, resetOverview,
     modal, modalOpacity, backgroundDim, selection, wheel, presetPress, confirmPress, card, consumption,
     minutes: 35 + added, gamesMinutes: 30 + added, clock: `17:${30 + added}`,
     totalMinutes: 135 + added, categoryGames: 35 + added,
