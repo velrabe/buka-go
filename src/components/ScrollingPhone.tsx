@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { demoMotion } from "@/lib/demo-motion";
 import { ContentDemoContext } from "./ContentDemoState";
-import { sampleContentDemo, DEMO_DURATION } from "@/lib/content-demo-timeline";
+import { sampleContentDemo, sampleAddTimeDemo, ADD_TIME_DURATION } from "@/lib/content-demo-timeline";
 import { FloatingTimeCard, ModeConfirmation, MinecraftCard } from "./ContentDemoScenes";
 import styles from "@/styles/content-screen.module.scss";
 
@@ -25,7 +25,7 @@ export function ScrollingPhone({ children, locale }: {
   const [reducedMotion, setReducedMotion] = useState(false);
   const [elapsed, setElapsed] = useState(0);
   const clock = useRef(0);
-  const frame = sampleContentDemo(elapsed);
+  const frame = sampleAddTimeDemo(elapsed);
   const running = inView && tabVisible && !reducedMotion;
   const text = labels[locale] || labels.ru;
 
@@ -56,7 +56,7 @@ export function ScrollingPhone({ children, locale }: {
     let previous: number | undefined;
     let request = 0;
     const tick = (now: number) => {
-      if (previous !== undefined) clock.current = (clock.current + (now - previous) / 1000) % DEMO_DURATION;
+      if (previous !== undefined) clock.current = (clock.current + (now - previous) / 1000) % ADD_TIME_DURATION;
       previous = now;
       setElapsed(clock.current);
       request = requestAnimationFrame(tick);

@@ -49,3 +49,17 @@ export function sampleContentDemo(seconds: number) {
   };
 }
 export type ContentDemoFrame = ReturnType<typeof sampleContentDemo>;
+
+// Landing shows only the original add-time interaction; full scenes remain for review.
+export const ADD_TIME_DURATION = 14;
+export function sampleAddTimeDemo(seconds: number): ContentDemoFrame {
+  const t = ((seconds % ADD_TIME_DURATION) + ADD_TIME_DURATION) % ADD_TIME_DURATION;
+  const frame = sampleContentDemo(Math.min(t, 11.6));
+  return { ...frame, t, scroll: 0, card: 0, consumption: 0,
+    modal: t < 11.6 ? frame.modal : null,
+    modalOpacity: t < 11.6 ? frame.modalOpacity : 0,
+    backgroundDim: t < 11.6 ? frame.backgroundDim : 0,
+    focus: t < 11.6 ? frame.focus : "", press: t < 11.6 ? frame.press : "",
+    tap: t < 11.6 ? frame.tap : 0, focusAmount: t < 11.6 ? frame.focusAmount : 0,
+  };
+}

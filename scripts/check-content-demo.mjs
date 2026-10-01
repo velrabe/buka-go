@@ -6,7 +6,7 @@ const compile = (source) => ts.transpileModule(source, { compilerOptions: { modu
 const moduleUrl = (source) => `data:text/javascript;base64,${Buffer.from(compile(source)).toString("base64")}`;
 const motionUrl = moduleUrl(readFileSync(new URL("../src/lib/demo-motion.ts", import.meta.url), "utf8"));
 const source = readFileSync(new URL("../src/lib/content-demo-timeline.ts", import.meta.url), "utf8").replace('"./demo-motion"', JSON.stringify(motionUrl));
-const { sampleContentDemo: sample, DEMO_DURATION } = await import(moduleUrl(source));
+const { sampleContentDemo: sample, DEMO_DURATION, sampleAddTimeDemo, ADD_TIME_DURATION } = await import(moduleUrl(source));
 
 assert.equal(DEMO_DURATION, 36);
 assert.equal(sample(1).focus, "add");
@@ -112,14 +112,26 @@ assert.equal(smoothMotion(0), 0);
 assert.equal(smoothMotion(1), 1);
 assert.ok(pressMotion(2.2, 2, 2.3) > 0, "Press must release gradually before modal entry");
 for (const width of [320, 375, 390, 420, 460]) {
-  const phoneWidth = width === 460 ? 200 : 207.40547;
+  const phoneWidth = Math.min(280, width - 64);
   const phoneLeft = (width - phoneWidth) / 2;
   const modalWidth = 351 * .68;
   const modalLeft = (width - modalWidth) / 2;
   assert.ok(modalLeft >= 15 && modalLeft + modalWidth <= width - 15, "Centered dialog keeps page margins");
-  assert.ok(phoneLeft + phoneWidth + 40 <= width, "Shifted phone stays inside composition");
+  assert.ok(phoneLeft + phoneWidth + 24 <= width, "Shifted phone stays inside composition");
   for (const time of [2.3, 2.5, 2.75, 11.3, 11.5, 11.6]) {
-    const shift = sample(time).backgroundDim * 40;
-    assert.ok(shift >= 0 && shift <= 40, "Device shift follows modal dimming without overshoot");
+    const shift = sampleAddTimeDemo(time).backgroundDim * 24;
+    assert.ok(shift >= 0 && shift <= 24, "Device shift follows modal dimming without overshoot");
   }
+}
+
+assert.equal(ADD_TIME_DURATION, 14);
+assert.equal(sampleAddTimeDemo(3).modal, "add");
+assert.equal(sampleAddTimeDemo(12).dailyLimit, 255);
+assert.deepEqual(sampleAddTimeDemo(14), sampleAddTimeDemo(0));
+for (let t = 0; t < ADD_TIME_DURATION; t += .1) {
+  const frame = sampleAddTimeDemo(t);
+  assert.ok(frame.modal === null || frame.modal === "add");
+  assert.equal(frame.scroll, 0);
+  assert.equal(frame.card, 0);
+  assert.equal(frame.activated, false);
 }

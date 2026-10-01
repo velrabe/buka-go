@@ -103,9 +103,9 @@
 .stage[data-focus="minecraft"] [data-demo-target="minecraft"] { z-index: 8; }
 
 /* The device moves independently; dialogs stay centered in the composition. */
-.shell { transform: translateX(calc(var(--modal-progress, 0) * 40px)); }
+.shell { transform: translateX(calc(var(--modal-progress, 0) * 24px)); }
 .dialogPerspective { transform: none; }
 :global(.time-visual-phone) .stage { position: static; isolation: auto; }
-:global(.time-visual-phone) .shell { position: relative; z-index: 1; width: 100%; }
+:global(.time-visual-phone) .shell { position: relative; z-index: 1; width: 100%; box-shadow: 0 0 0 1px #e4e1ed; }
 :global(.time-visual-phone) .floating[data-side] { left: 50%; right: auto; top: 28px; z-index: 6; }
 @media (prefers-reduced-motion: reduce) { .shell { transform: none; } }
