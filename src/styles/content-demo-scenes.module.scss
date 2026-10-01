@@ -111,8 +111,17 @@
 .swipe { position: absolute; inset: 0; width: 100%; height: 95px; pointer-events: none; z-index: 6; }
 .mode, .presets > span, .action, .stats, .picker { position: relative; }
 .mode::after, .presets > span::after, .action::after, .back::after, .stats::after, .picker::after {
-  content: ""; position: absolute; inset: 1px; border-radius: inherit; pointer-events: none; z-index: 5;
-  border: 2px solid #a48aff; background: #a48aff12;
-  box-shadow: 0 0 12px #9279e85c, inset 0 0 10px #9279e830;
+  content: ""; position: absolute; inset: -12px; border-radius: var(--guide-radius, 24px); pointer-events: none; z-index: 5;
+  border: 2px solid #a48aff; background: transparent;
+  box-shadow: 0 0 10px 2px #9279e85c;
   opacity: var(--guide-strength, 0); transform: scale(calc(1 - var(--guide-press, 0) * .07));
 }
+
+/* Leave room for the external guide without shifting the carousel content. */
+.modal, .picker { overflow: visible; }
+.carousel { height: 143px; padding-block: 24px; margin-top: -16px; margin-bottom: -24px; }
+.swipe { top: 24px; }
+.presets > span, .action, .back { --guide-radius: 999px; }
+.stats { --guide-radius: 12px 12px 28px 28px; }
+.picker { --guide-radius: 36px; }
+.schedule summary { font: 600 16px/1.35 ui-rounded, "SF Pro Rounded", "Nunito", sans-serif; letter-spacing: normal; }

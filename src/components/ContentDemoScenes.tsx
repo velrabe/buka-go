@@ -69,7 +69,7 @@ export function FloatingTimeCard({ frame }: { frame: ContentDemoFrame }) {
           <span key={label} data-selected={quick ? i === (frame.presetPress > 0 ? 1 : 0) : i === (frame.custom ? 4 : 0)} style={tapStyle(frame, i === (quick ? 1 : 4) ? (quick ? "preset" : "custom") : "other")}>{label}</span>)}
       </div>
       {!quick && <div className={styles.picker} style={{ ...tapStyle(frame, "wheel"), height: 180 * frame.picker, borderWidth: frame.picker }}>
-        <div className={styles.wheels}><div className={styles.selectedLine} /><Wheel value={hours} maximum={24} /><Wheel value={minutes} maximum={60} /></div>
+        <div className={styles.wheels} style={{ height: 180 * frame.picker }}><div className={styles.selectedLine} /><Wheel value={hours} maximum={24} /><Wheel value={minutes} maximum={60} /></div>
       </div>}
     </div>
     {<div className={styles.modalBottom}><div className={styles.action} style={tapStyle(frame, "submit")}>

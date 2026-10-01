@@ -51,9 +51,9 @@
 .stage[data-focus="add"] [data-demo-target="add"]::after,
 .stage[data-focus="quick"] [data-demo-target="quick"]::after,
 .stage[data-focus="minecraft"] [data-demo-target="minecraft"]::after {
-  content: ""; position: absolute; inset: 2px; border-radius: inherit; pointer-events: none; z-index: 5;
-  border: 2px solid #a48aff; background: #a48aff12;
-  box-shadow: 0 0 12px #9279e85c, inset 0 0 10px #9279e830;
+  content: ""; position: absolute; inset: -12px; border-radius: var(--guide-radius); pointer-events: none; z-index: 5;
+  border: 2px solid #a48aff; background: transparent;
+  box-shadow: 0 0 10px 2px #9279e85c;
   opacity: var(--guide-strength, 0); transform: scale(calc(1 - var(--tap, 0) * .07));
 }
 .navigation { position: relative; z-index: 2; height: 98px; background: #f8fafc; }
@@ -93,3 +93,7 @@
   :global(.time-visual-phone) .viewport { border-radius: 27px; aspect-ratio: 207.40547 / 421.19513; }
   :global(.time-visual-phone) .pause { position: absolute; right: 0; top: 100%; padding: 4px 8px; margin: 4px 0 0; min-height: 28px; font-size: 10px; z-index: 3; }
 }
+
+.stage [data-demo-target="add"] { --guide-radius: 999px; }
+.stage [data-demo-target="quick"] { --guide-radius: 24px; }
+.stage [data-demo-target="minecraft"] { --guide-radius: 20px; }
