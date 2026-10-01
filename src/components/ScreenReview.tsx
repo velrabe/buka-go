@@ -4,16 +4,16 @@ import { sampleContentDemo } from "@/lib/content-demo-timeline";
 import styles from "@/styles/screen-review.module.scss";
 
 export function ScreenReview() {
-  const add = { ...sampleContentDemo(3.1), selection: 1, wheel: 1, confirmPress: 0 };
-  const quick = { ...sampleContentDemo(6.15), selection: 1, presetPress: 1, confirmPress: 0 };
-  const confirm = { ...sampleContentDemo(7), confirmPress: 0 };
+  const add = { ...sampleContentDemo(9.7), selection: 1, wheel: 1, custom: true, picker: 1, focus: "" as const, focusAmount: 0, tap: 0, confirmPress: 0 };
+  const quick = { ...sampleContentDemo(18.2), selection: 1, presetPress: 1, focus: "" as const, focusAmount: 0, tap: 0, confirmPress: 0 };
+  const confirm = { ...sampleContentDemo(20.4), confirmPress: 0 };
   const screens = [
     { name: "01 · Контент — полный экран", view: <StaticContentScreen /> },
     { name: "02 · Добавить время", view: <FloatingTimeCard frame={add} /> },
     { name: "03 · Быстрый режим — выбор", view: <FloatingTimeCard frame={quick} /> },
     { name: "04 · Быстрый режим — подтверждение", view: <ModeConfirmation frame={confirm} /> },
-    { name: "05 · Minecraft — до расхода", view: <MinecraftCard frame={sampleContentDemo(9.4)} /> },
-    { name: "06 · Minecraft — после +5 минут", view: <MinecraftCard frame={sampleContentDemo(12.1)} /> },
+    { name: "05 · Minecraft — до расхода", view: <MinecraftCard frame={sampleContentDemo(25.9)} /> },
+    { name: "06 · Minecraft — после +5 минут", view: <MinecraftCard frame={{ ...sampleContentDemo(30.1), focus: "", focusAmount: 0 }} /> },
   ];
   return <main id="main-content" className={styles.page}>
     <header><a href="/">← На сайт</a><h1>Экраны для сверки</h1><p>Все экраны целиком, без анимации. Прокрутите ряд вправо; номера помогут указать, где нужны правки.</p></header>

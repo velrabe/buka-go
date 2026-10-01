@@ -6,48 +6,61 @@ const source = readFileSync(new URL("../src/lib/content-demo-timeline.ts", impor
 const { outputText } = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2020 } });
 const { sampleContentDemo: sample, DEMO_DURATION } = await import(`data:text/javascript;base64,${Buffer.from(outputText).toString("base64")}`);
 
-assert.equal(sample(1).press, "add");
-assert.equal(sample(2).modal, "add");
-assert.equal(sample(4.5).press, "quick");
-assert.equal(sample(5).modal, "quick");
-assert.equal(sample(6.05).presetPress > .5, true);
-assert.equal(sample(7).modal, "confirm");
-assert.equal(sample(8.7).press, "minecraft");
-assert.equal(sample(9.3).card, 1);
-assert.equal(sample(9.5).minutes, 35);
-assert.equal(sample(12).minutes, 40);
-assert.equal(sample(12).gamesMinutes, 35);
-assert.equal(sample(12.6).press, "back");
-assert.equal(sample(13.15).card, 0);
-assert.equal(sample(13.2).scroll, 503);
-assert.equal(sample(14.2).scroll, 0);
+assert.equal(DEMO_DURATION, 36);
+assert.equal(sample(1).focus, "add");
+assert.equal(sample(1).focusAmount, 1);
+assert.equal(sample(2.15).press, "add");
+assert.equal(sample(3).modal, "add");
+assert.equal(sample(3).selection, 0);
+assert.equal(sample(3).picker, 0);
+assert.equal(sample(3).custom, false);
+assert.equal(sample(5.2).focus, "mode");
+assert.ok(sample(5.2).tap > 0);
+assert.equal(sample(6.5).custom, true);
+assert.equal(sample(6.5).picker, 0);
+assert.equal(sample(7.2).picker, 1);
+assert.equal(sample(8.2).wheel, 0);
+assert.equal(sample(9.7).wheel, 1);
+assert.equal(sample(13.5).press, "quick");
+assert.equal(sample(15).modal, "quick");
+assert.equal(sample(18).presetPress > .5, true);
+assert.equal(sample(21).modal, "confirm");
+assert.equal(sample(25.1).press, "minecraft");
+assert.equal(sample(26).card, 1);
+assert.equal(sample(27).minutes, 35);
+assert.equal(sample(30).minutes, 40);
+assert.equal(sample(30).gamesMinutes, 35);
+assert.equal(sample(31.6).press, "back");
+assert.equal(sample(32.2).card, 0);
+assert.equal(sample(32.2).scroll, 503);
+assert.equal(sample(33.2).scroll, 0);
 assert.deepEqual(sample(0), sample(DEMO_DURATION));
 assert.deepEqual(sample(4), sample(4 + DEMO_DURATION));
 assert.equal(sample(0).clock, "17:30");
-assert.equal(sample(12).clock, "17:35");
+assert.equal(sample(30).clock, "17:35");
 assert.equal(sample(0).mode, "Учеба");
-assert.equal(sample(8).mode, "Игры");
-assert.equal(sample(8).modeStart, "17:30");
-assert.equal(sample(8).modeEnd, "18:00");
+assert.equal(sample(22).mode, "Игры");
+assert.equal(sample(22).modeStart, "17:30");
+assert.equal(sample(22).modeEnd, "18:00");
 assert.equal(sample(0).dailyLimit, 240);
-assert.equal(sample(4).dailyLimit, 255);
-for (const [a, b] of [[.9, 3.79], [4.4, 7.99], [8.6, 13.19]]) {
+assert.equal(sample(12).dailyLimit, 255);
+assert.equal(sample(34.5).sceneOpacity, 0);
+assert.equal(sample(35).dailyLimit, 240);
+assert.equal(sample(35).minutes, 35);
+for (const [a, b] of [[0,11.59], [12.4,22.59], [24,32.19]]) {
   assert.equal(sample(a).scroll, sample(b).scroll, "Section must stay still while its scenario plays");
 }
-assert.ok(sample(3.9).scroll > sample(3.8).scroll, "Move immediately after adding time");
-assert.ok(sample(8.1).scroll > sample(8).scroll, "Move immediately after confirmation");
 let previous = sample(0);
 for (let t = .01; t <= DEMO_DURATION; t += .01) {
   const frame = sample(t);
   assert.ok(frame.scroll >= 0 && frame.scroll <= 503);
   assert.ok(Math.abs(frame.scroll - previous.scroll) < 20, "No scroll jump at a scene boundary");
-  assert.ok(frame.card >= 0 && frame.card <= 1);
-  assert.ok(frame.modalOpacity >= 0 && frame.modalOpacity <= 1);
+  for (const key of ["card", "modalOpacity", "focusAmount", "picker", "sceneOpacity"]) assert.ok(frame[key] >= 0 && frame[key] <= 1);
   assert.equal(frame.minutes - frame.gamesMinutes, 5);
   assert.equal(frame.categoryGames, frame.minutes);
   assert.equal(frame.totalMinutes, 85 + 15 + frame.categoryGames);
   assert.equal(Number(frame.clock.slice(3)) - 30, frame.minutes - 35);
-  if (t > 9.5 && t < 12) assert.ok(frame.minutes >= previous.minutes);
+  if (t > 27 && t < 30) assert.ok(frame.minutes >= previous.minutes);
   previous = frame;
 }
 const screen = JSON.parse(readFileSync(new URL("../src/content/app-content-screen.json", import.meta.url)));
@@ -72,7 +85,7 @@ console.log("Verified demo scenes, section holds, continuous loop, one-second re
 assert.equal(screen.body.style.height, 1099);
 for (const id of ["2799:62448", "2829:83610", "2829:71928", "2799:63585", "2799:63591", "2799:63597"]) assert.ok(!ids.has(id), `Removed content returned: ${id}`);
 // New section positions after removing children and explanatory rows.
-for (const [time, top, height] of [[1, 230, 48], [4.5, 488, 75], [8.7, 705, 58]]) {
+for (const [time, top, height] of [[2.1, 230, 48], [13.5, 488, 75], [25.1, 705, 58]]) {
   const y = top - sample(time).scroll;
   assert.ok(y >= 0 && y + height <= 596, "Animated target must remain in the phone viewport");
 }

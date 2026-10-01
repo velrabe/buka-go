@@ -84,3 +84,10 @@
 .phone [data-mode-disabled="true"] > div { pointer-events: none; }
 .phone [data-mode-disabled="true"] > div { background: rgba(17,24,39,.05) !important; border-color: transparent !important; }
 .phone [data-mode-disabled="true"] > div > div { filter: grayscale(1); opacity: .5; }
+
+.stage[data-focus="add"] .phone [data-demo-button]:not([data-demo-target="add"]),
+.stage[data-focus="quick"] .phone [data-demo-button]:not([data-demo-target="quick"]),
+.stage[data-focus="minecraft"] .phone [data-demo-button]:not([data-demo-target="minecraft"]),
+.stage[data-focus="add"] .navigation,
+.stage[data-focus="quick"] .navigation,
+.stage[data-focus="minecraft"] .navigation { opacity: var(--dim); }

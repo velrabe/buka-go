@@ -60,7 +60,7 @@ function Layer({ node, control = false, wrapped = false }: { node: ScreenNode; c
     </div>;
   }
   return (
-    <div className={styles.layer} style={style} data-figma-node={node.id} data-demo-target={demoTargets[node.id]}>
+    <div className={styles.layer} style={style} data-figma-node={node.id} data-demo-target={demoTargets[node.id]} data-demo-button={demoTargets[node.id] || modeButtons.has(node.id) || ["3736:57367", "2829:71997", "2799:63568", "2829:83598"].includes(node.id) ? "true" : undefined}>
       {node.asset ? (
         <img
           className={styles.asset}

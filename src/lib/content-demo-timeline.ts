@@ -1,43 +1,51 @@
-// One deterministic clock drives the phone, floating cards, picker and taps.
-// Durations are seconds; pausing the clock freezes the complete scene.
-export const DEMO_DURATION = 16;
+// All motion shares this clock, including focus, taps and the loop reset.
+export const DEMO_DURATION = 36;
 const clamp = (v: number) => Math.max(0, Math.min(1, v));
-const progress = (t: number, start: number, end: number) => clamp((t - start) / (end - start));
-const ease = (v: number) => v < 0.5 ? 4 * v ** 3 : 1 - (-2 * v + 2) ** 3 / 2;
+const progress = (t: number, a: number, b: number) => clamp((t - a) / (b - a));
+const ease = (v: number) => v < .5 ? 4 * v ** 3 : 1 - (-2 * v + 2) ** 3 / 2;
 const between = (t: number, a: number, b: number) => t >= a && t < b;
-const reveal = (t: number, start: number, end: number) =>
-  Math.min(ease(progress(t, start, start + 0.3)), 1 - ease(progress(t, end - 0.3, end)));
-
+const reveal = (t: number, a: number, b: number) => Math.min(ease(progress(t, a, a + .3)), 1 - ease(progress(t, b - .3, b)));
+const actions = [
+  [0, 2, 2.3, "add"], [3.1, 5.1, 5.4, "mode"], [5.4, 6.4, 6.7, "custom"],
+  [7.2, 8.2, 9.7, "wheel"], [9.7, 10.7, 11.3, "submit"],
+  [12.4, 13.4, 13.7, "quick"], [14.5, 16.5, 16.8, "mode"],
+  [16.8, 17.8, 18.1, "preset"], [18.1, 19.1, 19.7, "submit"],
+  [20.5, 21.5, 22.1, "submit"], [24, 25, 25.3, "minecraft"],
+  [26, 27, 30.5, "usage"], [30.5, 31.5, 31.8, "back"],
+] as const;
 export function sampleContentDemo(seconds: number) {
-  const t = ((seconds % DEMO_DURATION) + DEMO_DURATION) % DEMO_DURATION;
+  const remainder = seconds % DEMO_DURATION;
+  const t = remainder < 0 ? remainder + DEMO_DURATION : remainder;
+  const reset = t >= 34.5;
+  const action = actions.find(([a,,b]) => between(t,a,b));
+  const focus = action?.[3] ?? "";
+  const focusAmount = action ? ease(progress(t, action[0], action[0] + 1)) : 0;
+  const tap = action && !["wheel", "usage"].includes(focus) ? Math.sin(progress(t, action[1], Math.min(action[1] + .3, action[2])) * Math.PI) : 0;
+  const press = ["add", "quick", "minecraft", "back"].includes(focus) && tap > 0 ? focus : "";
+  const modal = between(t,2.3,11.6) ? "add" : between(t,13.7,20) ? "quick" : between(t,20,22.6) ? "confirm" : null;
+  const modalOpacity = modal === "add" ? reveal(t,2.3,11.6) : modal === "quick" ? reveal(t,13.7,20) : modal === "confirm" ? reveal(t,20,22.6) : 0;
+  const selection = ease(modal === "add" ? progress(t,4.1,5.1) : progress(t,15.5,16.5));
+  const custom = modal === "add" && t >= 6.4;
+  const picker = modal === "add" ? ease(progress(t,6.7,7.2)) : 0;
+  const wheel = ease(progress(t,8.2,9.7));
+  const presetPress = progress(t,17.8,18.1);
+  const confirmPress = focus === "submit" ? tap : 0;
   let scroll = 0;
-  if (t >= .5 && t < 3.8) scroll = 0;
-  else if (t >= 3.8 && t < 8) scroll = 300 * ease(progress(t, 3.8, 4.4));
-  else if (t >= 8 && t < 13.2) scroll = 300 + 203 * ease(progress(t, 8, 8.6));
-  else if (t >= 13.2 && t < 14.2) scroll = 503 * (1 - ease(progress(t, 13.2, 14.2)));
-  const press = between(t, .9, 1.2) ? "add" : between(t, 4.4, 4.7) ? "quick" :
-    between(t, 8.6, 8.9) ? "minecraft" : between(t, 12.5, 12.8) ? "back" : "";
-  const pressStart = { add: .9, quick: 4.4, minecraft: 8.6, back: 12.5, "": 0 }[press];
-  const modal = between(t, 1.2, 3.8) ? "add" : between(t, 4.7, 6.4) ? "quick" :
-    between(t, 6.4, 8) ? "confirm" : null;
-  const modalOpacity = modal === "add" ? reveal(t, 1.2, 3.8) : modal === "quick" ? reveal(t, 4.7, 6.4) :
-    modal === "confirm" ? reveal(t, 6.4, 8) : 0;
-  const modalTime = modal === "add" ? t - 1.5 : t - 5;
-  const selection = ease(progress(modalTime, .05, .7));
-  const wheel = ease(progress(modalTime, .65, 1.55));
-  const presetPress = progress(t, 5.75, 6.1);
-  const confirmPress = modal === "confirm" ? progress(t, 7.3, 7.7) : modal === "quick" ? progress(t, 6.1, 6.35) : progress(modalTime, 1.65, 1.95);
-  const card = Math.min(ease(progress(t, 8.9, 9.25)), 1 - ease(progress(t, 12.8, 13.15)));
-  const consumption = ease(progress(t, 9.5, 12));
+  if (between(t,11.6,22.6)) scroll = 300 * ease(progress(t,11.6,12.4));
+  else if (between(t,22.6,32.2)) scroll = 300 + 203 * ease(progress(t,22.6,23.4));
+  else if (between(t,32.2,33.2)) scroll = 503 * (1 - ease(progress(t,32.2,33.2)));
+  const card = reveal(t,25.3,32.2);
+  const consumption = reset ? 0 : ease(progress(t,27,30));
   const added = Math.round(consumption * 5);
-  const activated = t >= 7.7;
-  return { t, scroll, press, tap: press ? Math.sin(progress(t, pressStart, pressStart + .3) * Math.PI) : 0,
+  const activated = !reset && t >= 21.8;
+  // Reset hidden behind a short fade, so counters and disabled states never jump.
+  const sceneOpacity = t < 34 ? 1 : t < 34.5 ? 1 - ease(progress(t,34,34.5)) : ease(progress(t,34.5,35));
+  return { t, scroll, press, tap, focus, focusAmount, custom, picker, sceneOpacity,
     modal, modalOpacity, selection, wheel, presetPress, confirmPress, card, consumption,
-    minutes: 35 + added, gamesMinutes: 30 + added,
-    clock: `17:${30 + added}`, totalMinutes: 135 + added, categoryGames: 35 + added,
-    dailyLimit: t >= 3.5 ? 255 : 240, activated,
+    minutes: 35 + added, gamesMinutes: 30 + added, clock: `17:${30 + added}`,
+    totalMinutes: 135 + added, categoryGames: 35 + added,
+    dailyLimit: !reset && t >= 11 ? 255 : 240, activated,
     mode: activated ? "Игры" : "Учеба", modeStart: activated ? "17:30" : "17:00", modeEnd: activated ? "18:00" : "18:30",
   };
 }
-
 export type ContentDemoFrame = ReturnType<typeof sampleContentDemo>;

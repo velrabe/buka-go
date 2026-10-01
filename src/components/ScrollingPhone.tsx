@@ -69,10 +69,10 @@ export function ScrollingPhone({ children, status, navigation, locale }: {
   const confirmation = frame.modal === "confirm";
   return (
     <ContentDemoContext.Provider value={frame}><div className={styles.demo}>
-      <div className={styles.stage} data-press={frame.press} style={{ "--tap": frame.tap } as CSSProperties}>
+      <div className={styles.stage} data-press={frame.press} data-focus={frame.focus} style={{ "--tap": frame.tap, "--dim": 1 - .7 * frame.focusAmount, opacity: frame.sceneOpacity } as CSSProperties}>
         <div className={styles.shell}>
           <div className={styles.viewport} ref={viewport}>
-            <div className={styles.phone} style={{ transform: `scale(${scale})` }}>
+            <div className={styles.phone} style={{ transform: `scale(${scale})`, opacity: 1 - .7 * frame.modalOpacity }}>
               <div className={styles.status} aria-hidden="true">{status}</div>
               <div className={styles.scrollWindow} tabIndex={0} role="region" aria-label={text.screen}>
                 <div className={styles.track} aria-hidden="true" style={{ transform: `translateY(${-frame.scroll}px)` }}>
