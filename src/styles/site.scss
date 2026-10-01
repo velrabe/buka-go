@@ -864,9 +864,9 @@ details p {
 .time-visual { min-width: 0; }
 .time-visual-bg, .time-visual-kid { display: none; }
 @media (min-width: 561px) {
-  .time-visual { position: relative; width: 100%; aspect-ratio: 520 / 680; isolation: isolate; }
+  .time-visual { position: relative; width: 100%; aspect-ratio: 520 / 620; isolation: isolate; }
   .time-visual-bg { display: block; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
-  .time-visual-phone { position: absolute; width: 56%; right: 7%; bottom: 8%; }
+  .time-visual-phone { position: absolute; width: 49%; right: 9%; bottom: 9%; }
   .time-visual-kid { display: block; position: absolute; width: 68%; height: auto; left: 0; bottom: 0; z-index: 2; pointer-events: none; }
 }
 @media (max-width: 560px) {

@@ -95,8 +95,8 @@
 .stage[data-focus="quick"] [data-demo-target="quick"],
 .stage[data-focus="minecraft"] [data-demo-target="minecraft"] { z-index: 8; }
 
-/* Light opposing isometric slants; vertical edges stay upright and parallel. */
-.shell { transform: rotate(6deg) skewY(-6deg) scaleX(.96); transform-origin: center; }
+/* A gentle tilt with minimal shear keeps the interface readable. */
+.shell { transform: rotate(6deg) skewY(-2deg); transform-origin: center; }
 @media (max-width: 560px) {
   :global(.time-visual-phone) .stage { position: static; isolation: auto; }
   :global(.time-visual-phone) .shell { position: relative; z-index: 1; }
@@ -104,14 +104,15 @@
   :global(.time-visual-phone) .floating[data-side="left"] { left: calc(248.91553px - 100cqw); right: auto; }
   :global(.time-visual-phone) .floating[data-side="right"] { left: calc(272.91553px - 100cqw); right: auto; }
 }
-.dialogPerspective { transform: skewY(6deg) scaleX(.96); transform-origin: center; }
+.dialogPerspective { transform: skewY(2deg); transform-origin: center; }
 @media (prefers-reduced-motion: reduce) { .shell, .dialogPerspective { transform: none !important; } }
 
 /* The composition owns the device, child and floating cards as separate layers. */
 :global(.time-visual-phone) .stage { position: static; isolation: auto; }
 :global(.time-visual-phone) .shell { position: relative; z-index: 1; width: 100%; }
 @media (min-width: 561px) {
-  :global(.time-visual-phone) .floating { top: 12%; z-index: 6; }
-  :global(.time-visual-phone) .floating[data-side="left"] { left: 2%; right: auto; }
-  :global(.time-visual-phone) .floating[data-side="right"] { right: 1%; left: auto; }
+  :global(.time-visual-phone) .floating { top: 14%; z-index: 6; }
+  :global(.time-visual-phone) .dialogPerspective { transform: none; }
+  :global(.time-visual-phone) .floating[data-side="left"] { left: 4%; right: auto; }
+  :global(.time-visual-phone) .floating[data-side="right"] { right: 2%; left: auto; }
 }
