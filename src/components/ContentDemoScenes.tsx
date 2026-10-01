@@ -1,5 +1,6 @@
 "use client";
 
+import { DemoSkeleton } from "./DemoSkeleton";
 import type { CSSProperties } from "react";
 import copy from "@/content/app-demo.json";
 import type { ContentDemoFrame } from "@/lib/content-demo-timeline";
@@ -43,7 +44,7 @@ export function FloatingTimeCard({ frame }: { frame: ContentDemoFrame }) {
   return <div className={styles.modal} data-figma-node={copy[section].sourceNode}>
     <div className={styles.header}><strong>{title}</strong><span className={styles.close}>×</span></div>
     <div className={styles.modeSection}>
-      <div className={styles.prompt}>Выберите режим:</div>
+      <div className={styles.prompt}><DemoSkeleton width={120} /></div>
       <div className={styles.carousel}>
         <div className={styles.modeTrack} style={{ transform: `translateX(${135.5 - index * 80}px)` }}>
           {modes.map((mode, i) => <div key={mode.name} className={styles.mode} data-selected={i === selected}
@@ -52,14 +53,14 @@ export function FloatingTimeCard({ frame }: { frame: ContentDemoFrame }) {
       </div>
     </div>
     <div className={styles.timeSection}>
-      <div className={styles.prompt}>{quick ? "На сколько активировать режим?" : "Сколько времени добавить?"}</div>
+      <div className={styles.prompt}><DemoSkeleton width={210} /></div>
       <div className={styles.presets}>
         {(quick ? ["на 15 мин", "на 30 мин", "на 1 час", "До завтра", "Указать свое"] :
           ["15 мин", "30 мин", "1 час", "До завтра", "Указать свое"]).map((label, i) =>
           <span key={label} data-selected={quick ? i === 1 && frame.presetPress > 0 : i === 4} style={{ transform: quick && i === 1 ? `scale(${1 - Math.sin(frame.presetPress * Math.PI) * .06})` : undefined }}>{label}</span>)}
       </div>
       {!quick && <div className={styles.picker}>
-        <div className={styles.pickerHeading}><span>Укажите время</span><strong>{Math.round(hours)}ч {Math.round(minutes)}мин</strong><span className={styles.check}>✓</span></div>
+        <div className={styles.pickerHeading}><DemoSkeleton width={100} /><strong><DemoSkeleton width={72} /></strong><span className={styles.check}>✓</span></div>
         <div className={styles.wheels}><div className={styles.selectedLine} /><Wheel value={hours} maximum={24} /><Wheel value={minutes} maximum={60} /></div>
       </div>}
     </div>
@@ -73,16 +74,16 @@ export function ModeConfirmation({ frame }: { frame: ContentDemoFrame }) {
   return <div className={styles.modal} data-figma-node={copy.confirm.sourceNode}>
     <div className={styles.header}><strong>Быстрый режим</strong><span className={styles.close}>×</span></div>
     <div className={styles.confirmModes}>
-      <div><span>Текущий режим:</span><strong style={{ color: modes[1].color }}><Icon index={1} />Учеба</strong><small>До 18:30 · Осталось 60 мин</small></div>
+      <div><DemoSkeleton width={120} /><strong style={{ color: modes[1].color }}><Icon index={1} /><DemoSkeleton width={48} /></strong><small><DemoSkeleton width={170} /></small></div>
       <span className={styles.changeArrow}>↓</span>
-      <div><span>Новый режим:</span><strong style={{ color: modes[3].color }}><Icon index={3} />Игры</strong><small>17:30 – 18:00 · На 30 мин</small></div>
+      <div><DemoSkeleton width={100} /><strong style={{ color: modes[3].color }}><Icon index={3} /><DemoSkeleton width={48} /></strong><small><DemoSkeleton width={160} /></small></div>
     </div>
     <div className={styles.schedule}>
       <strong>Изменения в расписании</strong>
       {[[3, "17:30 – 18:00"], [1, "18:00 – 18:30"]].map(([mode, time]) => <div key={mode}>
-        <span style={{ color: modes[Number(mode)].color }}><Icon index={Number(mode)} />{modes[Number(mode)].name}</span><span>{time}</span>
+        <span style={{ color: modes[Number(mode)].color }}><Icon index={Number(mode)} /><DemoSkeleton width={50} /></span><span><DemoSkeleton width={100} /></span>
       </div>)}
-      <p>Подтвердите обновления в расписании. Игры на 30 минут, затем возвращаемся к учёбе. Остальные интервалы без изменений.</p>
+      <p><DemoSkeleton width="95%" lines={3} /></p>
     </div>
     <div className={styles.modalBottom}>
       <div className={styles.action} style={{ transform: `scale(${1 - Math.sin(frame.confirmPress * Math.PI) * 0.035})` }}>Подтвердить</div>
@@ -94,27 +95,27 @@ export function ModeConfirmation({ frame }: { frame: ContentDemoFrame }) {
 export function MinecraftCard({ frame }: { frame: ContentDemoFrame }) {
   return <div className={styles.appCard} data-figma-node={copy.app.sourceNode}>
     <div className={styles.appHeader}><span className={styles.back} data-demo-target="back">‹</span><strong>{text("app", "I3736:81881;1:636;1:632")}</strong><span>⋮</span></div>
-    <div className={styles.children}><span><img src={asset("49eff8393f5baae9.svg")} alt="" />Миша</span><span><i>Л</i>Лёша</span></div>
+    <div className={styles.children}><span><img src={asset("49eff8393f5baae9.svg")} alt="" /><DemoSkeleton width={36} /></span><span><i /><DemoSkeleton width={36} /></span></div>
     <div className={styles.appSummary}>
-      <div className={styles.appIdentity}><img src={asset("92ed7e45760bf2c1.svg")} alt="" /><div>Minecraft<small>Игры</small></div><span>⋮</span></div>
+      <div className={styles.appIdentity}><img src={asset("92ed7e45760bf2c1.svg")} alt="" /><div>Minecraft<small><DemoSkeleton width={38} /></small></div><span>⋮</span></div>
       <div className={styles.stats}>
-        <div className={styles.date}><span>СЕГОДНЯ, 9 ИЮЛЯ</span><span>Аналитика ›</span></div>
-        <div className={styles.total}><strong>{frame.minutes}мин</strong><span>из 60мин</span></div>
+        <div className={styles.date}><span><DemoSkeleton width={110} /></span><span>Аналитика ›</span></div>
+        <div className={styles.total}><strong><DemoSkeleton width={88} height={16} /></strong><span><DemoSkeleton width={66} /></span></div>
         <div className={styles.progress}><span style={{ width: `${(30 + frame.consumption * 5) / 60 * 100}%` }} /><span style={{ width: `${5 / 60 * 100}%` }} /></div>
         <div className={styles.categories}>
-          <div style={{ color: modes[3].color }}><Icon index={3} /><div>Игры<small>{frame.gamesMinutes} мин</small></div></div>
-          <div style={{ color: modes[0].color }}><Icon index={0} /><div>Мой режим<small>5 мин</small></div></div>
+          <div style={{ color: modes[3].color }}><Icon index={3} /><div><DemoSkeleton width={40} /><small><DemoSkeleton width={32} height={7} /></small></div></div>
+          <div style={{ color: modes[0].color }}><Icon index={0} /><div><DemoSkeleton width={70} /><small><DemoSkeleton width={32} height={7} /></small></div></div>
         </div>
       </div>
     </div>
     <div className={styles.permissions}>
       <strong>Доступы и лимиты</strong>
-      <p>{text("app", "I2757:32650;1:636;1:632")}</p>
+      <p><DemoSkeleton width="100%" lines={2} /></p>
       <div className={styles.permissionList}>{[1, 2, 4, 3, 5, 0].map(i => <div key={i}>
-        <span style={{ color: modes[i].color }}><Icon index={i} /></span><div>{modes[i].name}{(i === 3 || i === 0) && <small>{i === 3 ? "60" : "10"} мин <em>Изменить</em></small>}</div>
+        <span style={{ color: modes[i].color }}><Icon index={i} /></span><div><DemoSkeleton width={70} />{(i === 3 || i === 0) && <small><DemoSkeleton width={40} height={7} /> <em>Изменить</em></small>}</div>
         <span className={styles.toggle} data-on={i === 0 || i === 3} />
       </div>)}</div>
-      <strong>Дневной лимит</strong><p>{text("app", "I2758:24995;1:636;1:632")}</p>
+      <strong>Дневной лимит</strong><p><DemoSkeleton width="100%" lines={3} /></p>
       <div className={styles.secondary}>＋ Добавить дневной лимит</div>
       <div className={styles.settingsRow}>Расписание <span>›</span></div><div className={styles.settingsRow}>Режимы <span>›</span></div>
     </div>

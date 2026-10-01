@@ -1,4 +1,5 @@
-import { DemoValue, DemoActiveMode, DemoSummaryBar } from "./ContentDemoState";
+import { DemoSkeleton } from "./DemoSkeleton";
+import { DemoValue, DemoSummaryBar } from "./ContentDemoState";
 import type { CSSProperties } from "react";
 import screen from "@/content/app-content-screen.json";
 import { ScrollingPhone } from "./ScrollingPhone";
@@ -29,7 +30,14 @@ const demoFields: Record<string, string> = {
   "I2829:83608;1:636;1:632": "modeEnd",
 };
 
-function Layer({ node }: { node: ScreenNode }) {
+const visibleLabels = new Set([
+  "Экранное время", "Умные режимы", "Приложения", "Добавить время", "Настройки",
+  "Аналитика", "Расписание", "Все приложения (49)", "Roblox", "Minecraft", "Duolingo",
+  "Калькулятор", "Мой Дневник", "Задания", "На карте", "Контент", "Профиль",
+]);
+const modeButtons = new Set(["2829:83615", "2829:83619", "2829:83623", "2829:83628", "2829:83632", "2829:83636"]);
+function Layer({ node, control = false }: { node: ScreenNode; control?: boolean }) {
+  const isControl = control || modeButtons.has(node.id);
   // Figma can trim text bounds below the font size. Keep the layout slot,
   // but center a full line box instead of clipping the glyphs to those bounds.
   const trimmedText = node.text !== undefined &&
@@ -42,8 +50,14 @@ function Layer({ node }: { node: ScreenNode }) {
       overflow: "visible", whiteSpace: "pre", lineHeight: 1.2,
     } as CSSProperties : {}),
   };
-  if (node.id === "2829:83603") return <div style={style}><DemoActiveMode /></div>;
+  if (node.id === "2829:83603") return <div style={style}><DemoSkeleton width={88} height={12} /></div>;
   if (node.id === "2799:63574") return <DemoSummaryBar />;
+  if (node.text !== undefined && !isControl && !visibleLabels.has(node.text) && demoFields[node.id] !== "clock") {
+    return <div className={styles.layer} style={{ ...style, display: "flex", alignItems: "center", overflow: "visible" }} data-figma-node={node.id}>
+      <DemoSkeleton width={Math.max(12, Number(node.style.width) * .86)}
+        height={Math.min(12, Math.max(6, Number(node.style.height) * .5))} lines={Number(node.style.height) > 28 ? 2 : 1} />
+    </div>;
+  }
   return (
     <div className={styles.layer} style={style} data-figma-node={node.id} data-demo-target={demoTargets[node.id]}>
       {node.asset ? (
@@ -57,7 +71,7 @@ function Layer({ node }: { node: ScreenNode }) {
           loading="lazy"
           draggable={false}
         />
-      ) : node.text !== undefined ? (demoFields[node.id] ? <DemoValue field={demoFields[node.id]} /> : node.text) : node.children?.map((child) => <Layer key={child.id} node={child} />)}
+      ) : node.text !== undefined ? (demoFields[node.id] ? <DemoValue field={demoFields[node.id]} /> : node.text) : node.children?.map((child) => <Layer key={child.id} node={child} control={isControl} />)}
     </div>
   );
 }
