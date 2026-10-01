@@ -1,0 +1,50 @@
+.carousel { width: 100%; min-width: 0; overflow-x: clip; }
+.stage { --card-width: min(68%, 760px); display: grid; grid-template-columns: minmax(0, 1fr); place-items: center; position: relative; isolation: isolate; padding-block: 28px; touch-action: pan-y; }
+.card {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  width: var(--card-width);
+  min-width: 0;
+  min-height: 280px;
+  margin: 0;
+  padding: 36px 40px;
+  border: 1px solid #9279e82b;
+  border-radius: 28px;
+  background: #fff;
+  box-shadow: 0 16px 48px #5345790d;
+  transition: transform 450ms cubic-bezier(.22, 1, .36, 1), opacity 350ms ease, box-shadow 350ms ease;
+}
+.card[data-position="active"] { z-index: 3; opacity: 1; transform: translateX(0) scale(1); box-shadow: 0 20px 60px #7253e918; }
+.card[data-position="previous"] { z-index: 1; opacity: .38; transform: translateX(-43%) scale(.86); pointer-events: none; }
+.card[data-position="next"] { z-index: 1; opacity: .38; transform: translateX(43%) scale(.86); pointer-events: none; }
+.card[data-position="hidden"] { z-index: 0; opacity: 0; transform: scale(.8); pointer-events: none; visibility: hidden; }
+.quoteMark { display: block; height: 48px; color: #9279e8; font-size: 80px; font-weight: 800; line-height: 1; }
+.card blockquote { flex: 1; margin: 16px 0 28px; }
+.card blockquote p { margin: 0; color: #171c2b; font-size: clamp(20px, 2.2vw, 26px); font-weight: 700; line-height: 1.45; text-wrap: balance; overflow-wrap: anywhere; }
+.card figcaption { padding-top: 20px; border-top: 1px solid #eae5f5; color: #606985; font-size: 15px; line-height: 1.5; overflow-wrap: anywhere; }
+.controls { display: flex; align-items: center; justify-content: center; gap: 24px; margin-top: 12px; }
+.arrow { position: absolute; z-index: 4; top: 50%; transform: translateY(-50%); display: grid; place-items: center; width: 48px; height: 48px; padding: 0; border: 1px solid #9279e82e; border-radius: 50%; background: #fff; color: #7658ee; box-shadow: 0 4px 16px #7253e910; transition: background-color 180ms ease, color 180ms ease; }
+.previous { left: calc((100% - var(--card-width)) / 2 - 64px); }
+.next { right: calc((100% - var(--card-width)) / 2 - 64px); }
+.dots { display: flex; align-items: center; gap: 2px; }
+.dot { display: grid; place-items: center; width: 28px; height: 36px; padding: 0; border: 0; background: transparent; border-radius: 12px; }
+.dot::after { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #9279e84d; transition: width 180ms ease, background-color 180ms ease; }
+.dot[aria-current="true"]::after { width: 20px; border-radius: 999px; background: #9279e8; }
+.srOnly { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (hover: hover) { .arrow:hover { background: #7658ee; color: #fff; } .dot:hover::after { background: #7658ee; } }
+@media (max-width: 767px) {
+  .stage { --card-width: 84%; padding-block: 16px; }
+  .card { min-height: 280px; padding: 24px; border-radius: 22px; }
+  .card[data-position="previous"] { transform: translateX(-14%) scale(.9); opacity: .3; }
+  .card[data-position="next"] { transform: translateX(14%) scale(.9); opacity: .3; }
+  .quoteMark { height: 40px; font-size: 68px; }
+  .card blockquote { margin: 12px 0 24px; }
+  .card blockquote p { font-size: 18px; }
+  .card figcaption { padding-top: 16px; font-size: 14px; }
+  .controls { gap: 16px; margin-top: 8px; }
+  .arrow { width: 44px; height: 44px; }
+  .previous { left: 0; }
+  .next { right: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .card, .arrow, .dot::after { transition: none; } }

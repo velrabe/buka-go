@@ -20,7 +20,7 @@ export const languages: {
   { locale: "en", label: "English", home: "/en/", prefix: "/en" },
   { locale: "kk", label: "Қазақша", home: "/kz/", prefix: "/kz/kk" },
   { locale: "uz", label: "Oʻzbekcha", home: "/uz/", prefix: "/uz" },
-  { locale: "az", label: "AZ", home: "/az/", prefix: "/az" },
+  { locale: "az", label: "Azərbaycan", home: "/az/", prefix: "/az" },
 ];
 export const localeFor = (path: string): Locale =>
   path.startsWith("/kz")

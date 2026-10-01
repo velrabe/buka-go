@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
+import { useContext, useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
+import { TimeVisualReady } from "./TimeVisual";
 import { demoMotion } from "@/lib/demo-motion";
 import { ContentDemoContext } from "./ContentDemoState";
 import { sampleContentDemo, sampleAddTimeDemo, ADD_TIME_DURATION } from "@/lib/content-demo-timeline";
@@ -15,8 +16,8 @@ const labels: Record<string, { pause: string; play: string; screen: string }> = 
   az: { pause: "Dayandır", play: "Davam et", screen: "Tətbiq: ekran vaxtı və uşağın tətbiqləri" },
 };
 
-export function ScrollingPhone({ children, locale }: {
-  children: ReactNode; locale: string;
+export function ScrollingPhone({ children, locale, extended = false, deviceHeader, deviceFooter, standalone = false }: {
+  children: ReactNode; locale: string; extended?: boolean; deviceHeader?: ReactNode; deviceFooter?: ReactNode; standalone?: boolean;
 }) {
   const viewport = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState<number | null>(null);
@@ -25,8 +26,9 @@ export function ScrollingPhone({ children, locale }: {
   const [reducedMotion, setReducedMotion] = useState(false);
   const [elapsed, setElapsed] = useState(0);
   const clock = useRef(0);
-  const frame = sampleAddTimeDemo(elapsed);
-  const running = inView && tabVisible && !reducedMotion;
+  const frame = sampleAddTimeDemo(Math.max(0, elapsed - 1));
+  const compositionReady = useContext(TimeVisualReady);
+  const running = compositionReady && inView && tabVisible && !reducedMotion;
   const text = labels[locale] || labels.ru;
 
   useEffect(() => {
@@ -56,7 +58,7 @@ export function ScrollingPhone({ children, locale }: {
     let previous: number | undefined;
     let request = 0;
     const tick = (now: number) => {
-      if (previous !== undefined) clock.current = (clock.current + (now - previous) / 1000) % ADD_TIME_DURATION;
+      if (previous !== undefined) clock.current = (clock.current + (now - previous) / 1000) % (ADD_TIME_DURATION + 1);
       previous = now;
       setElapsed(clock.current);
       request = requestAnimationFrame(tick);
@@ -66,37 +68,53 @@ export function ScrollingPhone({ children, locale }: {
   }, [running]);
 
   const floatingScale = Math.min(0.8, Math.max(0.68, (scale ?? 0.68) * 0.94));
+  // Reserve room for the fully expanded picker, plus the guide and shadow.
+  const componentFitRatio = Math.min(375 * .82 / 351, 470 * .84 / 600);
+  const componentModalScale = (scale ?? 0) * componentFitRatio;
+  const componentCardScale = 1 - (1 - componentFitRatio) * frame.backgroundDim;
   const confirmation = frame.modal === "confirm";
+  const dialog = <div className={styles.dialogPerspective}>{confirmation ? <ModeConfirmation frame={frame} /> : <FloatingTimeCard frame={frame} />}</div>;
+  const dialogStyle: CSSProperties = {
+    opacity: frame.modalOpacity,
+    visibility: frame.modal ? "visible" : "hidden",
+    transform: `translate(-50%, calc(-50% + ${(1 - frame.modalOpacity) * demoMotion.modalLift}px))`,
+  };
+  if (standalone) return <ContentDemoContext.Provider value={frame}>
+    <div className={`${styles.demo} ${styles.componentDemo}`}>
+      <div ref={viewport} className={`${styles.stage} ${styles.componentStage}`} data-press={frame.press} data-focus={frame.focus} style={{ "--tap": frame.tap, "--guide-strength": frame.focusAmount } as CSSProperties}>
+        <div className={styles.componentCard} style={{ width: 375 * (scale ?? 0), opacity: 1 - .7 * frame.backgroundDim, transform: `translate(calc(-50% - ${18 * frame.backgroundDim}px), -50%) scale(${componentCardScale})` }}>
+          <div style={{ width: 375, zoom: scale ?? 0 }} onClick={() => { clock.current = 2.15; setElapsed(2.15); }}>{children}</div>
+        </div>
+        <div className={styles.componentModal} style={{ opacity: frame.modalOpacity, visibility: frame.modal ? "visible" : "hidden", width: 351 * componentModalScale, transform: `translate(-50%, -50%) scale(${.88 + .12 * frame.modalOpacity})` }}>
+          <div style={{ width: 351, zoom: componentModalScale }}>{dialog}</div>
+        </div>
+      </div>
+    </div>
+  </ContentDemoContext.Provider>;
   return (
-    <ContentDemoContext.Provider value={frame}><div className={styles.demo}>
+    <ContentDemoContext.Provider value={frame}><div className={`${styles.demo} ${extended ? styles.extended : ""}`}>
       <div className={styles.stage} data-press={frame.press} data-focus={frame.focus} style={{ "--tap": frame.tap, "--guide-strength": frame.focusAmount, "--modal-progress": frame.backgroundDim } as CSSProperties}>
-        <div className={styles.shell}>
+        <div className={styles.shell} style={extended ? { transform: `translateY(${18 * frame.backgroundDim}px) scale(${1 - .48 * frame.backgroundDim})` } : undefined}>
           <div className={styles.viewport} ref={viewport}>
-            <div className={styles.phone} style={{ "--phone-scale": scale ?? 0, opacity: 1 - .35 * frame.backgroundDim } as CSSProperties}>
-              <div className={styles.scrollWindow} tabIndex={0} role="region" aria-label={text.screen}>
-                <div className={styles.track} aria-hidden="true" style={{ transform: `translateY(${-frame.scroll}px)` }}>
-                  <div className={styles.copy}><ContentDemoContext.Provider value={frame.resetOverview ? sampleContentDemo(0) : frame}>{children}</ContentDemoContext.Provider></div>
+            <div className={styles.phone} style={{ "--phone-scale": scale ?? 0 } as CSSProperties}>
+              <div className={styles.overview} style={{ opacity: 1 - .7 * frame.backgroundDim }}>
+                {extended && <div className={styles.deviceHeader}>{deviceHeader}</div>}
+                <div className={styles.scrollWindow} tabIndex={0} role="region" aria-label={text.screen}>
+                  <div className={styles.track} aria-hidden="true" style={{ transform: `translateY(${-frame.scroll}px)` }}>
+                    <div className={styles.copy}><ContentDemoContext.Provider value={frame.resetOverview ? sampleContentDemo(0) : frame}>{children}</ContentDemoContext.Provider></div>
+                  </div>
+                  <div className={styles.detail} aria-hidden="true" style={{ opacity: frame.card, visibility: frame.card > 0 ? "visible" : "hidden", transform: `translateX(${(1 - frame.card) * 100}%)` }}><MinecraftCard frame={frame} /></div>
                 </div>
-                <div className={styles.detail} aria-hidden="true" style={{
-                  opacity: frame.card, visibility: frame.card > 0 ? "visible" : "hidden",
-                  transform: `translateX(${(1 - frame.card) * 100}%)`,
-                }}><MinecraftCard frame={frame} /></div>
+                {extended && <div className={styles.deviceFooter}>{deviceFooter}</div>}
               </div>
+              {extended && <div className={styles.embeddedDialog} aria-hidden="true" style={dialogStyle}>{dialog}</div>}
             </div>
           </div>
         </div>
-        <div className={styles.floating} data-side={frame.modal === "add" ? "right" : "left"} aria-hidden="true" style={{
-          width: 351 * floatingScale,
-          opacity: frame.modalOpacity,
-          visibility: frame.modal ? "visible" : "hidden",
-          transform: `translate(-50%, ${(1 - frame.modalOpacity) * demoMotion.modalLift}px)`,
-        }}>
-          <div style={{ width: 351, transform: `scale(${floatingScale})`, transformOrigin: "top left" }}>
-            <div className={styles.dialogPerspective}>{confirmation ? <ModeConfirmation frame={frame} /> : <FloatingTimeCard frame={frame} />}</div>
-          </div>
-        </div>
+        {!extended && <div className={styles.floating} data-side={frame.modal === "add" ? "right" : "left"} aria-hidden="true" style={{ ...dialogStyle, width: 351 * floatingScale }}>
+          <div style={{ width: 351, zoom: floatingScale }}>{dialog}</div>
+        </div>}
       </div>
-
     </div></ContentDemoContext.Provider>
   );
 }

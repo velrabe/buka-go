@@ -29,3 +29,6 @@ export function clickBackIn(v: number) {
   const overshoot = 2.4;
   return (overshoot + 1) * p ** 3 - overshoot * p ** 2;
 }
+
+/** Gentle composition movement: soft acceleration, no overshoot. */
+export const gentleMotion = (v: number) => (1 - Math.cos(Math.PI * clampMotion(v))) / 2;

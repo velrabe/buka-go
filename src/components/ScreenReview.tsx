@@ -1,5 +1,6 @@
 
 import { siteUrl } from "@/lib/site-url";
+import { HeroAppScreen } from "./HeroAppScreen";
 import { StaticContentScreen } from "./ContentScreen";
 import { FloatingTimeCard, ModeConfirmation, MinecraftCard } from "./ContentDemoScenes";
 import { sampleContentDemo } from "@/lib/content-demo-timeline";
@@ -10,6 +11,7 @@ export function ScreenReview() {
   const quick = { ...sampleContentDemo(18.2), selection: 1, presetPress: 1, focus: "" as const, focusAmount: 0, swipeOpacity: 0, wheelSwipeOpacity: 0, tap: 0, confirmPress: 0 };
   const confirm = { ...sampleContentDemo(20.4), confirmPress: 0 };
   const screens = [
+    { name: "00 · Hero — экран из JSON (ассеты ожидаются)", view: <HeroAppScreen locale="ru" /> },
     { name: "01 · Контент — полный экран", view: <StaticContentScreen /> },
     { name: "02 · Добавить время", view: <FloatingTimeCard frame={add} /> },
     { name: "03 · Быстрый режим — выбор", view: <FloatingTimeCard frame={quick} /> },

@@ -38,6 +38,17 @@
   text-align: left;
   letter-spacing: normal;
 }
+.bodyCanvas {
+  position: relative;
+  width: 375px;
+  height: 1187px;
+  overflow: hidden;
+  color: #111827;
+  background: #f8fafc;
+  font: 500 14px/normal ui-rounded, "SF Pro Rounded", "Nunito", sans-serif;
+  text-align: left;
+  letter-spacing: normal;
+}
 /* Fit the exported 375px canvas on the first paint, before hydration.
    Older browsers use the measured scale; keep that fallback hidden until ready. */
 @supports (transform: scale(calc(1px / 1px))) {
@@ -107,9 +118,95 @@
 .dialogPerspective { transform: none; }
 :global(.time-visual-phone) .stage { position: static; isolation: auto; }
 :global(.time-visual-phone) .shell { position: relative; z-index: 1; width: 100%; box-shadow: none; }
-:global(.time-visual-phone) .floating[data-side] { left: 50%; right: auto; top: 0; z-index: 6; }
+:global(.time-visual-phone) .floating[data-side] { left: 58%; right: auto; top: 92%; z-index: 6; }
 @media (prefers-reduced-motion: reduce) { .shell { transform: none; } }
 
-:global(.time-visual-phone) .viewport { background: #f8fafc; }
+:global(.time-visual-phone) .viewport {
+  /* Button pill radius (28px) plus the summary’s 16px outer padding. */
+  border-radius: 20px 20px 11.7333% 11.7333% / 20px 20px 15.3846% 15.3846%;
+  background: rgba(255, 255, 255, .1);
+  -webkit-backdrop-filter: blur(40px);
+  backdrop-filter: blur(40px);
+}
 :global(.time-visual-phone) .phone { background: transparent; }
 :global(.time-visual-phone) .viewport::after { display: none; }
+
+/* Full 375×812 device. Dialog and navigation share the screen’s scale. */
+:global(.time-visual-screen) .extended .shell {
+  padding: 5px;
+  border: 1px solid transparent;
+  border-radius: 46px;
+  background: transparent;
+  box-shadow: none;
+  transform-origin: top center;
+}
+:global(.time-visual-screen) .extended .viewport {
+  aspect-ratio: 375 / 812;
+  border: 0;
+  border-radius: 40px;
+  background: #f8fafc;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.extended .phone { position: relative; height: 812px; }
+.extended .scrollWindow { height: 648px; }
+.extended .copy { height: 648px; }
+.overview { width: 100%; }
+.deviceHeader { height: 66px; }
+.deviceFooter { position: absolute; top: 714px; width: 375px; height: 98px; background: white; }
+.embeddedDialog {
+  position: absolute;
+  z-index: 20;
+  left: 50%;
+  top: 50%;
+  width: 351px;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .embeddedDialog { display: none; }
+  :global(.time-visual-screen) .extended .shell { transform: none !important; }
+}
+
+/* The fixed viewing window shows the upper phone first, then the whole smaller device. */
+:global(.time-visual-screen) .extended .stage {
+  position: relative;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 375 / 460;
+  overflow: hidden;
+  isolation: isolate;
+}
+/* This mask belongs to the viewing window, never to the phone UI. */
+:global(.time-visual-screen) .extended .stage {
+  -webkit-mask-image: linear-gradient(to bottom, black 58%, rgba(0, 0, 0, var(--modal-progress, 0)) 96%);
+  mask-image: linear-gradient(to bottom, black 58%, rgba(0, 0, 0, var(--modal-progress, 0)) 96%);
+}
+:global(.time-visual-screen) .extended .shell {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+:global(.time-visual-screen) .extended .shell::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: 0;
+  border: 1px solid #bfc2ce;
+  border-radius: inherit;
+  background: linear-gradient(110deg, #e4e5ed, #b9bdcb 48%, #e6e7ef);
+  box-shadow: inset 0 1px 0 #fff;
+  pointer-events: none;
+}
+:global(.time-visual-screen) .extended .overview {
+  height: 812px;
+  background: #f8fafc;
+}
+
+/* Standalone summary and modal: no device, clipping or fade mask. */
+.componentDemo { width: 100%; }
+.componentStage { position: relative; width: 100%; aspect-ratio: 375 / 470; isolation: isolate; }
+.componentCard { position: absolute; left: 50%; top: 50%; width: 100%; transform-origin: center; cursor: pointer; }
+.componentModal { position: absolute; left: 54%; top: 46%; z-index: 20; transform-origin: center; }
+.componentStage [data-demo-target="add"] { --guide-radius: 999px; }
+.componentStage[data-focus="add"] [data-demo-target="add"]::after { content: ""; position: absolute; inset: -8px; border-radius: inherit; border: 2px solid #a995ff; opacity: var(--guide-strength); pointer-events: none; }

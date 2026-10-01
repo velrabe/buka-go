@@ -24,7 +24,7 @@ import survey from "@/content/survey.json";
 type Props = { params: Promise<{ slug?: string[] }> };
 export const dynamicParams = false;
 export function generateStaticParams() {
-  return [...routes, "/screens"].map((path) => ({ slug: path.split("/").filter(Boolean) }));
+  return [...routes, "/screens", "/alt"].map((path) => ({ slug: path.split("/").filter(Boolean) }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -74,7 +74,7 @@ export default async function Page({ params }: Props) {
     m = messages[locale],
     page = getPage(path),
     lang = languageFor(locale);
-  const home = isHome(path),
+  const home = isHome(path) || path === "/alt",
     blog = isBlog(path);
   if (path === "/screens") return <ScreenReview />;
   if (!home && !blog && !page && path !== "/survey") notFound();
@@ -85,7 +85,7 @@ export default async function Page({ params }: Props) {
       </a>
       <Header locale={locale} path={path} messages={m} />
       {home ? (
-        <Landing locale={locale} messages={m} />
+        <Landing locale={locale} messages={m} alternative={path === "/alt"} />
       ) : blog ? (
         <Blog
           locale={locale}

@@ -2,21 +2,24 @@
 import { siteUrl } from "@/lib/site-url";
 import { createContext, useContext, type ReactNode } from "react";
 import { sampleContentDemo } from "@/lib/content-demo-timeline";
+import { useScreenTranslation } from "./ScreenLocale";
 export const ContentDemoContext = createContext(sampleContentDemo(0));
 export function DemoValue({ field }: { field: string }) {
   const frame = useContext(ContentDemoContext);
+  const t = useScreenTranslation();
   const values: Record<string, string> = {
     clock: frame.clock, total: `2ч ${frame.totalMinutes - 120}мин`,
     limit: frame.dailyLimit === 255 ? "из 4ч 15мин" : "из 4 часов",
     study: "85 мин", games: `${frame.categoryGames} мин`, minecraft: `${frame.minutes} мин за сегодня`,
     modeStart: frame.modeStart, modeEnd: frame.modeEnd,
   };
-  return field === "limit" ? <span style={{ opacity: frame.limitOpacity }}>{values[field]}</span> : <>{values[field]}</>;
+  return field === "limit" ? <span style={{ opacity: frame.limitOpacity }}>{t(values[field])}</span> : <>{t(values[field])}</>;
 }
 export function DemoActiveMode() {
   const frame = useContext(ContentDemoContext);
+  const t = useScreenTranslation();
   return <span style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 20, lineHeight: "24px", color: frame.activated ? "#e7883f" : "#559be6", whiteSpace: "nowrap" }}>
-    <span style={{ width: 16, height: 16, background: "currentColor", mask: `url(${siteUrl(`/assets/app-content/${frame.activated ? "game-solid.svg" : "6b4d5c7803e11793.svg"}`)}) center / contain no-repeat` }} />{frame.mode}
+    <span style={{ width: 16, height: 16, background: "currentColor", mask: `url(${siteUrl(`/assets/app-content/${frame.activated ? "game-solid.svg" : "6b4d5c7803e11793.svg"}`)}) center / contain no-repeat` }} />{t(frame.mode)}
   </span>;
 }
 export function DemoSummaryBar() {

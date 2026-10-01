@@ -91,7 +91,9 @@ for (const match of component.matchAll(/"([a-f0-9]{16}\.svg)"/g)) {
 }
 console.log("Verified demo scenes, section holds, continuous loop, one-second return, +5 minute usage and assets.");
 
-assert.equal(screen.body.style.height, 1099);
+const contentHeight = screen.body.children.reduce((height, section) => height + Number(section.style.height), 0)
+  + parseFloat(screen.body.style.paddingBottom || "0");
+assert.equal(screen.body.style.height, contentHeight, "Screen body fits all sections and bottom padding");
 for (const id of ["2799:62448", "2829:83610", "2829:71928", "2799:63585", "2799:63591", "2799:63597"]) assert.ok(!ids.has(id), `Removed content returned: ${id}`);
 // New section positions after removing children and explanatory rows.
 for (const [time, top, height] of [[2.1, 230, 48], [13.5, 488, 75], [25.1, 705, 58]]) {
@@ -154,7 +156,13 @@ assert.equal(sampleAddTimeDemo(1.15).tap, 1);
 assert.equal(sampleAddTimeDemo(1.4).tap, 0);
 
 assert.ok(sampleAddTimeDemo(1.55).modalOpacity < .6, "Modal has a gentle 750ms entrance");
-assert.ok(sampleAddTimeDemo(1.55).backgroundDim < .15, "Original button stays visible during early entrance");
+for (let t = 1.15; t <= 1.9; t += .01) {
+  const frame = sampleAddTimeDemo(t);
+  assert.equal(frame.backgroundDim, frame.modalOpacity, "Card and modal share one transition");
+  assert.ok(Math.abs(frame.focusAmount + frame.modalOpacity - 1) < 1e-10, "Highlight disappears with modal entrance");
+}
 const landingHtml = readFileSync(new URL("../out/index.html", import.meta.url), "utf8");
-assert.ok(landingHtml.includes('data-figma-node="3874:64675"'), "Landing renders the updated compact Figma frame");
-assert.ok(!landingHtml.includes('data-demo-target="quick"'), "Landing has no smart-mode controls");
+assert.ok(landingHtml.includes('data-figma-node="2799:62447"'), "Landing renders the complete content screen");
+const alternateHtml = readFileSync(new URL("../out/alt/index.html", import.meta.url), "utf8");
+assert.ok(alternateHtml.includes('data-figma-node="3874:64675"'), "Alternate landing renders the compact Figma frame");
+assert.ok(!alternateHtml.includes('data-demo-target="quick"'), "Compact demo has no smart-mode controls");

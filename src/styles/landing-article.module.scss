@@ -1,0 +1,59 @@
+.section { background: #fff; }
+.cover { display: block; width: auto; max-width: 100%; height: 420px; margin-inline: auto; object-fit: contain; }
+.header { position: relative; width: min(100% - 64px, 840px); margin: -24px auto 0; padding: 28px 32px; border-radius: 24px; background: #fff; box-shadow: 0 12px 48px #5345790d; }
+.meta { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; color: #87909e; font-size: 14px; line-height: 1.4; }
+.meta > span:first-child { display: inline-flex; align-items: center; gap: 6px; }
+.header h2 { margin: 0 0 18px; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.2; letter-spacing: -.025em; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tags span { padding: 5px 12px; background: #f3f0ff; border-radius: 999px; color: #606575; font-size: 13px; line-height: 1.4; }
+.body { width: min(100% - 128px, 776px); margin: 48px auto 0; display: flex; flex-direction: column; }
+.preview { display: flex; flex-direction: column; gap: 32px; }
+.excerpt { position: relative; display: flex; flex-direction: column; align-items: center; gap: 20px; margin-top: -24px; padding-top: 16px; text-align: center; }
+.journalPrompt { margin: 0; color: #606985; font-size: 20px; font-weight: 600; line-height: 1.45; text-wrap: balance; }
+.journalPrompt span { display: block; }
+.intro { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; max-height: 4.95em; overflow: hidden; margin: 0; font-size: 17px; line-height: 1.65; color: #697182; -webkit-mask-image: linear-gradient(#000 40%, transparent 100%); mask-image: linear-gradient(#000 40%, transparent 100%); }
+.points { list-style: none; margin: 0; padding: 0; }
+.point { display: grid; grid-template-columns: 56px minmax(0, 1fr); align-items: start; gap: 24px; }
+.point + .point { margin-top: 24px; padding-top: 24px; border-top: 1px solid #eaeaf0; }
+.number { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 16px; background: #f3f0ff; color: #9279e8; font-size: 20px; line-height: 1; font-weight: 700; font-variant-numeric: tabular-nums; }
+.point h3 { margin: 4px 0 8px; color: #9279e8; font-size: 20px; line-height: 1.3; font-weight: 700; }
+.point p { margin: 0; color: #434c5d; font-size: 16px; line-height: 1.55; }
+.blogLink { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 52px; padding: 12px 24px; border-radius: 999px; background: linear-gradient(110deg, #6246ed, #8970f2); color: #fff; font-size: 16px; font-weight: 700; text-decoration: none; }
+.blogLink:hover { filter: brightness(1.05); }
+.blogLink:focus-visible { outline: 2px solid #9279e8; outline-offset: 4px; }
+@media (min-width: 768px) {
+  .section { padding-block: 56px; }
+  .cover { height: 300px; }
+  .header { width: min(100% - 48px, 840px); margin-top: -16px; padding: 24px 28px; border-radius: 20px; box-shadow: 0 8px 32px #53457908; }
+  .meta { margin-bottom: 10px; font-size: 13px; }
+  .header h2 { max-width: 740px; margin-bottom: 16px; font-size: clamp(28px, 2.6vw, 32px); }
+  .body { width: min(100% - 48px, 840px); margin-top: 32px; }
+  .preview { gap: 24px; }
+  .points { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 32px; }
+  .point { grid-template-columns: 40px minmax(0, 1fr); gap: 14px; }
+  .point + .point { margin: 0; padding: 0; border: 0; }
+  .point:nth-child(n + 3) { padding-top: 20px; border-top: 1px solid #eeebf4; }
+  .number { width: 40px; height: 40px; border-radius: 12px; font-size: 16px; }
+  .point h3 { margin: 0 0 6px; font-size: 18px; }
+  .point p { font-size: 15px; line-height: 1.55; }
+  .intro { font-size: 15px; -webkit-line-clamp: 2; max-height: 3.3em; }
+  .excerpt { margin-top: 12px; padding-top: 0; gap: 14px; }
+  .journalPrompt { font-size: 18px; }
+  .blogLink { min-height: 46px; padding: 10px 22px; font-size: 15px; }
+}
+@media (max-width: 767px) {
+  .cover { height: 180px; }
+  .header { width: calc(100% - 16px); margin-top: -16px; padding: 24px 20px; border-radius: 20px; }
+  .header h2 { font-size: 26px; }
+  .body { width: 100%; margin-top: 24px; }
+  .intro { display: none; }
+  .excerpt { margin-top: -24px; padding-top: 8px; gap: 16px; }
+  .journalPrompt { font-size: 17px; line-height: 1.45; }
+  .point { grid-template-columns: 40px minmax(0, 1fr); gap: 14px; }
+  .number { width: 40px; height: 40px; border-radius: 12px; font-size: 16px; }
+  .point h3 { margin-top: 0; font-size: 18px; }
+  .point + .point { margin-top: 20px; padding-top: 20px; }
+  .point:first-child p { max-height: 2.5em; overflow: hidden; -webkit-mask-image: linear-gradient(#0008, transparent); mask-image: linear-gradient(#0008, transparent); }
+  .point:nth-child(n + 2) { display: none; }
+  .blogLink { width: 100%; }
+}

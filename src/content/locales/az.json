@@ -1,326 +1,326 @@
 {
   "common": {
-    "siteTagline": "Родительский контроль и геолокация",
-    "homeAriaLabel": "Главная страница",
-    "openMenuAriaLabel": "Открыть меню",
-    "cloudAlt": "Облако",
-    "tryFree": "Попробовать бесплатно",
-    "try": "Попробовать",
-    "downloadAppStore": "Скачать в App Store",
-    "downloadGooglePlay": "Скачать в Google Play",
-    "subscribe": "Подписаться",
-    "home": "Главная",
-    "documents": "Документы",
-    "coinAlt": "Монета",
-    "checkAlt": "Галочка",
-    "phoneAlt": "Телефон",
-    "breadcrumbsHome": "Главная",
-    "ogrn": "ОГРН",
-    "inn": "ИНН",
-    "kpp": "КПП",
-    "copyright": "© BukaGo, {year}. Все права защищены."
+    "siteTagline": "Valideyn nəzarəti və məkan izləmə",
+    "homeAriaLabel": "Ana səhifə",
+    "openMenuAriaLabel": "Menyunu aç",
+    "cloudAlt": "Bulud",
+    "tryFree": "Pulsuz sınayın",
+    "try": "Sınayın",
+    "downloadAppStore": "App Store-dan yükləyin",
+    "downloadGooglePlay": "Google Play-dən yükləyin",
+    "subscribe": "Abunə olun",
+    "home": "Ana səhifə",
+    "documents": "Sənədlər",
+    "coinAlt": "Sikkə",
+    "checkAlt": "Təsdiq işarəsi",
+    "phoneAlt": "Telefon",
+    "breadcrumbsHome": "Ana səhifə",
+    "ogrn": "OGRN",
+    "inn": "INN",
+    "kpp": "KPP",
+    "copyright": "© BukaGo, {year}. Bütün hüquqlar qorunur."
   },
   "header": {
-    "howItWorks": "Как работает",
-    "tasks": "Задания",
-    "howToConnect": "Как подключиться",
-    "forFamily": "Для семьи",
-    "blog": "Блог",
-    "downloadApp": "Скачать приложение"
+    "howItWorks": "Necə işləyir",
+    "tasks": "Tapşırıqlar",
+    "howToConnect": "Necə qoşulmalı",
+    "forFamily": "Ailə üçün",
+    "blog": "Bloq",
+    "downloadApp": "Tətbiqi yükləyin"
   },
   "footer": {
-    "newsletterHint": "Не пропусти обновления, подпись на рассылку",
-    "documentsTitle": "Документы"
+    "newsletterHint": "Yenilikləri qaçırmayın — xəbər bülleteninə abunə olun",
+    "documentsTitle": "Sənədlər"
   },
   "hero": {
-    "title": "Родительский контроль ",
-    "titleAccent": "с умными паузами на развитие ребенка",
-    "description": "Технология умных пауз - формирование новых нейронных связей ребенка через обучение, нейрогимнастику и бережное переключение в реальность.",
-    "tryFreeAriaLabel": "Попробовать бесплатно"
+    "title": "Valideyn nəzarəti ",
+    "titleAccent": "ağıllı fasilələrlə",
+    "description": "BukaGo fasilə üçün uyğun anı özü seçir və uşağa yaşına uyğun tapşırıq və ya hərəkət məşqi təklif edir.",
+    "tryFreeAriaLabel": "Pulsuz sınayın"
   },
   "control": {
     "items": {
       "0": {
-        "title": "Управляйте временем",
-        "text": "блокируйте приложения и контролируйте контент в интернете по возрасту ребенка.",
+        "title": "Ekran vaxtını idarə edin",
+        "text": "tətbiqləri bloklayın və internetdəki məzmunu uşağın yaşına uyğun tənzimləyin.",
         "li": {
-          "0": "Гибкие лимиты по времени экрана на каждый день недели",
-          "1": "Мгновенная пауза и запуск занятий в один тап",
-          "2": "Уведомления родителям о превышении лимита"
+          "0": "Həftənin hər günü üçün çevik ekran vaxtı limitləri",
+          "1": "Bir toxunuşla fasilə verin və məşğələyə başlayın",
+          "2": "Limit aşıldıqda valideynlərə bildirişlər"
         },
         "images": {
-          "0": "Родительский контроль",
-          "1": "Родительский контроль — детальный экран",
-          "2": "Подсказка умной паузы"
+          "0": "Valideyn nəzarəti",
+          "1": "Valideyn nəzarəti — ətraflı ekran",
+          "2": "Ağıllı fasilə barədə ipucu"
         }
       },
       "1": {
-        "title": "Настройте темы обучающего контента",
-        "text": "в умные паузы будут интегрированы полезные темы для изучения",
+        "title": "Öyrədici məzmunun mövzularını seçin",
+        "text": "ağıllı fasilələrə öyrənmək üçün faydalı mövzular daxil ediləcək",
         "li": {
-          "0": "Выбирайте темы: логика, чтение, внимание и математика",
-          "1": "Подстраивайте сложность под возраст ребёнка",
-          "2": "Собирайте персональный трек обучения в пару кликов"
+          "0": "Məntiq, oxu, diqqət və riyaziyyat mövzularını seçin",
+          "1": "Çətinlik səviyyəsini uşağın yaşına uyğunlaşdırın",
+          "2": "Bir neçə toxunuşla fərdi öyrənmə planı qurun"
         },
         "images": {
-          "0": "Обучающий контент",
-          "1": "Экран обучающего задания",
-          "2": "Подсказка обучающего контента"
+          "0": "Öyrədici məzmun",
+          "1": "Öyrədici tapşırıq ekranı",
+          "2": "Öyrədici məzmun barədə ipucu"
         }
       },
       "2": {
-        "title": "Формируйте полезные привычки",
-        "text": "добавляйте напоминания об уроках и домашних делах",
+        "title": "Faydalı vərdişlər formalaşdırın",
+        "text": "dərslər və ev işləri üçün xatırlatmalar əlavə edin",
         "li": {
-          "0": "Создавайте ежедневные и разовые задачи для ребёнка",
-          "1": "Настраивайте напоминания об уроках и делах",
-          "2": "Закрепляйте привычки через игровую мотивацию и награды"
+          "0": "Uşağınız üçün gündəlik və birdəfəlik tapşırıqlar yaradın",
+          "1": "Dərslər və işlər barədə xatırlatmaları tənzimləyin",
+          "2": "Oyun motivasiyası və mükafatlarla vərdişləri möhkəmləndirin"
         },
         "images": {
-          "0": "Полезные привычки",
-          "1": "Экран задания по привычкам",
-          "2": "Подсказка по привычкам"
+          "0": "Faydalı vərdişlər",
+          "1": "Vərdiş tapşırığının ekranı",
+          "2": "Vərdişlər barədə ipucu"
         }
       },
       "3": {
-        "title": "Здоровые минутки",
-        "text": "переключат внимание на зарядку глаз или разминку в игровой форме",
+        "title": "Sağlamlıq dəqiqələri",
+        "text": "diqqəti oyun formasında göz məşqlərinə və ya hərəkətə yönəldir",
         "li": {
-          "0": "Напоминания о перерывах для глаз и тела",
-          "1": "Короткие упражнения в формате мини‑игр",
-          "2": "Поддержка привычки регулярно вставать и двигаться"
+          "0": "Gözlər və bədən üçün fasilə xatırlatmaları",
+          "1": "Mini-oyun formatında qısa məşqlər",
+          "2": "Müntəzəm ayağa qalxmaq və hərəkət etmək vərdişinə dəstək"
         },
         "images": {
-          "0": "Здоровые минутки",
-          "1": "Экран здоровой минутки",
-          "2": "Подсказка здоровой минутки"
+          "0": "Sağlamlıq dəqiqələri",
+          "1": "Sağlamlıq dəqiqəsinin ekranı",
+          "2": "Sağlamlıq dəqiqəsi barədə ipucu"
         }
       },
       "4": {
-        "title": "Следите за геопозицией ребенка",
-        "text": "и его маршрутом",
+        "title": "Uşağınızın yerini izləyin",
+        "text": "və onun marşrutunu görün",
         "li": {
-          "0": "Онлайн‑карта с текущим местоположением ребёнка",
-          "1": "Оповещения при выходе за пределы заданных зон",
-          "2": "История маршрутов за день и неделю"
+          "0": "Uşağın cari yerini göstərən onlayn xəritə",
+          "1": "Təyin edilmiş zonalardan çıxdıqda bildirişlər",
+          "2": "Günlük və həftəlik marşrut tarixçəsi"
         },
         "images": {
-          "0": "Геопозиция ребенка"
+          "0": "Uşağın məkanı"
         }
       }
     }
   },
   "problem": {
-    "imageAlt": "Проблемы экранного времени",
-    "title": "Почему контроль экрана без умных пауз не работает?",
+    "imageAlt": "Ekran vaxtı ilə bağlı çətinliklər",
+    "title": "Ağıllı fasilələr olmadan ekran nəzarəti niyə işləmir?",
     "tags": {
-      "0": "Экранное время",
-      "1": "Психология ребёнка",
-      "2": "Цифровые привычки"
+      "0": "Ekran vaxtı",
+      "1": "Uşaq psixologiyası",
+      "2": "Rəqəmsal vərdişlər"
     },
     "sections": {
       "0": {
-        "title": "Раздражительность и срывы",
-        "text": "Резкое переключение с экрана на реальность вызывает у детей стресс, истерики, агрессию."
+        "title": "Əsəbilik və emosional partlayışlar",
+        "text": "Ekrandan real həyata qəfil keçid uşaqlarda stress, ağlama tutmaları və aqressiya yaradır."
       },
       "1": {
-        "title": "Проблемы с концентрацией",
-        "text": "Постоянный поток быстрой информации ослабляет способность сосредоточиться на уроках, чтении, играх."
+        "title": "Diqqəti cəmləməkdə çətinliklər",
+        "text": "Sürətli məlumatın davamlı axını dərslərə, oxuya və oyunlara diqqəti cəmləmək qabiliyyətini zəiflədir."
       },
       "2": {
-        "title": "Апатия и плохое настроение",
-        "text": "Виртуальный мир кажется ярче, реальный – скучнее, что снижает мотивацию и интерес к жизни."
+        "title": "Laqeydlik və əhvalın pisləşməsi",
+        "text": "Virtual dünya daha parlaq, real dünya isə daha darıxdırıcı görünür. Bu, motivasiyanı və həyata marağı azaldır."
       },
       "3": {
-        "title": "Проблемы со здоровьем",
-        "text": "Риски для зрения (сухость, ухудшение) и лишний вес из-за малоподвижности и неправильного питания."
+        "title": "Sağlamlıq problemləri",
+        "text": "Görmə üçün risklər (quruluq, zəifləmə), az hərəkət və düzgün qidalanmamaq səbəbindən artıq çəki."
       }
     },
-    "heading": "Раздражительность и срывы",
-    "intro": "Когда время за экраном заканчивается резко, мозг ребёнка не успевает переключиться с яркого, динамичного контента на спокойную реальность. Отсюда — вспышки гнева, слёзы и ощущение, что гаджеты управляют настроением всей семьи. В умных паузах мы учим ребёнка замечать свои реакции, делать микропереключения и постепенно выходить из экрана без конфликта.",
-    "footerTitle": "Подробнее о развитии ребенка",
-    "footerTitleLine2": "читайте в нашем журнале",
-    "goToBlog": "Перейти в блог",
-    "goToBlogAriaLabel": "Перейти в блог"
+    "heading": "Əsəbilik və emosional partlayışlar",
+    "intro": "Ekran vaxtı qəfil bitəndə uşağın beyni parlaq, dinamik məzmundan sakit real həyata keçməyə vaxt tapmır. Nəticədə qəzəb, göz yaşları və cihazların bütün ailənin əhvalını idarə etdiyi hissi yaranır. Ağıllı fasilələrdə uşağa öz reaksiyalarını görməyi, qısa keçidlər etməyi və ekrandan münaqişəsiz, tədricən ayrılmağı öyrədirik.",
+    "footerTitle": "Uşaq inkişafı haqqında daha ətraflı",
+    "footerTitleLine2": "jurnalımızda oxuyun",
+    "goToBlog": "Bloqa keçin",
+    "goToBlogAriaLabel": "Bloqa keçin"
   },
   "loved": {
-    "title": "Детям нравится BukaGo",
-    "description": "Веселые котята, которые не наставляют, а играют в команде с ребенком",
+    "title": "Uşaqlar BukaGo-nu sevir",
+    "description": "Nəsihət verməyən, uşaqla eyni komandada oynayan şən pişik balaları",
     "cards": {
       "0": {
-        "title": "Задание",
+        "title": "Tapşırıq",
         "progress": "1/3",
         "question": "3 + 2 = ?",
-        "answerAriaLabel": "Результат: {value}",
-        "answerButton": "Ответить",
-        "subtitle": "Умная пауза с заданием на логику и внимание",
-        "text": "Ребёнок выполняет задание или смотрит обучающий контент, зарабатывая баллы."
+        "answerAriaLabel": "Cavab: {value}",
+        "answerButton": "Cavab ver",
+        "subtitle": "Məntiq və diqqət tapşırığı ilə ağıllı fasilə",
+        "text": "Uşaq tapşırıq yerinə yetirir və ya öyrədici məzmuna baxaraq xal qazanır."
       },
       "1": {
-        "title": "Прочитать 10 страниц ",
-        "titleLine2": "и пересказать",
-        "reward": "+50Р",
-        "photoReport": "Фото-отчет отправлен",
-        "rewardReceived": "Награда получена",
-        "rewardReceivedAriaLabel": "Награда получена",
-        "subtitle": "Задания от родителей",
-        "text": "Создавайте свои задания и назначайте награду в денежном виде или за баллы, которые можно обменять на подарок."
+        "title": "10 səhifə oxu ",
+        "titleLine2": "və danış",
+        "reward": "+50 ₽",
+        "photoReport": "Foto hesabat göndərildi",
+        "rewardReceived": "Mükafat alındı",
+        "rewardReceivedAriaLabel": "Mükafat alındı",
+        "subtitle": "Valideynlərin tapşırıqları",
+        "text": "Öz tapşırıqlarınızı yaradın və pul və ya hədiyyəyə dəyişdirilə bilən xallar şəklində mükafat təyin edin."
       },
       "2": {
-        "title": "Здоровая минутка",
+        "title": "Sağlamlıq dəqiqəsi",
         "timer": "00:08",
-        "exerciseDescription": "Влево → вверх → вправо → вниз в течение 10 сек (до звукового сигнала)",
-        "pause": "Пауза",
-        "pauseAriaLabel": "Пауза",
-        "pauseIconAlt": "Иконка паузы",
-        "subtitle": "Разминка и здоровая минутка",
-        "text": "Развивайте физическое здоровье ребёнка и защищайте глаза от перенапряжения."
+        "exerciseDescription": "10 saniyə ərzində sola → yuxarı → sağa → aşağı bax (səs siqnalına qədər)",
+        "pause": "Fasilə",
+        "pauseAriaLabel": "Fasilə",
+        "pauseIconAlt": "Fasilə işarəsi",
+        "subtitle": "Hərəkət və sağlamlıq dəqiqəsi",
+        "text": "Uşağın fiziki sağlamlığını inkişaf etdirin və gözlərini həddindən artıq gərginlikdən qoruyun."
       },
       "3": {
-        "title": "Осталось 2:00",
-        "breakSoon": "Скоро перерыв",
-        "breakOrTask": "Перерыв или задание?",
-        "break": "Перерыв",
-        "task": "Задание",
-        "breakAriaLabel": "Перерыв",
-        "taskAriaLabel": "Задание",
-        "subtitle": "Бережное переключение внимания",
-        "text": "Предупреждаем заранее об окончании времени и о скором переключении внимания."
+        "title": "Qalıb: 2:00",
+        "breakSoon": "Fasilə yaxınlaşır",
+        "breakOrTask": "Fasilə, yoxsa tapşırıq?",
+        "break": "Fasilə",
+        "task": "Tapşırıq",
+        "breakAriaLabel": "Fasilə",
+        "taskAriaLabel": "Tapşırıq",
+        "subtitle": "Diqqətin yumşaq yönləndirilməsi",
+        "text": "Vaxtın bitəcəyini və diqqətin başqa fəaliyyətə yönləndiriləcəyini əvvəlcədən xəbər veririk."
       },
       "4": {
-        "title": "Семейная доска",
-        "addTask": "Добавить задание",
-        "addTaskAriaLabel": "Добавить задание",
-        "subtitle": "Семейный рейтинг",
-        "text": "Создавайте доску с заданиями для семьи и формируйте полезные привычки вместе.",
+        "title": "Ailə lövhəsi",
+        "addTask": "Tapşırıq əlavə et",
+        "addTaskAriaLabel": "Tapşırıq əlavə et",
+        "subtitle": "Ailə reytinqi",
+        "text": "Ailə üçün tapşırıq lövhəsi yaradın və birlikdə faydalı vərdişlər formalaşdırın.",
         "members": {
-          "0": "Маша",
-          "1": "Ваня",
-          "2": "Папа"
+          "0": "Maşa",
+          "1": "Vanya",
+          "2": "Ata"
         }
       }
     }
   },
   "connect": {
-    "badge": "БЫСТРЫЙ СТАРТ",
-    "title": "Подключите устройство ребенка за 5 минут",
-    "subtitle": "Простая настройка и удобный интерфейс. ",
-    "subtitleLine2": "Получайте доступ к любой",
-    "subtitleLine3": "нужной функции приложения в 1 клик!",
+    "badge": "SÜRƏTLİ BAŞLANĞIC",
+    "title": "Uşağınızın cihazını 5 dəqiqəyə qoşun",
+    "subtitle": "Sadə quraşdırma və rahat interfeys. ",
+    "subtitleLine2": "Tətbiqin istənilən funksiyasına",
+    "subtitleLine3": "bir toxunuşla daxil olun!",
     "steps": {
-      "0": "Скачайте приложение BukaGo на свой телефон",
-      "1": "Установите приложение BukaGo на телефон ребёнка",
-      "2": "Пройдите по шагам и включите заботу о вашем ребёнке через BukaGo"
+      "0": "BukaGo tətbiqini öz telefonunuza yükləyin",
+      "1": "BukaGo tətbiqini uşağınızın telefonuna quraşdırın",
+      "2": "Addımları tamamlayın və BukaGo ilə uşağınıza qayğını aktivləşdirin"
     }
   },
   "works": {
     "items": {
       "0": {
-        "title": "Помогает в родительстве:",
+        "title": "Valideynlikdə kömək edir:",
         "list": {
-          "0": "Не нужно напоминать про уроки",
-          "1": "Ребёнок сам подтверждает выполнение",
-          "2": "Ребёнок копит монетки на свою цель",
-          "3": "Не нужно следить за экранным временем"
+          "0": "Dərsləri xatırlatmaq lazım deyil",
+          "1": "Uşaq tapşırığı yerinə yetirdiyini özü təsdiqləyir",
+          "2": "Uşaq öz məqsədi üçün sikkələr toplayır",
+          "3": "Ekran vaxtına daim nəzarət etmək lazım deyil"
         }
       },
       "1": {
-        "title": "Развитие и здоровье — в игровой форме",
+        "title": "İnkişaf və sağlamlıq — oyun formasında",
         "list": {
-          "0": "Переключение внимания с быстрого дофамина",
-          "1": "Формирование длинных нейронных связей",
-          "2": "Снижение истерик и срывов",
-          "3": "Развитие памяти и критического мышления"
+          "0": "Diqqətin sürətli dopamin mənbələrindən yönləndirilməsi",
+          "1": "Uzunmüddətli neyron əlaqələrinin formalaşması",
+          "2": "Ağlama tutmaları və emosional partlayışların azalması",
+          "3": "Yaddaşın və tənqidi düşüncənin inkişafı"
         }
       }
     },
-    "readArticle": "Читать статью"
+    "readArticle": "Məqaləni oxuyun"
   },
   "app": {
-    "title": "Скачивайте приложение BukaGo",
-    "subtitle": "Контроль за экранным временем ребенка с умными паузами и геопозицией"
+    "title": "BukaGo tətbiqini yükləyin",
+    "subtitle": "Ağıllı fasilələr və məkan izləmə ilə uşağın ekran vaxtına nəzarət"
   },
   "cookie": {
-    "ariaLabel": "Уведомление об использовании cookie",
-    "title": "Мы используем cookie",
-    "text": "Сайт использует cookie и аналитику (Яндекс.Метрика) для улучшения работы сервиса. Нажимая «Принять», вы соглашаетесь с ",
-    "privacyPolicy": "Политикой конфиденциальности",
-    "accept": "Принять"
+    "ariaLabel": "Kuki istifadəsi barədə bildiriş",
+    "title": "Kukilərdən istifadə edirik",
+    "text": "Xidməti yaxşılaşdırmaq üçün sayt kukilərdən və analitikadan (Yandex.Metrica) istifadə edir. «Qəbul et» düyməsinə basmaqla razılaşırsınız: ",
+    "privacyPolicy": "Məxfilik siyasəti",
+    "accept": "Qəbul et"
   },
   "modal": {
-    "title": "Хочу узнать первым",
-    "description": "Приложение уже в App Store. Подпишитесь на Email-рассылку — сообщим, когда выйдет версия для Android",
-    "emailPlaceholder": "Ваш email",
-    "submitError": "Ошибка отправки формы",
-    "socialHint": "Подпишитесь на нас в соцсетях чтобы не пропустить"
+    "title": "İlk xəbərdar olmaq istəyirəm",
+    "description": "Tətbiq artıq App Store-dadır. E-poçt bülleteninə abunə olun — Android versiyası çıxanda xəbər verəcəyik",
+    "emailPlaceholder": "E-poçt ünvanınız",
+    "submitError": "Formanı göndərmək mümkün olmadı",
+    "socialHint": "Yenilikləri qaçırmamaq üçün sosial şəbəkələrdə bizi izləyin"
   },
   "blog": {
-    "title": "Блог",
-    "description": "BukaGo - журнал для осознанных родителей",
-    "metaTitle": "Блог | {siteName}",
-    "pageMetaTitle": "Страница {page} | Блог | {siteName}",
-    "prevPage": "Назад",
-    "nextPage": "Вперёд",
-    "prevPageAriaLabel": "Предыдущая страница",
-    "nextPageAriaLabel": "Следующая страница",
-    "pageAriaLabel": "Страница {page}",
-    "languageVersions": "Языковые версии статьи",
-    "empty": "Статей на этом языке пока нет. Загляните позже."
+    "title": "Bloq",
+    "description": "BukaGo — şüurlu valideynlər üçün jurnal",
+    "metaTitle": "Bloq | {siteName}",
+    "pageMetaTitle": "Səhifə {page} | Bloq | {siteName}",
+    "prevPage": "Əvvəlki",
+    "nextPage": "Növbəti",
+    "prevPageAriaLabel": "Əvvəlki səhifə",
+    "nextPageAriaLabel": "Növbəti səhifə",
+    "pageAriaLabel": "Səhifə {page}",
+    "languageVersions": "Məqalənin dil versiyaları",
+    "empty": "Bu dildə hələ məqalə yoxdur. Daha sonra yenidən baxın."
   },
   "legal": {
-    "lastUpdated": "Последнее обновление: ",
-    "translationPending": "Полный перевод этого документа на английский язык находится в работе. Ниже представлена версия на русском языке.",
+    "lastUpdated": "Son yenilənmə: ",
+    "translationPending": "Bu sənədin Azərbaycan dilinə tam tərcüməsi hazırlanır. Aşağıda rus dilindəki versiya təqdim olunur.",
     "links": {
-      "userAgreement": "Пользовательское соглашение",
-      "privacyPolicy": "Политика конфиденциальности",
-      "personalDataConsent": "Согласие на обработку ПДн",
-      "offer": "Публичная оферта (PRO)",
-      "accountDeletion": "Удаление аккаунта и данных",
-      "requisites": "Реквизиты и контакты",
-      "itAccreditation": "ИТ-аккредитация"
+      "userAgreement": "İstifadəçi razılaşması",
+      "privacyPolicy": "Məxfilik siyasəti",
+      "personalDataConsent": "Fərdi məlumatların emalına razılıq",
+      "offer": "Açıq oferta (PRO)",
+      "accountDeletion": "Hesabın və məlumatların silinməsi",
+      "requisites": "Rekvizitlər və əlaqə",
+      "itAccreditation": "İT akkreditasiyası"
     },
     "pages": {
       "userAgreement": {
-        "title": "Пользовательское соглашение",
-        "description": "Пользовательское соглашение сервиса BukaGo."
+        "title": "İstifadəçi razılaşması",
+        "description": "BukaGo xidmətinin istifadəçi razılaşması."
       },
       "privacyPolicy": {
-        "title": "Политика конфиденциальности",
-        "description": "Политика конфиденциальности и обработки персональных данных сервиса BukaGo (152-ФЗ, 242-ФЗ)."
+        "title": "Məxfilik siyasəti",
+        "description": "BukaGo xidmətinin məxfilik və fərdi məlumatların emalı siyasəti (152-FZ, 242-FZ)."
       },
       "personalDataConsent": {
-        "title": "Согласие на обработку персональных данных",
-        "description": "Согласие на обработку персональных данных сервиса BukaGo."
+        "title": "Fərdi məlumatların emalına razılıq",
+        "description": "BukaGo xidmətində fərdi məlumatların emalına razılıq."
       },
       "offer": {
-        "title": "Публичная оферта (PRO)",
-        "description": "Публичная оферта на оказание услуг BukaGo PRO."
+        "title": "Açıq oferta (PRO)",
+        "description": "BukaGo PRO xidmətlərinin göstərilməsinə dair açıq oferta."
       },
       "accountDeletion": {
-        "title": "Удаление аккаунта и данных",
-        "description": "Инструкция по удалению аккаунта и персональных данных в сервисе BukaGo."
+        "title": "Hesabın və məlumatların silinməsi",
+        "description": "BukaGo xidmətində hesabın və fərdi məlumatların silinməsi təlimatı."
       },
       "requisites": {
-        "title": "Реквизиты и контакты",
-        "description": "Реквизиты и контактная информация ООО «БЭЙСИК»."
+        "title": "Rekvizitlər və əlaqə",
+        "description": "«БЭЙСИК» MMC-nin rekvizitləri və əlaqə məlumatları."
       },
       "itAccreditation": {
-        "title": "Раскрытие информации об ИТ-деятельности",
-        "description": "Раскрытие информации об ИТ-деятельности ООО «БЭЙСИК» и программном продукте BukaGo."
+        "title": "İT fəaliyyəti haqqında məlumat",
+        "description": "«БЭЙСИК» MMC-nin İT fəaliyyəti və BukaGo proqram məhsulu haqqında məlumat."
       }
     }
   },
   "metadata": {
-    "siteName": "BukaGo — Родительский контроль и геолокация",
-    "siteDescription": "Технология умных пауз - формирование новых нейронных связей ребенка через обучение, нейрогимнастику и бережное переключение в реальность.",
-    "openGraphLocale": "ru_RU"
+    "siteName": "BukaGo — Valideyn nəzarəti və məkan izləmə",
+    "siteDescription": "Ağıllı fasilələrlə valideyn nəzarəti. BukaGo uşağa yaşına uyğun tapşırıqlar və hərəkət məşqləri təklif edir, ekran vaxtını və məkanını izləməyə kömək edir.",
+    "openGraphLocale": "az_AZ"
   },
   "languageSwitcher": {
-    "label": "Язык",
+    "label": "Dil",
     "ru": "Русский",
     "en": "English",
     "kk": "Қазақша",
     "uz": "Oʻzbekcha",
-    "az": "AZ"
+    "az": "Azərbaycan"
   }
 }

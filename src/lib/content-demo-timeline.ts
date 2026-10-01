@@ -66,13 +66,17 @@ export function sampleAddTimeDemo(seconds: number): ContentDemoFrame {
   const t = ((seconds % ADD_TIME_DURATION) + ADD_TIME_DURATION) % ADD_TIME_DURATION;
   const base = sampleContentDemo(0);
   const action = landingActions.find(([a,,b]) => between(t, a, b));
-  const focus = action?.[3] ?? "";
-  const focusAmount = action ? reveal(t, action[0], action[2], .3, .3) : 0;
+  const opening = ease(progress(t, ...addTimeBeats.open));
+  const closing = 1 - ease(progress(t, ...addTimeBeats.close));
+  const modalOpacity = Math.min(opening, closing);
+  const focus = between(t, .45, addTimeBeats.open[1]) ? "add" : action?.[3] ?? "";
+  const focusAmount = focus === "add"
+    ? ease(progress(t, .45, .75)) * (1 - opening)
+    : action ? reveal(t, action[0], action[2], .3, .3) : 0;
   // 240ms back-eased anticipation/contact + 240ms smooth release; only the guide scales.
   const contact = action ? progress(t, action[1] - .24, action[1]) : 0;
   const release = action ? progress(t, action[1], action[1] + .24) : 0;
   const tap = clickBackIn(contact) * (1 - ease(release));
-  const modalOpacity = reveal(t, 1.15, 6.75, .75, .55);
   const selection = ease(progress(t, ...addTimeBeats.swipe));
   const picker = ease(progress(t, ...addTimeBeats.picker));
   const reset = t >= 9.5;
@@ -80,7 +84,7 @@ export function sampleAddTimeDemo(seconds: number): ContentDemoFrame {
   return { ...base, t, focus, focusAmount, tap,
     press: focus === "add" && tap > 0 ? "add" : "",
     modal: between(t, 1.15, 6.75) ? "add" : null,
-    modalOpacity, backgroundDim: reveal(t, 1.35, 6.75, .9, .65),
+    modalOpacity, backgroundDim: modalOpacity,
     custom: t >= 3.15, presetBlend: ease(progress(t, ...addTimeBeats.custom)),
     selection, swipeOpacity: reveal(t, 2.05, 3.1, .15, .2),
     picker, wheel: ease(progress(t, ...addTimeBeats.wheel)),

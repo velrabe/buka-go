@@ -1,0 +1,62 @@
+.screen {
+  position: relative;
+  width: 359px;
+  height: 835px;
+  overflow: hidden;
+  border-radius: 46px;
+  isolation: isolate;
+  background: #f8fafc;
+  font-family: ui-rounded, "SF Pro Rounded", "Nunito", sans-serif;
+  font-synthesis: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  color: #171b29;
+}
+.label {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.asset { display: block; width: 100%; height: 100%; object-fit: contain; border-radius: inherit; }
+.asset[data-inactive="true"] { filter: grayscale(1); }
+
+.screen[data-animate="true"] {
+  background: transparent;
+  &::before {
+    content: ""; position: absolute; inset: 0; background: #f8fafc;
+    border-radius: inherit;
+    animation: screenBackgroundIn 650ms cubic-bezier(.22, 1, .36, 1) 1s both;
+    animation-play-state: var(--screen-play-state, running);
+  }
+}
+.bodyEntrance {
+  animation: screenBodyIn 700ms cubic-bezier(.22, 1, .36, 1) var(--body-delay) both;
+  animation-play-state: var(--screen-play-state, running);
+}
+.navEntrance {
+  animation: screenNavIn 700ms cubic-bezier(.22, 1, .36, 1) 1650ms both;
+  animation-play-state: var(--screen-play-state, running);
+}
+@keyframes screenBackgroundIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes screenBodyIn {
+  from { opacity: 0; transform: translateY(-16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes screenNavIn {
+  from { transform: translateY(110px); }
+  to { transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .screen[data-animate="true"]::before, .bodyEntrance, .navEntrance { animation: none; }
+
+}
+
+.navDock {
+  position: absolute; left: 0; right: 0; top: 741px; height: 94px;
+  z-index: 10; background: #fff; border-radius: 23px 23px 0 0;
+}
