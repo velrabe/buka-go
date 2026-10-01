@@ -12,15 +12,27 @@ type ScreenNode = {
 };
 
 function Layer({ node }: { node: ScreenNode }) {
+  // Figma can trim text bounds below the font size. Keep the layout slot,
+  // but center a full line box instead of clipping the glyphs to those bounds.
+  const trimmedText = node.text !== undefined &&
+    parseFloat(String(node.style.fontSize)) > Number(node.style.height);
+  const style: CSSProperties = {
+    ...node.style as CSSProperties,
+    ...(trimmedText ? {
+      display: "flex", alignItems: "center",
+      justifyContent: node.style.textAlign === "center" ? "center" : "flex-start",
+      overflow: "visible", whiteSpace: "pre", lineHeight: 1.2,
+    } as CSSProperties : {}),
+  };
   return (
-    <div className={styles.layer} style={node.style as CSSProperties} data-figma-node={node.id}>
+    <div className={styles.layer} style={style} data-figma-node={node.id}>
       {node.asset ? (
         <img
           className={styles.asset}
           src={node.asset.src}
           width={node.asset.width}
           height={node.asset.height}
-          style={{ left: node.asset.left, top: node.asset.top }}
+          style={{ left: node.asset.left, top: node.asset.top, width: node.asset.width, height: node.asset.height }}
           alt=""
           loading="lazy"
           draggable={false}
