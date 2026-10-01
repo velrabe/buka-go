@@ -11,10 +11,10 @@ const reveal = (t: number, start: number, end: number) =>
 export function sampleContentDemo(seconds: number) {
   const t = ((seconds % DEMO_DURATION) + DEMO_DURATION) % DEMO_DURATION;
   let scroll = 0;
-  if (t >= .5 && t < 3.8) scroll = 64 * ease(progress(t, .5, .9));
-  else if (t >= 3.8 && t < 8) scroll = 64 + 326 * ease(progress(t, 3.8, 4.4));
-  else if (t >= 8 && t < 13.2) scroll = 390 + 241 * ease(progress(t, 8, 8.6));
-  else if (t >= 13.2 && t < 14.2) scroll = 631 * (1 - ease(progress(t, 13.2, 14.2)));
+  if (t >= .5 && t < 3.8) scroll = 0;
+  else if (t >= 3.8 && t < 8) scroll = 300 * ease(progress(t, 3.8, 4.4));
+  else if (t >= 8 && t < 13.2) scroll = 300 + 203 * ease(progress(t, 8, 8.6));
+  else if (t >= 13.2 && t < 14.2) scroll = 503 * (1 - ease(progress(t, 13.2, 14.2)));
   const press = between(t, .9, 1.2) ? "add" : between(t, 4.4, 4.7) ? "quick" :
     between(t, 8.6, 8.9) ? "minecraft" : between(t, 12.5, 12.8) ? "back" : "";
   const pressStart = { add: .9, quick: 4.4, minecraft: 8.6, back: 12.5, "": 0 }[press];
@@ -26,7 +26,7 @@ export function sampleContentDemo(seconds: number) {
   const selection = ease(progress(modalTime, .05, .7));
   const wheel = ease(progress(modalTime, .65, 1.55));
   const presetPress = progress(t, 5.75, 6.1);
-  const confirmPress = modal === "confirm" ? progress(t, 7.3, 7.7) : progress(modalTime, 1.65, 1.95);
+  const confirmPress = modal === "confirm" ? progress(t, 7.3, 7.7) : modal === "quick" ? progress(t, 6.1, 6.35) : progress(modalTime, 1.65, 1.95);
   const card = Math.min(ease(progress(t, 8.9, 9.25)), 1 - ease(progress(t, 12.8, 13.15)));
   const consumption = ease(progress(t, 9.5, 12));
   const added = Math.round(consumption * 5);

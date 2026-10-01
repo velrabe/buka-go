@@ -1,12 +1,12 @@
 "use client";
-import { createContext, useContext } from "react";
+import { createContext, useContext, type ReactNode } from "react";
 import { sampleContentDemo } from "@/lib/content-demo-timeline";
 export const ContentDemoContext = createContext(sampleContentDemo(0));
 export function DemoValue({ field }: { field: string }) {
   const frame = useContext(ContentDemoContext);
   const values: Record<string, string> = {
     clock: frame.clock, total: `2ч ${frame.totalMinutes - 120}мин`,
-    limit: `из 4ч ${frame.dailyLimit === 255 ? "15" : "00"}мин`,
+    limit: frame.dailyLimit === 255 ? "из 4ч 15мин" : "из 4 часов",
     study: "85 мин", games: `${frame.categoryGames} мин`, minecraft: `${frame.minutes} мин за сегодня`,
     modeStart: frame.modeStart, modeEnd: frame.modeEnd,
   };
@@ -24,4 +24,9 @@ export function DemoSummaryBar() {
     {[ [85, "#3f98e7"], [15, "#e87979"], [frame.categoryGames, "#e7883f"] ].map(([value, color]) =>
       <span key={color} style={{ width: `${Number(value) / frame.dailyLimit * 100}%`, height: "100%", background: String(color), borderRight: "1px solid white" }} />)}
   </div>;
+}
+
+export function DemoModeButton({ mode, children }: { mode: string; children: ReactNode }) {
+  const frame = useContext(ContentDemoContext);
+  return <div data-mode-disabled={frame.mode === mode} aria-disabled={frame.mode === mode} style={{ display: "contents" }}>{children}</div>;
 }

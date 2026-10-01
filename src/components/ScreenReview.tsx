@@ -5,7 +5,7 @@ import styles from "@/styles/screen-review.module.scss";
 
 export function ScreenReview() {
   const add = { ...sampleContentDemo(3.1), selection: 1, wheel: 1, confirmPress: 0 };
-  const quick = { ...sampleContentDemo(6.15), selection: 1, presetPress: 1 };
+  const quick = { ...sampleContentDemo(6.15), selection: 1, presetPress: 1, confirmPress: 0 };
   const confirm = { ...sampleContentDemo(7), confirmPress: 0 };
   const screens = [
     { name: "01 · Контент — полный экран", view: <StaticContentScreen /> },

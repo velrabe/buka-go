@@ -19,7 +19,7 @@ assert.equal(sample(12).minutes, 40);
 assert.equal(sample(12).gamesMinutes, 35);
 assert.equal(sample(12.6).press, "back");
 assert.equal(sample(13.15).card, 0);
-assert.equal(sample(13.2).scroll, 631);
+assert.equal(sample(13.2).scroll, 503);
 assert.equal(sample(14.2).scroll, 0);
 assert.deepEqual(sample(0), sample(DEMO_DURATION));
 assert.deepEqual(sample(4), sample(4 + DEMO_DURATION));
@@ -39,7 +39,7 @@ assert.ok(sample(8.1).scroll > sample(8).scroll, "Move immediately after confirm
 let previous = sample(0);
 for (let t = .01; t <= DEMO_DURATION; t += .01) {
   const frame = sample(t);
-  assert.ok(frame.scroll >= 0 && frame.scroll <= 631);
+  assert.ok(frame.scroll >= 0 && frame.scroll <= 503);
   assert.ok(Math.abs(frame.scroll - previous.scroll) < 20, "No scroll jump at a scene boundary");
   assert.ok(frame.card >= 0 && frame.card <= 1);
   assert.ok(frame.modalOpacity >= 0 && frame.modalOpacity <= 1);
@@ -68,3 +68,11 @@ for (const match of component.matchAll(/"([a-f0-9]{16}\.svg)"/g)) {
   assert.ok(existsSync(new URL(`../public/assets/app-content/${match[1]}`, import.meta.url)));
 }
 console.log("Verified demo scenes, section holds, continuous loop, one-second return, +5 minute usage and assets.");
+
+assert.equal(screen.body.style.height, 1099);
+for (const id of ["2799:62448", "2829:83610", "2829:71928", "2799:63585", "2799:63591", "2799:63597"]) assert.ok(!ids.has(id), `Removed content returned: ${id}`);
+// New section positions after removing children and explanatory rows.
+for (const [time, top, height] of [[1, 230, 48], [4.5, 488, 75], [8.7, 705, 58]]) {
+  const y = top - sample(time).scroll;
+  assert.ok(y >= 0 && y + height <= 596, "Animated target must remain in the phone viewport");
+}

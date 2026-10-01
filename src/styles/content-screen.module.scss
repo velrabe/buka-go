@@ -39,7 +39,7 @@
 .status { position: relative; height: 66px; z-index: 2; background: #f8fafc; }
 .scrollWindow { position: relative; height: 596px; overflow: hidden; outline-offset: -3px; }
 .track { will-change: transform; }
-.copy { height: 1227px; overflow: hidden; }
+.copy { height: 1099px; overflow: hidden; }
 .detail { position: absolute; inset: 0; background: #f8fafc; overflow: hidden; will-change: transform; }
 .floating { position: absolute; top: 13%; z-index: 4; pointer-events: none; }
 .floating[data-side="right"] { right: 0; }
@@ -80,3 +80,7 @@
   .scrollWindow::-webkit-scrollbar { display: none; }
   .detail, .floating, .pause { display: none; }
 }
+
+.phone [data-mode-disabled="true"] > div { pointer-events: none; }
+.phone [data-mode-disabled="true"] > div { background: rgba(17,24,39,.05) !important; border-color: transparent !important; }
+.phone [data-mode-disabled="true"] > div > div { filter: grayscale(1); opacity: .5; }

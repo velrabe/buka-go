@@ -1,5 +1,5 @@
 import { DemoSkeleton } from "./DemoSkeleton";
-import { DemoValue, DemoActiveMode, DemoSummaryBar } from "./ContentDemoState";
+import { DemoValue, DemoActiveMode, DemoSummaryBar, DemoModeButton } from "./ContentDemoState";
 import type { CSSProperties } from "react";
 import screen from "@/content/app-content-screen.json";
 import { ScrollingPhone } from "./ScrollingPhone";
@@ -32,11 +32,12 @@ const demoFields: Record<string, string> = {
 
 const visibleLabels = new Set([
   "Экранное время", "Умные режимы", "Приложения", "Добавить время", "Настройки",
-  "Аналитика", "Расписание", "Все приложения (49)", "Minecraft", "PRO",
+  "Сегодня", "Активный режим:", "–", "Учеба", "Уроки", "Игры", "Образование", "Все приложения (49)", "Minecraft", "PRO",
   "Задания", "На карте", "Контент", "Профиль",
 ]);
 const modeButtons = new Set(["2829:83615", "2829:83619", "2829:83623", "2829:83628", "2829:83632", "2829:83636"]);
-function Layer({ node, control = false }: { node: ScreenNode; control?: boolean }) {
+function Layer({ node, control = false, wrapped = false }: { node: ScreenNode; control?: boolean; wrapped?: boolean }) {
+  if (!wrapped && modeButtons.has(node.id)) return <DemoModeButton mode={node.id === "2829:83615" ? "Игры" : node.id === "2829:83619" ? "Учеба" : ""}><Layer node={node} control wrapped /></DemoModeButton>;
   const isControl = control || modeButtons.has(node.id);
   // Figma can trim text bounds below the font size. Keep the layout slot,
   // but center a full line box instead of clipping the glyphs to those bounds.
@@ -52,7 +53,7 @@ function Layer({ node, control = false }: { node: ScreenNode; control?: boolean 
   };
   if (node.id === "2829:83603") return <div style={style}><DemoActiveMode /></div>;
   if (node.id === "2799:63574") return <DemoSummaryBar />;
-  if (node.text !== undefined && !isControl && !visibleLabels.has(node.text) && demoFields[node.id] !== "clock") {
+  if (node.text !== undefined && !isControl && !visibleLabels.has(node.text) && !["clock", "total", "limit"].includes(demoFields[node.id])) {
     return <div className={styles.layer} style={{ ...style, display: "flex", alignItems: "center", overflow: "visible" }} data-figma-node={node.id}>
       <DemoSkeleton width={node.text.toLowerCase().includes("активный режим") ? 110 : Math.max(12, Number(node.style.width) * .86)}
         height={Math.min(12, Math.max(6, Number(node.style.height) * .5))} lines={Number(node.style.height) > 28 ? 2 : 1} />
