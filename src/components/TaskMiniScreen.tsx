@@ -6,7 +6,7 @@ import styles from "@/styles/picture-task-preview.module.scss";
 
 export function TaskMiniScreen({
   current, reward, diamond = false, instruction, children, action, result,
-  idleOnly = false, sourceId, characterId, backgroundAsset, sheetClassName = "", characterAsset, header, className = "", showObserver = true,
+  idleOnly = false, sourceId, characterId, backgroundAsset, sheetClassName = "", characterAsset, header, className = "", showObserver = true, observerVisual, showBubble = true,
 }: {
   current?: number;
   reward: number;
@@ -24,15 +24,17 @@ export function TaskMiniScreen({
   header?: ReactNode;
   className?: string;
   showObserver?: boolean;
+  observerVisual?: ReactNode;
+  showBubble?: boolean;
 }) {
   return <div className={`${styles.task} ${className}`} data-mini-screen={current} data-figma-node={sourceId}
     style={backgroundAsset ? { backgroundImage: `url(${siteUrl(backgroundAsset)})` } : undefined}>
     {header ?? <TaskProgress current={current ?? 1} total={3} label={instruction} reward={reward} diamond={diamond} />}
-    {showObserver && <div className={styles.observer}>
-      <div className={styles.character} data-figma-node={characterId}>
-        {characterAsset ? <img src={siteUrl(characterAsset)} width="128" height="128" alt="" /> : <TaskCharacterVideo idleOnly={idleOnly} />}
+    {showObserver && <div className={`${styles.observer} ${showBubble ? "" : styles.observerOnly}`}>
+      <div className={showBubble ? styles.character : styles.observerStandalone} data-figma-node={characterId}>
+        {observerVisual ?? (characterAsset ? <img src={siteUrl(characterAsset)} width="128" height="128" alt="" /> : <TaskCharacterVideo idleOnly={idleOnly} />)}
       </div>
-      <p className={styles.bubble}><span>{instruction}</span></p>
+      {showBubble && <p className={styles.bubble}><span>{instruction}</span></p>}
     </div>}
     <div className={`${styles.sheet} ${sheetClassName}`}>
       <div className={styles.taskContent}>{children}</div>

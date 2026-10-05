@@ -8,6 +8,8 @@
 .reward img { display: block; width: 16px; height: 16px; object-fit: contain; }
 .diamondReward { color: #7460d6; }
 .observer { display: grid; grid-template-columns: var(--character-width) minmax(0, 1fr); align-items: center; gap: 8px; width: 100%; min-height: 0; padding: 0 8px; }
+.observerOnly { grid-template-columns: minmax(0, 1fr); }
+.observerStandalone { width: 100%; height: 100%; min-width: 0; }
 .character { overflow: hidden; align-self: end; width: var(--character-width); height: var(--character-height); min-width: 0; }
 .character img, .character video { display: block; width: 100%; height: 100%; object-fit: contain; object-position: bottom; }
 .videoStage { position: relative; width: 100%; height: 100%; }

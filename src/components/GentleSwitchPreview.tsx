@@ -24,12 +24,14 @@ export function GentleSwitchPreview({ locale }: { locale: Locale }) {
   const [choice, setChoice] = useState<"task" | "later" | null>(null);
   const time = `${String(Math.floor(preview.seconds / 60)).padStart(2, "0")}:${String(preview.seconds % 60).padStart(2, "0")}`;
   return <TaskMiniScreen className={styles.screen} sheetClassName={styles.sheet} reward={0} instruction={t.heading}
-    showObserver={false} backgroundAsset="/assets/task-preview/sub.jpg" sourceId={preview.source.rootId}
+    showBubble={false} sourceId={preview.source.rootId}
     result={choice === "task" ? t.selected : choice === "later" ? t.postponed : ""}
     header={<div className={`${taskStyles.topbar} ${styles.notice}`} data-figma-node="3989:84611">
-      <p>{t.timer}</p>
-      <div className={styles.timer} role="timer" aria-label={t.timer} aria-live="off" data-figma-node="3989:84614">
-        <span>{time}</span>
+      <p>{t.heading}</p>
+    </div>}
+    observerVisual={<div className={styles.timerStage}>
+      <div className={styles.timer} role="timer" aria-label={`${t.heading}: ${time}`} aria-live="off" data-figma-node="3989:84614">
+        {Array.from(time).map((character, index) => <span key={index} className={character === ":" ? styles.separator : styles.digit} aria-hidden="true">{character}</span>)}
       </div>
     </div>}
     action={<div className={styles.actions}>

@@ -10,6 +10,7 @@ import { PictureTaskPreview } from "./PictureTaskPreview";
 import { ParentTaskPreview } from "./ParentTaskPreview";
 import { HealthyTaskPreview } from "./HealthyTaskPreview";
 import { GentleSwitchPreview } from "./GentleSwitchPreview";
+import { TaskMiniScreen } from "./TaskMiniScreen";
 
 function useDemoPlayback(ref: RefObject<HTMLElement | null>) {
   const [playing, setPlaying] = useState(false);
@@ -35,12 +36,13 @@ function useDemoPlayback(ref: RefObject<HTMLElement | null>) {
   return playing;
 }
 
-function FamilyBoard({ members }: { members: Messages["loved"]["cards"][4]["members"] }) {
+function FamilyBoard({ members, onLeaderChange }: { members: Messages["loved"]["cards"][4]["members"]; onLeaderChange: (leader: 0 | 1) => void }) {
   const ref = useRef<HTMLUListElement>(null);
   const playing = useDemoPlayback(ref);
   const elapsed = useRef(0);
   const rows = useRef<(HTMLLIElement | null)[]>([]);
   const scoreText = useRef<HTMLSpanElement>(null);
+  const lastLeader = useRef<0 | 1>(0);
   useEffect(() => {
     if (!playing) return;
     let previous: number | undefined;
@@ -50,6 +52,11 @@ function FamilyBoard({ members }: { members: Messages["loved"]["cards"][4]["memb
       if (previous !== undefined) elapsed.current += now - previous;
       previous = now;
       const { score, swap } = familyBoardFrame(elapsed.current);
+      const leader = swap >= .5 ? 1 : 0;
+      if (lastLeader.current !== leader) {
+        lastLeader.current = leader;
+        onLeaderChange(leader);
+      }
       [swap, 1 - swap].forEach((position, index) => {
         const row = rows.current[index];
         const transform = `translateY(calc(${(position * 100).toFixed(4)}% + ${(position * 8).toFixed(4)}px))`;
@@ -64,7 +71,7 @@ function FamilyBoard({ members }: { members: Messages["loved"]["cards"][4]["memb
     };
     request = window.requestAnimationFrame(tick);
     return () => window.cancelAnimationFrame(request);
-  }, [playing]);
+  }, [playing, onLeaderChange]);
   const names = Object.values(members);
   return <ul ref={ref} className={styles.family} data-playing={playing}>
     {[0, 1, 2].map(index => <li key={index} ref={element => { rows.current[index] = element; }} style={{
@@ -76,6 +83,20 @@ function FamilyBoard({ members }: { members: Messages["loved"]["cards"][4]["memb
       <strong><span className={styles.familyScore} ref={index === 1 ? scoreText : undefined}>{[120, 95, 80][index]}</span><span className={styles.familyStar} aria-hidden="true">★</span></strong>
     </li>)}
   </ul>;
+}
+
+function FamilyTaskPreview({ card, locale }: { card: Messages["loved"]["cards"][4]; locale: Locale }) {
+  const [leader, setLeader] = useState<0 | 1>(0);
+  const name = Object.values(card.members)[leader];
+  const announcement: Record<Locale, string> = {
+    ru: `${name} выходит вперёд`, en: `${name} takes the lead`, kk: `${name} алға шықты`,
+    uz: `${name} oldinga chiqdi`, az: `${name} önə keçir`,
+  };
+  return <TaskMiniScreen reward={0} instruction={announcement[locale]} characterAsset="/assets/task-preview/character-header-4.png"
+    header={<div className={`${taskStyles.topbar} ${styles.familyHeader}`}>{card.title}</div>}
+    action={<a className={`${taskStyles.check} ${styles.familyAction}`} href={siteUrl("#download")}>{card.addTask}</a>}>
+    <FamilyBoard members={card.members} onLeaderChange={setLeader} />
+  </TaskMiniScreen>;
 }
 
 export function TaskDemos({
@@ -92,20 +113,12 @@ export function TaskDemos({
     <div ref={ref} className={styles.grid} data-playing={playing}>
       {cards.map((card, i) => (
         <article className={styles.card} key={card.subtitle}>
-          <div className={`${styles.preview} ${i < 4 ? styles.picturePreview : ""}`}>
+          <div className={`${styles.preview} ${styles.picturePreview}`}>
             {i === 0 && <PictureTaskPreview locale={locale} />}
             {i === 1 && <ParentTaskPreview locale={locale} />}
             {i === 2 && <HealthyTaskPreview locale={locale} playing={playing} />}
             {i === 3 && <GentleSwitchPreview locale={locale} />}
-            {i === 4 && (
-              <>
-                <p className={styles.previewTitle}>{content.cards[4].title}</p>
-                <div className={styles.previewBody}><FamilyBoard members={content.cards[4].members} /></div>
-                <div className={styles.familyAction}><a className={taskStyles.check} href={siteUrl("#download")}>
-                  {content.cards[4].addTask}
-                </a></div>
-              </>
-            )}
+            {i === 4 && <FamilyTaskPreview card={content.cards[4]} locale={locale} />}
           </div>
           <div className={styles.cardContent}>
             <h3>{card.subtitle}</h3>

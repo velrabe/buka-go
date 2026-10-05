@@ -51,16 +51,16 @@
 .choices .button { min-height: 36px; }
 .choices .button[aria-pressed="true"] { outline: 2px solid #9279e8; outline-offset: 2px; }
 .taskButton { background: linear-gradient(110deg, #65c96c, #42b750); box-shadow: inset 0 2px 4px #ffffff47, 0 3px 8px #42b75026; }
-.family { --row-height: clamp(52px, 22cqi, 72px); display: grid; grid-template-rows: repeat(3, var(--row-height)); gap: 8px; list-style: none; margin: 0; padding: 0; }
-.family li { position: relative; grid-area: 1 / 1; display: flex; align-items: center; gap: 8px; min-width: 0; height: var(--row-height); padding: 10px; border-radius: 12px; background: #fff; box-shadow: 0 1px 4px #11182706; font-size: 13px; line-height: 1.2; font-weight: 700; }
+.familyHeader { justify-content: center; }
+.family { --row-height: min(clamp(40px, 22cqi, 64px), calc((100cqb - 16px) / 3)); display: grid; grid-template-rows: repeat(3, var(--row-height)); gap: 8px; width: 100%; list-style: none; margin: 0; padding: 0; }
+.family li { position: relative; grid-area: 1 / 1; display: flex; align-items: center; gap: 8px; min-width: 0; height: var(--row-height); padding: 8px; border-radius: 12px; background: #faf8ff; font-size: 13px; line-height: 1.2; font-weight: 700; }
 .family[data-playing="true"] li:nth-child(-n+2) { will-change: transform; }
-.family img { flex-shrink: 0; border-radius: 50%; width: clamp(28px, 13cqi, 40px); height: clamp(28px, 13cqi, 40px); object-fit: cover; }
+.family img { flex-shrink: 0; border-radius: 50%; width: min(clamp(24px, 13cqi, 40px), calc(var(--row-height) - 16px)); height: min(clamp(24px, 13cqi, 40px), calc(var(--row-height) - 16px)); object-fit: cover; }
 .family li > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .family strong { display: inline-flex; align-items: center; flex-shrink: 0; gap: 5px; margin-left: auto; font-variant-numeric: tabular-nums; }
 .familyScore { min-width: 3ch; text-align: right; }
 .familyStar { color: #ffba20; }
-.familyAction { height: clamp(36px, 16cqi, 52px); }
-.familyAction a { font-family: var(--font-body); text-decoration: none; }
+.familyAction { font-family: var(--font-body); text-decoration: none; }
 .grid[data-playing="false"] .coinFace::after, .grid[data-playing="false"] .progress span::after, .grid[data-playing="false"] .timer { animation-play-state: paused; }
 @keyframes glint { 0%, 65% { transform: translateX(-150%); } 90%, 100% { transform: translateX(150%); } }
 @keyframes timerPulse { 0%, 100% { opacity: 1; } 50% { opacity: .7; } }
@@ -78,7 +78,6 @@
   .button, .received, .choices .button { min-height: 44px; font-size: 15px; }
   .answers button { min-height: 44px; font-size: 20px; }
   .family li { font-size: 15px; }
-  .familyAction { height: clamp(44px, 16cqi, 52px); }
   .question { min-height: 72px; font-size: 30px; }
   .exercise { font-size: 13px; line-height: 1.4; }
   .report { font-size: 12px; }
