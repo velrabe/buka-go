@@ -12,10 +12,16 @@ import { StaticProgramsScreen, StaticSuccessScreen, StaticHealthyScreen, StaticM
 import { ContentScreen, StaticContentBody } from "./ContentScreen";
 import { HeroComposition } from "./HeroComposition";
 import { ConnectionSteps } from "./ConnectionSteps";
+import { ArticleStack } from "./ArticleStack";
 import articleStyles from "@/styles/landing-article.module.scss";
 import taskStyles from "@/styles/task-demos.module.scss";
-import worksStyles from "@/styles/works-features.module.scss";
 import downloadStyles from "@/styles/download-banner.module.scss";
+
+function ArticleTags({ items }: { items: string[] }) {
+  return <ul className={articleStyles.tags}>
+    {items.map(text => <li key={text}>{text}</li>)}
+  </ul>;
+}
 
 export function Landing({
   locale,
@@ -26,6 +32,11 @@ export function Landing({
   messages: Messages;
   alternative?: boolean;
 }) {
+  const articleDate = new Intl.DateTimeFormat(locale, {
+    day: "numeric", month: "long", year: "numeric", timeZone: "UTC",
+  });
+  const worksDates = ["2026-09-30", "2026-09-28"];
+  const worksCovers = ["parenting-cover.webp", "development-health-cover.webp"];
   return (
     <ScreenLocaleProvider locale={locale}><main id="main-content">
       <HeroComposition locale={locale}>
@@ -134,50 +145,50 @@ export function Landing({
         </div>
       </section>
       <section className={`section ${articleStyles.section}`} id="smart-pauses">
-        <article className="container">
-          <img className={articleStyles.cover} src={siteUrl("/assets/mobile-features/problem.png")} width="1536" height="787" alt={m.problem.imageAlt} loading="lazy" />
-          <header className={articleStyles.header}>
-            <p className={articleStyles.meta}>
-              <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" stroke="currentColor" strokeWidth="2"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>990</span><span aria-hidden="true">·</span>{" "}
-              {new Intl.DateTimeFormat(locale, {
-                day: "numeric",
-                month: "long",
-                year: "numeric",
-              }).format(new Date("2022-08-27T12:00:00Z"))}
-            </p>
-            <h2>{m.problem.title}</h2>
-            <div className={articleStyles.tags}>
-              {Object.values(m.problem.tags).map((tag) => (
-                <span key={tag}>{tag}</span>
-              ))}
-            </div>
-          </header>
-          <div className={articleStyles.body}>
-            <div className={articleStyles.preview}>
-            <ol className={articleStyles.points}>
-              {Object.values(m.problem.sections).map((item, index) => (
-                <li className={articleStyles.point} key={item.title}>
-                  <span className={articleStyles.number} aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-                  <div>
-                    <h3>{item.title}</h3>
-                    <p>{locale === "ru" ? item.text.replace(/(^|\s)(в|во|на|и|с|со|к|ко|по|из|от|до|у|о|об|для|без|над|под|за)\s+/gi, "$1$2\u00a0") : item.text}</p>
+        <div className="container">
+          <ArticleStack
+            titles={[m.problem.title, ...Object.values(m.works.items).map(item => item.title)]}
+            label={m.blog.title}
+            previousLabel={m.blog.prevPage}
+            nextLabel={m.blog.nextPage}
+            action={<a className={articleStyles.blogLink} href={siteUrl(blogPath(locale))}>
+              {m.problem.goToBlog} <span aria-hidden="true">→</span>
+            </a>}
+          >
+            {[
+              <article className={articleStyles.card} key="screen-control">
+                <img className={articleStyles.cover} src={siteUrl("/assets/mobile-features/problem.png")} width="1536" height="787" alt={m.problem.imageAlt} loading="lazy" />
+                <header className={articleStyles.header}>
+                  <p className={articleStyles.meta}>
+                    <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" stroke="currentColor" strokeWidth="2"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>990</span><span aria-hidden="true">·</span>{" "}
+                    <time dateTime="2026-08-27">{articleDate.format(new Date("2026-08-27T12:00:00Z"))}</time>
+                  </p>
+                  <h2>{m.problem.title}</h2>
+                  <ArticleTags items={Object.values(m.problem.sections).map(section => section.title)} />
+                </header>
+              </article>,
+              ...Object.values(m.works.items).map((item, i) => (
+                <article className={articleStyles.card} key={item.title} id={i === 0 ? "why-works" : undefined}>
+                  <img
+                    className={articleStyles.cover}
+                    src={siteUrl(`/assets/mobile-features/${worksCovers[i]}`)}
+                    width="1000"
+                    height="337"
+                    alt=""
+                    loading="lazy"
+                  />
+                  <div className={articleStyles.header}>
+                    <p className={articleStyles.meta}>
+                      <time dateTime={worksDates[i]}>{articleDate.format(new Date(`${worksDates[i]}T12:00:00Z`))}</time>
+                    </p>
+                    <h2>{item.title}</h2>
+                    <ArticleTags items={Object.values(item.list)} />
                   </div>
-                </li>
-              ))}
-            </ol>
-              <p className={articleStyles.intro}>{m.problem.intro}</p>
-            </div>
-            <div className={articleStyles.excerpt}>
-              <p className={articleStyles.journalPrompt}>
-                <span>{m.problem.footerTitle}</span>
-                <span>{m.problem.footerTitleLine2}</span>
-              </p>
-              <a className={articleStyles.blogLink} href={siteUrl(blogPath(locale))}>
-                {m.problem.goToBlog} <span aria-hidden="true">→</span>
-              </a>
-            </div>
-          </div>
-        </article>
+                </article>
+              )),
+            ]}
+          </ArticleStack>
+        </div>
       </section>
       <section id="tasks" className={`section ${taskStyles.section}`}>
         <div className="container">
@@ -189,35 +200,6 @@ export function Landing({
         </div>
       </section>
       <ConnectionSteps messages={m} />
-      <section id="why-works" className="section">
-        <div className={`container feature-list ${worksStyles.list}`}>
-          {Object.values(m.works.items).map((item, i) => (
-            <article className={`feature ${worksStyles.feature}`} key={i}>
-              <img
-                className={worksStyles.image}
-                src={siteUrl(`/assets/mobile-features/works-${i + 1}.png`)}
-                width="968"
-                height="968"
-                alt={item.title}
-                loading="lazy"
-              />
-              <div className={worksStyles.copy}>
-                <div className={worksStyles.heading}><h2>{item.title}</h2></div>
-                <ul className={`plain-list ${worksStyles.points}`}>
-                  {Object.values(item.list).map((text) => (
-                    <li key={text}>{locale === "ru" ? text.replace(/(^|\s)(в|во|на|и|с|со|к|ко|по|из|от|до|у|о|об|для|без|над|под|за)\s+/gi, "$1$2\u00a0") : text}</li>
-                  ))}
-                </ul>
-                <div className={worksStyles.actions}>
-                  <a className={worksStyles.link} href={siteUrl(blogPath(locale))}>
-                    {m.works.readArticle} <span aria-hidden="true">→</span>
-                  </a>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
       <LandingAdditions locale={locale} />
       <section id="download" className={`section ${downloadStyles.section}`} aria-labelledby="download-title">
         <div className={`container ${downloadStyles.banner}`}>

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { siteUrl } from "@/lib/site-url";
 import type { Locale, Messages } from "@/lib/content";
 import { BackToTop } from "./BackToTop";
+import { settings } from "@/lib/settings";
 import styles from "@/styles/header.module.scss";
 
 const choices = [
@@ -19,6 +20,13 @@ const closeMenuLabels: Record<Locale, string> = {
 
 export function Header({ locale, path, messages: m }: { locale: Locale; path: string; messages: Messages }) {
   const [open, setOpen] = useState(false);
+  const [deviceStore, setDeviceStore] = useState<"ios" | "android" | null>(null);
+
+  useEffect(() => {
+    const ua = navigator.userAgent;
+    if (/Android/i.test(ua)) setDeviceStore("android");
+    else if (/iPhone|iPad|iPod/i.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)) setDeviceStore("ios");
+  }, []);
   const [languageOpen, setLanguageOpen] = useState(false);
   const root = useRef<HTMLElement>(null);
   const menuTrigger = useRef<HTMLButtonElement>(null);
@@ -66,6 +74,13 @@ export function Header({ locale, path, messages: m }: { locale: Locale; path: st
           else if (open) { setOpen(false); menuTrigger.current?.focus(); }
         }
       }}>
+      {deviceStore && <a className={styles.deviceSnackbar}
+        href={deviceStore === "ios" ? settings.appStore : settings.googlePlay}
+        target="_blank" rel="noopener noreferrer"
+        data-goal={deviceStore === "ios" ? "click-download-app-store" : "click-download-google-play"}>
+        <span>{deviceStore === "ios" ? m.common.downloadAppStore : m.common.downloadGooglePlay}</span>
+        <img src={siteUrl("/assets/site/_next/static/media/link-hover.0xj0vz3nlvj38.svg")} width="12" height="12" alt="" />
+      </a>}
       <div className={styles.inner}>
         <a className={styles.brand} href={siteUrl(lang.home)} aria-label={m.common.homeAriaLabel}>
           <img className={styles.logoIcon} src={siteUrl("/assets/download/app-logo.png")} width="40" height="40" alt="" />
@@ -78,15 +93,15 @@ export function Header({ locale, path, messages: m }: { locale: Locale; path: st
         </nav>
         <div className={styles.actions}>
           <div className={styles.language}>
-            <button ref={languageTrigger} type="button" className={styles.languageTrigger} aria-label={m.languageSwitcher.label}
+            <button ref={languageTrigger} type="button" className={styles.languageTrigger} aria-label={`${m.languageSwitcher.label}: ${lang.label}`}
               aria-expanded={languageOpen} aria-controls="header-languages"
               onClick={() => { setLanguageOpen(value => !value); setOpen(false); }}>
-              <span>{lang.label}</span><span className={styles.chevron} aria-hidden="true" />
+              <img className={styles.flag} src={siteUrl(`/assets/flags/${locale}.svg`)} width="24" height="16" alt={lang.label} /><span className={styles.chevron} aria-hidden="true" />
             </button>
             <ul id="header-languages" className={styles.languageList} hidden={!languageOpen}>
               {choices.map(choice => <li key={choice.locale}>
                 <button type="button" lang={choice.locale} aria-current={choice.locale === locale ? "true" : undefined}
-                  onClick={() => { setLanguageOpen(false); if (choice.locale !== locale) changeLanguage(choice); }}>{choice.label}</button>
+                  onClick={() => { setLanguageOpen(false); if (choice.locale !== locale) changeLanguage(choice); }}><img className={styles.flag} src={siteUrl(`/assets/flags/${choice.locale}.svg`)} width="24" height="16" alt="" />{choice.label}</button>
               </li>)}
             </ul>
           </div>

@@ -35,12 +35,6 @@ export function LandingAdditions({ locale }: { locale: Locale }) {
         </div>
       </div>
     </section>
-    <section id="reviews" className={`section ${styles.section} ${styles.reviewSection}`} aria-labelledby="reviews-title">
-      <div className="container">
-        <header className={styles.heading}><h2 id="reviews-title">{m.reviewsTitle}</h2></header>
-        <ReviewCarousel locale={locale} reviews={m.reviews} />
-      </div>
-    </section>
     <section id="plans" className={`section ${styles.section} ${styles.pricingSection}`} aria-labelledby="plans-title">
       <div className={`container ${styles.pricingContainer}`}>
         <header className={styles.pricingHeading}>
@@ -65,6 +59,12 @@ export function LandingAdditions({ locale }: { locale: Locale }) {
           <div><p>{m.promoPrefix}{" "}<PromoCodeButton code={m.promoCode} label={m.copyCode} copied={m.codeCopied} failure={m.copyCodeFailed} /> — {m.promoBenefit}</p><p>{m.promoNote}</p></div>
           <a className={styles.promoAction} href={siteUrl(`${languageFor(locale).home}#download`)}><span>{m.promoAction}</span><PricingIcon kind="arrow" /></a>
         </aside>
+      </div>
+    </section>
+    <section id="reviews" className={`section ${styles.section} ${styles.reviewSection}`} aria-labelledby="reviews-title">
+      <div className="container">
+        <header className={styles.heading}><h2 id="reviews-title">{m.reviewsTitle}</h2></header>
+        <ReviewCarousel locale={locale} reviews={m.reviews} />
       </div>
     </section>
     <section id="partners" className={`section ${styles.section}`} aria-labelledby="partners-title">

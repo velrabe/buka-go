@@ -1,0 +1,114 @@
+{
+  "source": {
+    "rootId": "2251:28173",
+    "exportedAt": "2026-10-05T06:44:53.563Z"
+  },
+  "progress": {
+    "current": 1,
+    "total": 3
+  },
+  "reward": 150,
+  "instruction": "Выбери лишнее",
+  "checkLabel": "Проверить",
+  "background": {
+    "id": "3081:67191",
+    "imageHash": "cfa98de3f453097f9f20e611308617a8cc696bd0",
+    "asset": null
+  },
+  "character": {
+    "id": "2251:28185",
+    "asset": "/assets/task-preview/character-header-1.png",
+    "width": 128,
+    "height": 128,
+    "parts": [
+      {
+        "id": "2251:28186",
+        "name": "image 90",
+        "imageHash": "4102163e9eb9163d81c9ab07eb8f455db2cbef30"
+      },
+      {
+        "id": "2251:28189",
+        "name": "l-ear",
+        "imageHash": "d3d991c267d763c86c8421548c5376c49f822de0"
+      },
+      {
+        "id": "2251:28190",
+        "name": "r-ear",
+        "imageHash": "ae8df07c8d7d01b5c3bdd4203dff0e45446aff12"
+      },
+      {
+        "id": "2251:28191",
+        "name": "face-ball",
+        "imageHash": "7e73aca37ad4317f7e8370da312e5a1febfd6ae5"
+      },
+      {
+        "id": "2251:28193",
+        "name": "l-eye",
+        "imageHash": "f81fd906273ea589561dbe98a3b5a4eef5e2294a"
+      },
+      {
+        "id": "2251:28194",
+        "name": "l-eye-closed",
+        "imageHash": "272fd6b3bef6b3d1a5b3ee04d5ea862eabc3272d"
+      },
+      {
+        "id": "2251:28195",
+        "name": "l-brow",
+        "imageHash": "134f9348d113a0cdeae78bd5e1c4827c18a33076"
+      },
+      {
+        "id": "2251:28197",
+        "name": "r-eye",
+        "imageHash": "d6880414ddafb4ec18d7162a221db56c1d00d162"
+      },
+      {
+        "id": "2251:28198",
+        "name": "r-eye-closed",
+        "imageHash": "3a00cb6eef307a2af300457c3e5b2e8325d007b0"
+      },
+      {
+        "id": "2251:28199",
+        "name": "l-cheek",
+        "imageHash": "ad1d4424448d453be1f88b5a036eef37873f7061"
+      },
+      {
+        "id": "2251:28200",
+        "name": "r-cheek",
+        "imageHash": "dbdab80bf4cb1171726f7aae4112832579396731"
+      },
+      {
+        "id": "2251:28201",
+        "name": "mouth",
+        "imageHash": "d29ffe62b66b936daf9553710de7d2c7809ddea6"
+      },
+      {
+        "id": "2251:28202",
+        "name": "r-brow",
+        "imageHash": "bfb76dc9e0ff7d1153b013632f2b5425abc10278"
+      }
+    ]
+  },
+  "answers": [
+    {
+      "id": "2251:28298",
+      "imageHash": "f39161f7c396f64d36e641097b05838b99bee146",
+      "asset": "/assets/task-preview/task-opt-1.png"
+    },
+    {
+      "id": "2251:28291",
+      "imageHash": "b47d655c395679e0abf6b37f1b0fdaaa9938a90c",
+      "asset": "/assets/task-preview/task-opt-2.png"
+    },
+    {
+      "id": "2251:28302",
+      "imageHash": "b47d655c395679e0abf6b37f1b0fdaaa9938a90c",
+      "asset": "/assets/task-preview/task-opt-3.png"
+    },
+    {
+      "id": "2251:28306",
+      "imageHash": "b47d655c395679e0abf6b37f1b0fdaaa9938a90c",
+      "asset": "/assets/task-preview/task-opt-4.png"
+    }
+  ],
+  "correctAnswerId": "2251:28302"
+}

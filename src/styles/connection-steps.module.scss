@@ -29,7 +29,8 @@
 .inner :global(.store-links a) { padding: 0; min-height: 0; border: 0; border-radius: 10px; background: transparent; box-shadow: none; }
 .inner :global(.store-links img) { display: block; width: auto; height: 58px; }
 @media (max-width: 767px) {
-  .section { padding: 48px 0 max(140px, 38vw); border-radius: 24px 24px 0 0; }
+  // The image has a transparent top; reduce the reserved space to bring the characters closer to the badges.
+  .section { padding: 48px 0 calc(27.65625vw - 8px); border-radius: 24px 24px 0 0; }
   .inner { gap: 24px; }
   .heading { max-width: 480px; }
   .heading h2 { font-size: 28px; }

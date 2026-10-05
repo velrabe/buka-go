@@ -1,0 +1,17 @@
+{
+  "source": {
+    "rootId": "2217:44145",
+    "exportedAt": "2026-10-05T10:23:48.826Z"
+  },
+  "title": "Собери рюкзак и пришли фото",
+  "photoLabel": "Сделать фото",
+  "submitLabel": "Готово",
+  "photo": {
+    "id": "2217:44148",
+    "width": 311,
+    "height": 270,
+    "iconId": "2218:45963",
+    "iconAsset": "/assets/task-preview/camera.svg"
+  },
+  "buttonId": "2218:45953"
+}

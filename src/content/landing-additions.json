@@ -32,6 +32,10 @@
       [
         "Как защищаются данные и отменяется подписка?",
         "Обработка данных описана в политике конфиденциальности. Автопродление отключается в магазине или сервисе, где оформлена подписка. Удаление приложения само по себе не отменяет подписку."
+      ],
+      [
+        "В каких странах доступно BukaGo?",
+        "BukaGo доступно в России, Узбекистане и Казахстане. В разделе скачивания выберите страну, чтобы перейти к версии сайта на вашем языке и скачать приложение."
       ]
     ],
     "privacy": "Политика конфиденциальности",
@@ -66,22 +70,26 @@
       {
         "id": "review-1",
         "quote": "Раньше каждый вечер спорили, когда выключать телефон. Теперь заранее договариваемся о времени, а сын сам следит за своим лимитом. Стало гораздо спокойнее.",
-        "author": "Анна, сыну 9 лет"
+        "author": "Анна, сыну 9 лет",
+        "source": "App Store"
       },
       {
         "id": "review-2",
         "quote": "Добавили задания: собрать рюкзак и почитать перед сном. Дочка отмечает выполненное и копит награды — теперь мне реже приходится напоминать.",
-        "author": "Михаил, дочери 7 лет"
+        "author": "Михаил, дочери 7 лет",
+        "source": "Google Play"
       },
       {
         "id": "review-3",
         "quote": "Начали с одной привычки — делать перерыв между играми. Короткие задания помогают переключиться, а потом ребёнок возвращается к своим делам.",
-        "author": "Елена, сыну 11 лет"
+        "author": "Елена, сыну 11 лет",
+        "source": "App Store"
       },
       {
         "id": "review-4",
         "quote": "Удобно, что мы с мужем видим одни и те же задания. Больше не выдаём разные правила: обсуждаем их вместе и меняем по необходимости.",
-        "author": "Ольга, дочери 10 лет"
+        "author": "Ольга, дочери 10 лет",
+        "source": "Google Play"
       }
     ],
     "permissionLabels": [
@@ -153,6 +161,10 @@
       [
         "How is data protected, and how do I cancel?",
         "The privacy policy describes data handling. Turn off renewal in the store or service where you subscribed. Deleting the app does not automatically cancel the subscription."
+      ],
+      [
+        "In which countries is BukaGo available?",
+        "BukaGo is available in Russia, Uzbekistan and Kazakhstan. Choose a country in the download section to open the website in your language and download the app."
       ]
     ],
     "privacy": "Privacy policy",
@@ -187,22 +199,26 @@
       {
         "id": "review-1",
         "quote": "We used to argue about putting the phone away every evening. Now we agree on screen time in advance, and my son keeps track of his limit. Evenings feel calmer.",
-        "author": "Anna, son aged 9"
+        "author": "Anna, son aged 9",
+        "source": "App Store"
       },
       {
         "id": "review-2",
         "quote": "We added tasks for packing a school bag and reading before bed. My daughter checks them off and earns rewards, so I remind her less often.",
-        "author": "Michael, daughter aged 7"
+        "author": "Michael, daughter aged 7",
+        "source": "Google Play"
       },
       {
         "id": "review-3",
         "quote": "We started with one habit: taking breaks between games. Short tasks help my child switch activities before returning to his day.",
-        "author": "Elena, son aged 11"
+        "author": "Elena, son aged 11",
+        "source": "App Store"
       },
       {
         "id": "review-4",
         "quote": "My husband and I can see the same tasks. We discuss the rules together and adjust them when needed.",
-        "author": "Olga, daughter aged 10"
+        "author": "Olga, daughter aged 10",
+        "source": "Google Play"
       }
     ],
     "permissionLabels": [
@@ -274,6 +290,10 @@
       [
         "Деректер қалай қорғалады және жазылым қалай тоқтатылады?",
         "Деректерді өңдеу құпиялылық саясатында сипатталған. Автоматты ұзартуды жазылым рәсімделген дүкенде немесе сервисте өшіріңіз. Қолданбаны жою жазылымды тоқтатпайды."
+      ],
+      [
+        "BukaGo қай елдерде қолжетімді?",
+        "BukaGo Ресейде, Өзбекстанда және Қазақстанда қолжетімді. Өз тіліңіздегі сайтқа өтіп, қолданбаны жүктеу үшін жүктеу бөлімінде елді таңдаңыз."
       ]
     ],
     "privacy": "Құпиялылық саясаты",
@@ -308,22 +328,26 @@
       {
         "id": "review-1",
         "quote": "Бұрын кеш сайын телефонды қашан қою керегін талқылайтынбыз. Енді уақытты алдын ала келісеміз, ұлым өз шектеуін өзі бақылайды.",
-        "author": "Анна, ұлы 9 жаста"
+        "author": "Анна, ұлы 9 жаста",
+        "source": "App Store"
       },
       {
         "id": "review-2",
         "quote": "Сөмкені жинау мен ұйықтар алдында оқуды тапсырма ретінде қостық. Қызым орындағанын белгілеп, сыйлық жинайды.",
-        "author": "Михаил, қызы 7 жаста"
+        "author": "Михаил, қызы 7 жаста",
+        "source": "Google Play"
       },
       {
         "id": "review-3",
         "quote": "Ойын арасында үзіліс жасау әдетінен бастадық. Қысқа тапсырмалар балама басқа іске назар аударуға көмектеседі.",
-        "author": "Елена, ұлы 11 жаста"
+        "author": "Елена, ұлы 11 жаста",
+        "source": "App Store"
       },
       {
         "id": "review-4",
         "quote": "Жұбайым екеуміз бір тапсырмаларды көреміз. Ережелерді бірге талқылап, қажет кезде өзгертеміз.",
-        "author": "Ольга, қызы 10 жаста"
+        "author": "Ольга, қызы 10 жаста",
+        "source": "Google Play"
       }
     ],
     "permissionLabels": [
@@ -395,6 +419,10 @@
       [
         "Ma’lumotlar qanday himoyalanadi va obuna qanday bekor qilinadi?",
         "Ma’lumotlarni qayta ishlash maxfiylik siyosatida yozilgan. Avtomatik uzaytirishni obuna rasmiylashtirilgan do‘kon yoki servisda o‘chiring. Ilovani o‘chirish obunani bekor qilmaydi."
+      ],
+      [
+        "BukaGo qaysi mamlakatlarda mavjud?",
+        "BukaGo Rossiya, O‘zbekiston va Qozog‘istonda mavjud. Saytni o‘z tilingizda ochish va ilovani yuklab olish uchun yuklab olish bo‘limida mamlakatni tanlang."
       ]
     ],
     "privacy": "Maxfiylik siyosati",
@@ -429,22 +457,26 @@
       {
         "id": "review-1",
         "quote": "Ilgari har oqshom telefonni qachon qo‘yish haqida tortishardik. Endi vaqtni oldindan kelishamiz, o‘g‘lim o‘z limitini kuzatadi.",
-        "author": "Anna, o‘g‘li 9 yoshda"
+        "author": "Anna, o‘g‘li 9 yoshda",
+        "source": "App Store"
       },
       {
         "id": "review-2",
         "quote": "Sumka yig‘ish va uxlashdan oldin o‘qishni vazifa qilib qo‘shdik. Qizim bajarganlarini belgilab, mukofot to‘playdi.",
-        "author": "Mixail, qizi 7 yoshda"
+        "author": "Mixail, qizi 7 yoshda",
+        "source": "Google Play"
       },
       {
         "id": "review-3",
         "quote": "O‘yinlar orasida tanaffus qilishdan boshladik. Qisqa vazifalar bolamga boshqa mashg‘ulotga o‘tishga yordam beradi.",
-        "author": "Elena, o‘g‘li 11 yoshda"
+        "author": "Elena, o‘g‘li 11 yoshda",
+        "source": "App Store"
       },
       {
         "id": "review-4",
         "quote": "Turmush o‘rtog‘im bilan bir xil vazifalarni ko‘ramiz. Qoidalarni birga kelishib, kerak bo‘lsa o‘zgartiramiz.",
-        "author": "Olga, qizi 10 yoshda"
+        "author": "Olga, qizi 10 yoshda",
+        "source": "Google Play"
       }
     ],
     "permissionLabels": [
@@ -516,6 +548,10 @@
       [
         "Məlumatlar necə qorunur və abunə necə ləğv edilir?",
         "Məlumatların emalı məxfilik siyasətində təsvir olunur. Avtomatik yenilənməni abunə olduğunuz mağaza və ya servisdə söndürün. Tətbiqi silmək abunəni ləğv etmir."
+      ],
+      [
+        "BukaGo hansı ölkələrdə mövcuddur?",
+        "BukaGo Rusiya, Özbəkistan və Qazaxıstanda mövcuddur. Saytı öz dilinizdə açmaq və tətbiqi yükləmək üçün yükləmə bölməsində ölkəni seçin."
       ]
     ],
     "privacy": "Məxfilik siyasəti",
@@ -550,22 +586,26 @@
       {
         "id": "review-1",
         "quote": "Əvvəllər hər axşam telefonu nə vaxt kənara qoymaq barədə mübahisə edirdik. İndi vaxtı əvvəlcədən razılaşdırırıq, oğlum limitini özü izləyir.",
-        "author": "Anna, oğlu 9 yaşında"
+        "author": "Anna, oğlu 9 yaşında",
+        "source": "App Store"
       },
       {
         "id": "review-2",
         "quote": "Çantanı yığmaq və yatmazdan əvvəl oxumaq üçün tapşırıqlar əlavə etdik. Qızım etdiklərini qeyd edir və mükafat toplayır.",
-        "author": "Mixail, qızı 7 yaşında"
+        "author": "Mixail, qızı 7 yaşında",
+        "source": "Google Play"
       },
       {
         "id": "review-3",
         "quote": "Oyunlar arasında fasilə verməkdən başladıq. Qısa tapşırıqlar uşağıma başqa fəaliyyətə keçməyə kömək edir.",
-        "author": "Elena, oğlu 11 yaşında"
+        "author": "Elena, oğlu 11 yaşında",
+        "source": "App Store"
       },
       {
         "id": "review-4",
         "quote": "Həyat yoldaşımla eyni tapşırıqları görürük. Qaydaları birlikdə müzakirə edib, lazım olduqda dəyişirik.",
-        "author": "Olqa, qızı 10 yaşında"
+        "author": "Olqa, qızı 10 yaşında",
+        "source": "Google Play"
       }
     ],
     "permissionLabels": [

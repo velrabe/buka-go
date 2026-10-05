@@ -7,3 +7,82 @@
 .staticScreen { position: relative; width: 375px; height: 767px; color: #111827; background: #f8fafc; font-family: "Nunito", sans-serif; text-align: left; }
 .asset { display: block; width: 100%; height: 100%; max-width: none; object-fit: contain; border-radius: inherit; }
 .symbol { display: flex; width: 100%; height: 100%; align-items: center; justify-content: center; font-size: .7em; line-height: 1; }
+
+.programsDemo { overflow: hidden; }
+.programsList, .programDetail { position: absolute; inset: 0; pointer-events: none; }
+.programsList { animation: programsOverview 10s ease-in-out infinite; }
+.programDetail { padding-top: 16px; background: #f8fafc; opacity: 0; transform: translateX(28px); animation: programsDetail 10s ease-in-out infinite; }
+// Scroll the program body under the fixed header; keep its clipping edge in place.
+.programDetail [data-figma-node="2522:23717"] { animation: programTasksScroll 10s ease-in-out infinite; }
+.programsList [data-figma-node="3903:74219"] { animation: programTap 10s ease-in-out infinite; transform-origin: center; }
+.programsList [data-figma-node="3903:74219"]::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: #9279e81a; box-shadow: inset 0 0 0 2px #9279e899;
+  opacity: 0; animation: programHighlight 10s ease-in-out infinite;
+}
+.programsDemo .programsList, .programsDemo .programDetail,
+.programsDemo .programDetail [data-figma-node="2522:23717"],
+.programsDemo .programsList [data-figma-node="3903:74219"],
+.programsDemo .programsList [data-figma-node="3903:74219"]::after { animation-play-state: paused; }
+.programsDemo[data-moving="true"] .programsList, .programsDemo[data-moving="true"] .programDetail,
+.programsDemo[data-moving="true"] .programDetail [data-figma-node="2522:23717"],
+.programsDemo[data-moving="true"] .programsList [data-figma-node="3903:74219"],
+.programsDemo[data-moving="true"] .programsList [data-figma-node="3903:74219"]::after { animation-play-state: running; }
+@keyframes programsOverview {
+  0%, 24%, 80%, 100% { opacity: 1; transform: translateX(0); }
+  30%, 72% { opacity: 0; transform: translateX(-20px); }
+}
+@keyframes programsDetail {
+  0%, 24%, 80%, 100% { opacity: 0; transform: translateX(28px); }
+  30%, 72% { opacity: 1; transform: translateX(0); }
+}
+@keyframes programTasksScroll {
+  0%, 36%, 70%, 100% { transform: translateY(0); clip-path: inset(0 0 0); }
+  50%, 62% { transform: translateY(-160px); clip-path: inset(160px 0 0); }
+}
+@keyframes programHighlight {
+  0%, 16%, 28%, 100% { opacity: 0; }
+  20%, 24% { opacity: 1; }
+}
+@keyframes programTap {
+  0%, 20%, 24%, 100% { transform: scale(1); }
+  22% { transform: scale(.97); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .programsDemo .programsList, .programsDemo .programDetail,
+  .programsDemo .programDetail [data-figma-node="2522:23717"],
+  .programsDemo .programsList [data-figma-node="3903:74219"],
+  .programsDemo .programsList [data-figma-node="3903:74219"]::after { animation: none; }
+}
+
+// Pan only the map artwork inside its fixed, rounded viewport; the avatar stays still.
+.mapScreen [data-figma-node="3908:79806"] > .asset {
+  transform: translate(0, 0) scale(1.24);
+  animation: mapTravel 11s ease-in-out infinite;
+  animation-play-state: paused;
+}
+.mapScreen[data-moving="true"] [data-figma-node="3908:79806"] > .asset {
+  animation-play-state: running;
+  will-change: transform;
+}
+@keyframes mapTravel {
+  // Follow the slanted road, turn 90 degrees, then retrace both legs.
+  0%, 28%, 96%, 100% { transform: translate(0, 0) scale(1.24); }
+  43%, 48%, 80%, 85% { transform: translate(-30px, 10px) scale(1.24); }
+  58%, 68% { transform: translate(-40px, -20px) scale(1.24); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mapScreen[data-moving] [data-figma-node="3908:79806"] > .asset {
+    animation: none;
+    transform: none;
+    will-change: auto;
+  }
+}
+
+.mapToast { position: absolute; z-index: 20; top: 16px; left: 12px; right: 12px; display: flex; align-items: center; gap: 16px; min-height: 66px; padding: 16px; border-radius: 16px; border-bottom: 2px solid #69c46d; background: #fff; box-shadow: 0 12px 24px #69c46d1a; opacity: 0; transform: translateY(-90px); pointer-events: none; animation: mapToastArrival 11s cubic-bezier(.22, 1, .36, 1) infinite; animation-play-state: paused; }
+.mapToastIcon { display: grid; place-items: center; flex: 0 0 32px; height: 32px; border-radius: 50%; background: linear-gradient(#69c46d, #69c46dcc); }
+.mapToastTitle { flex: 1; min-width: 0; color: #111827; font-size: 14px; font-weight: 600; line-height: 1.3; }
+.mapToastClose { flex-shrink: 0; color: #11182780; }
+.mapScreen[data-moving="true"] .mapToast { animation-play-state: running; }
+@keyframes mapToastArrival { 0%, 27%, 100% { opacity: 0; transform: translateY(-90px); } 5%, 22% { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .mapToast { animation: none; } }

@@ -63,10 +63,12 @@ export function Newsletter({
   messages: m,
   locale,
   privacyPath,
+  label,
 }: {
   messages: Messages;
   locale: Locale;
   privacyPath: string;
+  label?: string;
 }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const [busy, setBusy] = useState(false);
@@ -108,7 +110,7 @@ export function Newsletter({
           trackGoal("open-subscribe-modal");
         }}
       >
-        {m.common.subscribe}
+        {label ?? m.common.subscribe}
       </button>
       <dialog
         ref={dialog}

@@ -1,0 +1,25 @@
+[
+  {
+    "id": "I2522:23730;1:646;801:7737",
+    "name": "Vector ",
+    "type": "VECTOR"
+  },
+  {
+    "id": "I2522:23751;387:4728",
+    "name": "edu",
+    "imageHash": "6477d0fa5eb1cf714c8d944dbb15e7fa2a33b2e6",
+    "fallbackAsset": "/assets/hero-screen/homework.png"
+  },
+  {
+    "id": "I2522:23752;387:4728",
+    "name": "edu",
+    "imageHash": "e41862f77a2afb25a88f959e0f076145029572d5",
+    "fallbackAsset": "/assets/hero-screen/homework.png"
+  },
+  {
+    "id": "I2522:23753;387:4728",
+    "name": "edu",
+    "imageHash": "9e88c72474bf8d9e9f303862264ea38c36516db9",
+    "fallbackAsset": "/assets/hero-screen/homework.png"
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "source": { "rootId": "3989:84610", "exportedAt": "2026-10-05T11:28:45.464Z", "width": 343, "height": 430 },
+  "heading": "Пауза скоро начнется",
+  "seconds": 222,
+  "kind": "Минутка здоровья",
+  "title": "Разминка для глаз",
+  "rewards": [
+    { "id": "3989:84626", "asset": "/assets/hero-screen/coin.png", "imageHash": "2cab7d0eaad2c762dbca0a05bcccd440b25454d6", "value": 50, "label": "На цель" },
+    { "id": "3989:84631", "asset": "/assets/hero-screen/diamond.png", "imageHash": "9d61facd7cfe0e8000497b0848fcb09ee4311469", "value": 5, "label": "На добро" }
+  ],
+  "action": "Выполнить задание",
+  "later": "Позже"
+}

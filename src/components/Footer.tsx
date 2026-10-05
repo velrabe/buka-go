@@ -1,3 +1,4 @@
+import { CountryAvailability } from "./CountryAvailability";
 
 import { siteUrl } from "@/lib/site-url";
 import type { Locale, Messages } from "@/lib/content";
@@ -26,9 +27,11 @@ export function Footer({
                 width="36"
                 height="36"
               />
-              <span>BukaGo</span>
+              <div className="footer-brand-copy">
+                <span>BukaGo</span>
+                <p>{m.common.siteTagline}</p>
+              </div>
             </a>
-            <p>{m.common.siteTagline}</p>
           </div>
           <nav className="footer-navigation" aria-label={m.common.home}>
             {[
@@ -45,6 +48,7 @@ export function Footer({
           </nav>
           <StoreLinks messages={m} badges />
         </div>
+        <div className="footer-legal-panel">
         <div className="footer-documents">
           <div>
             <h3>{m.common.documents}</h3>
@@ -66,6 +70,8 @@ export function Footer({
             Остафьево, ул. Троицкая, д. 49, стр. 2
           </p>
         </div>
+        </div>
+        <CountryAvailability locale={locale} footer />
         <div className="footer-bottom">
           <a
             className="footer-social"
@@ -84,9 +90,9 @@ export function Footer({
             <br />ООО «БЭЙСИК»
           </p>
           <div className="footer-newsletter">
-            <p>{m.footer.newsletterHint}</p>
             <Newsletter
               locale={locale}
+              label={({ ru: "Подписаться на обновление", en: "Subscribe to updates", kk: "Жаңартуларға жазылу", uz: "Yangilanishlarga obuna", az: "Yeniliklərə abunə ol" })[locale]}
               messages={m}
               privacyPath={`${lang.prefix}/legal/privacy-policy/`}
             />

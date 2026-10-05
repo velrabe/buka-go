@@ -1,5 +1,5 @@
-.header { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; height: 72px; background: #fff; box-shadow: 0 1px #0000000a; }
-.inner { display: flex; align-items: center; gap: 24px; width: 100%; max-width: 1200px; margin-inline: auto; padding-inline: 24px; }
+.header { position: sticky; top: 0; z-index: 100; display: flex; flex-direction: column; align-items: center; height: auto; background: #fff; box-shadow: 0 1px #0000000a; }
+.inner { min-height: 72px; display: flex; align-items: center; gap: 24px; width: 100%; max-width: 1200px; margin-inline: auto; padding-inline: 24px; }
 .brand { display: flex; align-items: center; gap: 8px; flex-shrink: 0; text-decoration: none; }
 .logoIcon { width: 40px; height: 40px; }
 .wordmark { width: 100px; height: 20px; object-fit: contain; }
@@ -17,7 +17,7 @@
 .chevron { width: 6px; height: 6px; margin-top: -2px; border-bottom: 1.5px solid; border-right: 1.5px solid; transform: rotate(45deg); transition: transform .2s; }
 .languageTrigger[aria-expanded="true"] .chevron { margin-top: 2px; transform: rotate(225deg); }
 .languageList { position: absolute; top: calc(100% + 8px); right: 0; min-width: 100%; margin: 0; padding: 6px; list-style: none; border: 1px solid #1f29331a; border-radius: 12px; background: #fff; box-shadow: 0 12px 30px #0000001a; }
-.languageList button { display: block; width: 100%; padding: 8px 12px; border: 0; border-radius: 8px; background: transparent; color: #1f2933; font-size: 13px; font-weight: 600; line-height: 1.2; text-align: left; white-space: nowrap; }
+.languageList button { display: flex; align-items: center; gap: 10px; width: 100%; padding: 8px 12px; border: 0; border-radius: 8px; background: transparent; color: #1f2933; font-size: 13px; font-weight: 600; line-height: 1.2; text-align: left; white-space: nowrap; }
 .languageList button:hover { background: #9279e814; }
 .languageList button[aria-current="true"] { color: #9279e8; background: #9279e81f; }
 .menuToggle { display: none; align-items: center; justify-content: center; width: 32px; height: 32px; padding: 8px; border: 0; background: transparent; }
@@ -26,7 +26,7 @@
   .inner { gap: 12px; padding-inline: 16px; }
   .actions { margin-left: auto; }
   .menuToggle { display: flex; }
-  .navigation { display: none; position: absolute; top: 72px; left: 0; right: 0; max-height: calc(100dvh - 72px); overflow-y: auto; flex-direction: column; align-items: stretch; gap: 4px; padding: 12px 16px 16px; background: #fff; box-shadow: 0 12px 30px #00000014; }
+  .navigation { display: none; position: absolute; top: 100%; left: 0; right: 0; max-height: calc(100dvh - 96px); overflow-y: auto; flex-direction: column; align-items: stretch; gap: 4px; padding: 12px 16px 16px; background: #fff; box-shadow: 0 12px 30px #00000014; }
   .navigation.open { display: flex; }
   .navigation a { min-height: 48px; padding: 0 12px; }
   .navigation .download { align-self: flex-start; padding-inline: 20px; }
@@ -35,3 +35,11 @@
   .navigation a, .chevron { transition: none; }
   .navigation .download:hover { transform: none; }
 }
+
+.flag { display: block; width: 24px; height: 16px; object-fit: cover; border-radius: 3px; flex-shrink: 0; }
+
+.languageTrigger .flag { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; }
+
+.deviceSnackbar { display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; height: 24px; flex-shrink: 0; padding: 0 12px; background: #eee8fb; color: #6e56c5; font-size: 11px; font-weight: 600; line-height: 1; text-decoration: none; }
+.deviceSnackbar:hover { background: #e6dcf8; }
+.deviceSnackbar:focus-visible { outline: 2px solid #6e56c5; outline-offset: -2px; }

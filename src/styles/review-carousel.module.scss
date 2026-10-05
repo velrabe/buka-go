@@ -22,7 +22,7 @@
 .quoteMark { display: block; height: 48px; color: #9279e8; font-size: 80px; font-weight: 800; line-height: 1; }
 .card blockquote { flex: 1; margin: 16px 0 28px; }
 .card blockquote p { margin: 0; color: #171c2b; font-size: clamp(20px, 2.2vw, 26px); font-weight: 700; line-height: 1.45; text-wrap: balance; overflow-wrap: anywhere; }
-.card figcaption { padding-top: 20px; border-top: 1px solid #eae5f5; color: #606985; font-size: 15px; line-height: 1.5; overflow-wrap: anywhere; }
+.card figcaption { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding-top: 20px; border-top: 1px solid #eae5f5; color: #606985; font-size: 15px; line-height: 1.5; overflow-wrap: anywhere; }
 .controls { display: flex; align-items: center; justify-content: center; gap: 24px; margin-top: 12px; }
 .arrow { position: absolute; z-index: 4; top: 50%; transform: translateY(-50%); display: grid; place-items: center; width: 48px; height: 48px; padding: 0; border: 1px solid #9279e82e; border-radius: 50%; background: #fff; color: #7658ee; box-shadow: 0 4px 16px #7253e910; transition: background-color 180ms ease, color 180ms ease; }
 .previous { left: calc((100% - var(--card-width)) / 2 - 64px); }
@@ -48,3 +48,9 @@
   .next { right: 0; }
 }
 @media (prefers-reduced-motion: reduce) { .card, .arrow, .dot::after { transition: none; } }
+
+.source { display: inline-flex; align-items: center; flex-shrink: 0; margin-left: auto; padding: 6px 10px; border-radius: 999px; background: #f1edfb; color: #7962c7; font-size: 12px; font-weight: 600; line-height: 1.4; white-space: nowrap; }
+
+.source { gap: 6px; text-decoration: none; }
+.source:hover { background: #e6def8; }
+.source img, .source svg { flex-shrink: 0; }
