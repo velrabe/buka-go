@@ -49,7 +49,7 @@ export function HealthyTaskPreview({ locale, playing }: { locale: Locale; playin
   return <TaskMiniScreen current={3} reward={150} instruction={labels[locale]} characterAsset="/assets/task-preview/character-header-3.png" sheetClassName={styles.healthySheet}
     action={<button type="button" className={styles.check} aria-pressed={paused} onClick={() => setPaused(value => !value)}>{paused ? text.resume : text.pause}</button>}>
     <div className={styles.healthyRing} role="timer" aria-label={labels[locale]} aria-live="off">
-      <ProgressRing progress={seconds / 180 * 100} strokeWidth={12} rounded />
+      <ProgressRing progress={seconds / (10 * 60) * 100} strokeWidth={12} rounded />
       <div className={styles.healthyTime}><span>{text.remaining}</span><strong>{time}</strong></div>
     </div>
   </TaskMiniScreen>;
