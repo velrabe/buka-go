@@ -205,7 +205,7 @@ export function Landing({
           </div>
           <div className={downloadStyles.visual}>
             <img className={downloadStyles.cloud} src={siteUrl("/assets/hero/cloud-xl.png")} width="856" height="358" alt="" loading="lazy" />
-            <img className={downloadStyles.phone} src={siteUrl("/assets/download/phone.png")} alt={m.common.phoneAlt} width="883" height="1120" loading="lazy" />
+            <img className={downloadStyles.phone} src={siteUrl(`/assets/download/iphone-17-pro-${locale}.webp`)} alt={m.common.phoneAlt} width="951" height="1600" loading="lazy" />
             <img className={downloadStyles.logo} src={siteUrl("/assets/download/app-logo.png")} alt="" width="420" height="420" loading="lazy" />
           </div>
         </div>
