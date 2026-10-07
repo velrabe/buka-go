@@ -26,7 +26,8 @@
     "howToConnect": "Necə qoşulmalı",
     "forFamily": "Ailə üçün",
     "blog": "Bloq",
-    "downloadApp": "Tətbiqi yükləyin"
+    "downloadApp": "Tətbiqi yükləyin",
+    "plans": "Tariflər"
   },
   "footer": {
     "newsletterHint": "Yenilikləri qaçırmayın — xəbər bülleteninə abunə olun",
@@ -199,7 +200,8 @@
           "2": "Ata"
         }
       }
-    }
+    },
+    "soon": "Tezliklə"
   },
   "connect": {
     "badge": "SÜRƏTLİ BAŞLANĞIC",
@@ -265,7 +267,8 @@
     "nextPageAriaLabel": "Növbəti səhifə",
     "pageAriaLabel": "Səhifə {page}",
     "languageVersions": "Məqalənin dil versiyaları",
-    "empty": "Bu dildə hələ məqalə yoxdur. Daha sonra yenidən baxın."
+    "empty": "Bu dildə hələ məqalə yoxdur. Daha sonra yenidən baxın.",
+    "landingTitle": "Vacib sualları bloqumuzda müzakirə edirik"
   },
   "legal": {
     "lastUpdated": "Son yenilənmə: ",

@@ -26,7 +26,8 @@
     "howToConnect": "How to connect",
     "forFamily": "For the family",
     "blog": "Blog",
-    "downloadApp": "Download the app"
+    "downloadApp": "Download the app",
+    "plans": "Plans"
   },
   "footer": {
     "newsletterHint": "Don't miss updates — subscribe to our newsletter",
@@ -199,7 +200,8 @@
           "2": "Dad"
         }
       }
-    }
+    },
+    "soon": "Soon"
   },
   "connect": {
     "badge": "QUICK START",
@@ -265,7 +267,8 @@
     "nextPageAriaLabel": "Next page",
     "pageAriaLabel": "Page {page}",
     "languageVersions": "Article language versions",
-    "empty": "No articles in this language yet. Check back soon."
+    "empty": "No articles in this language yet. Check back soon.",
+    "landingTitle": "Exploring important questions in our blog"
   },
   "legal": {
     "lastUpdated": "Last updated: ",

@@ -121,7 +121,7 @@ export function TaskDemos({
             {i === 4 && <FamilyTaskPreview card={content.cards[4]} locale={locale} />}
           </div>
           <div className={styles.cardContent}>
-            <h3>{card.subtitle}</h3>
+            <h3>{card.subtitle}{i === 4 && <> <span className={styles.soon}>{content.soon}</span></>}</h3>
             <p>{card.text}</p>
           </div>
         </article>

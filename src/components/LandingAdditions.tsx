@@ -26,7 +26,7 @@ export function LandingAdditions({ locale }: { locale: Locale }) {
             <img className={styles.deviceImage} src={siteUrl(`/assets/compatibility/${index === 0 ? "parent" : "child"}.png`)} width="981" height="644" alt="" loading="lazy" />
             <div className={styles.deviceContent}>
               <h3>{title}</h3>
-              <SupportedPlatforms />
+              <SupportedPlatforms iosSoon={index === 1 ? m.soon : undefined} />
             </div>
           </article>)}</div>
           <div className={styles.compatibilityNote}>
@@ -52,7 +52,10 @@ export function LandingAdditions({ locale }: { locale: Locale }) {
               const [title, description] = feature.split(" — ");
               return <li key={feature}><PricingIcon kind="check" /><span>{description ? <><strong>{title}</strong> — {description}</> : feature}</span></li>;
             })}</ul>
-            <a className={`${styles.planAction} ${styles.proAction}`} href={siteUrl(`${languageFor(locale).home}#download`)}><span>{m.proAction}</span><PricingIcon kind="arrow" /></a>
+            <div className={styles.planFooter}>
+              <p className={styles.planTrial}>{m.proTrial}</p>
+              <a className={`${styles.planAction} ${styles.proAction}`} href={siteUrl(`${languageFor(locale).home}#download`)}><span>{m.proAction}</span><PricingIcon kind="arrow" /></a>
+            </div>
           </article>
         </div>
         <aside className={styles.promo} id="pro-offer">
@@ -80,6 +83,9 @@ export function LandingAdditions({ locale }: { locale: Locale }) {
                 <h3>{partner.name}</h3>
                 <p>{partner.profile}</p>
               </div>
+              <button className={styles.partnerAction} type="button" disabled>
+                <span>{m.partnerAction}</span><PricingIcon kind="arrow" />
+              </button>
             </div>
           </article>)}
         </div>

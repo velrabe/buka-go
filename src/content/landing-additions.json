@@ -52,19 +52,22 @@
     "plansHeadline": "Начните бесплатно.",
     "plansAccent": "Выберите подходящий доступ позже",
     "freeFeatures": [
-      "Создавайте задания для ребёнка",
-      "Назначайте награды за выполнение",
-      "Познакомьтесь с приложением"
+      "Местоположение ребёнка на карте",
+      "Дневной лимит экранного времени",
+      "Настройка экрана во время учёбы",
+      "Управление одним родителем"
     ],
     "proFeatures": [
-      "Первая неделя PRO за 1 руб",
-      "Программы развития — готовые библиотеки заданий",
-      "Геозоны — уведомления о входе и выходе",
-      "Контроль — фильтры и ограничения",
-      "Единая семья — управляйте с родными"
+      "Геозоны и история маршрутов",
+      "Расширенные ограничения приложений и настройка расписания по дням недели",
+      "Умные паузы и программы развития",
+      "Семейный профиль с ролями доступа",
+      "Создание целей для накопления",
+      "Награды за выполнение заданий",
+      "Блок «Добро» — отчисление баллов на реальную помощь животным и растениям."
     ],
     "freeAction": "Начать бесплатно",
-    "proAction": "Попробовать за 1 руб",
+    "proAction": "Попробовать за 1 руб",
     "promoAction": "Ввести промокод",
     "reviews": [
       {
@@ -126,7 +129,10 @@
         "name": "Мир знаний",
         "profile": "Образовательные программы"
       }
-    ]
+    ],
+    "soon": "Скоро",
+    "proTrial": "Пробная неделя за 1 руб.",
+    "partnerAction": "Подробнее"
   },
   "en": {
     "compatTitle": "Is BukaGo right for your family?",
@@ -186,7 +192,6 @@
       "Get to know the app"
     ],
     "proFeatures": [
-      "First week of PRO for 1 ₽",
       "Development programs — ready-made task libraries",
       "Geofences — entry and exit notifications",
       "Control — filters and limits",
@@ -255,7 +260,10 @@
         "name": "World of Knowledge",
         "profile": "Educational programs"
       }
-    ]
+    ],
+    "soon": "Soon",
+    "proTrial": "Trial week for 1 ruble.",
+    "partnerAction": "Learn more"
   },
   "kk": {
     "compatTitle": "BukaGo отбасыңызға сай келе ме?",
@@ -315,7 +323,6 @@
       "Қолданбамен танысыңыз"
     ],
     "proFeatures": [
-      "PRO бірінші аптасы 1 ₽",
       "Даму бағдарламалары — дайын тапсырмалар жинағы",
       "Геоаймақтар — кіру және шығу хабарландырулары",
       "Бақылау — сүзгілер мен шектеулер",
@@ -384,7 +391,10 @@
         "name": "Білім әлемі",
         "profile": "Білім беру бағдарламалары"
       }
-    ]
+    ],
+    "soon": "Жақында",
+    "proTrial": "Сынақ аптасы 1 рубльге.",
+    "partnerAction": "Толығырақ"
   },
   "uz": {
     "compatTitle": "BukaGo oilangizga mos keladimi?",
@@ -444,7 +454,6 @@
       "Ilova bilan tanishing"
     ],
     "proFeatures": [
-      "PRO birinchi haftasi 1 ₽",
       "Rivojlanish dasturlari — tayyor topshiriqlar to‘plami",
       "Geozonalar — kirish va chiqish xabarlari",
       "Nazorat — filtrlar va cheklovlar",
@@ -513,7 +522,10 @@
         "name": "Bilim olami",
         "profile": "Ta’lim dasturlari"
       }
-    ]
+    ],
+    "soon": "Tez orada",
+    "proTrial": "Sinov haftasi 1 rublga.",
+    "partnerAction": "Batafsil"
   },
   "az": {
     "compatTitle": "BukaGo ailənizə uyğundurmu?",
@@ -573,7 +585,6 @@
       "Tətbiqlə tanış olun"
     ],
     "proFeatures": [
-      "PRO ilk həftəsi 1 ₽",
       "İnkişaf proqramları — hazır tapşırıq kitabxanaları",
       "Geozonalar — giriş və çıxış bildirişləri",
       "Nəzarət — filtrlər və limitlər",
@@ -642,6 +653,9 @@
         "name": "Bilik Dünyası",
         "profile": "Təhsil proqramları"
       }
-    ]
+    ],
+    "soon": "Tezliklə",
+    "proTrial": "Sınaq həftəsi 1 rubla.",
+    "partnerAction": "Ətraflı"
   }
 }

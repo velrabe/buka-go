@@ -26,7 +26,8 @@
     "howToConnect": "Qanday ulash mumkin",
     "forFamily": "Oilaga",
     "blog": "Blog",
-    "downloadApp": "Ilovani yuklab olish"
+    "downloadApp": "Ilovani yuklab olish",
+    "plans": "Tariflar"
   },
   "footer": {
     "newsletterHint": "Yangiliklarni o‘tkazib yubormang — obunaga yoziling",
@@ -199,7 +200,8 @@
           "2": "Dada"
         }
       }
-    }
+    },
+    "soon": "Tez orada"
   },
   "connect": {
     "badge": "TEZKOR START",
@@ -265,7 +267,8 @@
     "nextPageAriaLabel": "Keyingi sahifa",
     "pageAriaLabel": "{page}-sahifa",
     "languageVersions": "Maqolaning til versiyalari",
-    "empty": "Bu tilda hozircha maqolalar yo‘q. Keyinroq qaytib keling."
+    "empty": "Bu tilda hozircha maqolalar yo‘q. Keyinroq qaytib keling.",
+    "landingTitle": "Muhim savollarni blogimizda muhokama qilamiz"
   },
   "legal": {
     "lastUpdated": "Oxirgi yangilanish: ",

@@ -5,6 +5,7 @@
 .card { min-width: 0; padding: 4px; border-radius: 28px; background: #f6f2ff; color: #434c5d; container-type: inline-size; }
 .cardContent { padding: 12px; }
 .cardContent > h3 { margin: 0 0 10px; font-size: 16px; line-height: 1.2; letter-spacing: -.015em; font-weight: 700; color: #26345b; }
+.soon { display: inline-flex; align-items: center; padding: 3px 8px; border-radius: 999px; background: #eae3fa; color: #7460d6; font-size: 11px; font-weight: 700; line-height: 1.2; letter-spacing: 0; vertical-align: middle; white-space: nowrap; }
 .cardContent > p { margin: 0; font-size: 14px; line-height: 1.4; color: #4b5878; }
 .preview { position: relative; display: flex; flex-direction: column; width: 100%; height: clamp(320px, 140cqi, 450px); min-height: 260px; padding: 12px; gap: 12px; border-radius: 22px; background: linear-gradient(160deg, #fff, #fafafb); font-family: var(--font-body); container-type: inline-size; }
 .preview p { margin: 0; }

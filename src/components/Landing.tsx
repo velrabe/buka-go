@@ -42,7 +42,7 @@ export function Landing({
       <HeroComposition locale={locale}>
         {locale === "ru" && <p data-hero-benefit>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 3c1.4 5 2.8 6.5 7 8-4.2 1.5-5.6 3-7 8-1.4-5-2.8-6.5-7-8 4.2-1.5 5.6-3 7-8ZM5 1c.6 2.1 1.2 2.7 3 3.5C6.2 5.3 5.6 5.9 5 8c-.6-2.1-1.2-2.7-3-3.5C3.8 3.7 4.4 3.1 5 1ZM5 15c.6 2.1 1.2 2.7 3 3.5C6.2 19.3 5.6 19.9 5 22c-.6-2.1-1.2-2.7-3-3.5C3.8 17.7 4.4 17.1 5 15Z" /></svg>
-          <strong><span>Переключает внимание</span>{" "}<span>ребёнка с&nbsp;телефона</span></strong>
+          <strong><span>Помогает ребёнку</span>{" "}<span>переключиться с&nbsp;телефона</span></strong>
         </p>}
         <h1>{m.hero.title}<span>{locale === "ru" ? m.hero.titleAccent.replace(/(^|\s)(с|на) /g, "$1$2\u00a0") : m.hero.titleAccent}</span></h1>
         <p>{m.hero.description}</p>
@@ -144,8 +144,20 @@ export function Landing({
           ))}
         </div>
       </section>
+      <section id="tasks" className={`section ${taskStyles.section}`}>
+        <div className="container">
+          <div className="section-heading">
+            <h2>{m.loved.title}</h2>
+            <p className="lead">{m.loved.description}</p>
+          </div>
+          <TaskDemos content={m.loved} locale={locale} />
+        </div>
+      </section>
       <section className={`section ${articleStyles.section}`} id="smart-pauses">
         <div className="container">
+          <div className={`section-heading ${articleStyles.sectionHeading}`}>
+            <h2>{m.blog.landingTitle}</h2>
+          </div>
           <ArticleStack
             titles={[m.problem.title, ...Object.values(m.works.items).map(item => item.title)]}
             label={m.blog.title}
@@ -188,15 +200,6 @@ export function Landing({
               )),
             ]}
           </ArticleStack>
-        </div>
-      </section>
-      <section id="tasks" className={`section ${taskStyles.section}`}>
-        <div className="container">
-          <div className="section-heading">
-            <h2>{m.loved.title}</h2>
-            <p className="lead">{m.loved.description}</p>
-          </div>
-          <TaskDemos content={m.loved} locale={locale} />
         </div>
       </section>
       <ConnectionSteps messages={m} />

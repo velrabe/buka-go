@@ -34,9 +34,8 @@ export function Header({ locale, path, messages: m }: { locale: Locale; path: st
   const lang = choices.find(l => l.locale === locale)!;
   const links = [
     [m.header.howItWorks, `${lang.home}#how-it-works`],
-    [m.header.tasks, `${lang.home}#tasks`],
     [m.header.howToConnect, `${lang.home}#how-to-connect`],
-    [m.header.forFamily, `${lang.home}#why-works`],
+    [m.header.plans, `${lang.home}#plans`],
     [m.header.blog, `${lang.prefix}/blog/`],
   ];
 
