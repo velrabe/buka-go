@@ -67,7 +67,7 @@
       "Блок «Добро» — отчисление баллов на реальную помощь животным и растениям."
     ],
     "freeAction": "Начать бесплатно",
-    "proAction": "Попробовать за 1 руб / нед",
+    "proAction": "Попробовать за 1 руб",
     "promoAction": "Ввести промокод",
     "reviews": [
       {
@@ -131,7 +131,8 @@
       }
     ],
     "soon": "Скоро",
-    "partnerAction": "Подробнее"
+    "partnerAction": "Подробнее",
+    "proTrial": "Пробная неделя за 1 руб"
   },
   "en": {
     "compatTitle": "Is BukaGo right for your family?",
@@ -197,7 +198,7 @@
       "One family — manage together"
     ],
     "freeAction": "Start free",
-    "proAction": "Try for 1 ₽ / week",
+    "proAction": "Try for 1 ₽",
     "promoAction": "Enter promo code",
     "reviews": [
       {
@@ -261,7 +262,8 @@
       }
     ],
     "soon": "Soon",
-    "partnerAction": "Learn more"
+    "partnerAction": "Learn more",
+    "proTrial": "Trial week for 1 ruble."
   },
   "kk": {
     "compatTitle": "BukaGo отбасыңызға сай келе ме?",
@@ -327,7 +329,7 @@
       "Бір отбасы — бірге басқарыңыз"
     ],
     "freeAction": "Тегін бастау",
-    "proAction": "1 ₽ үшін көріңіз / апта",
+    "proAction": "1 ₽ үшін көріңіз",
     "promoAction": "Промокод енгізу",
     "reviews": [
       {
@@ -391,7 +393,8 @@
       }
     ],
     "soon": "Жақында",
-    "partnerAction": "Толығырақ"
+    "partnerAction": "Толығырақ",
+    "proTrial": "Сынақ аптасы 1 рубльге."
   },
   "uz": {
     "compatTitle": "BukaGo oilangizga mos keladimi?",
@@ -457,7 +460,7 @@
       "Yagona oila — birgalikda boshqarish"
     ],
     "freeAction": "Bepul boshlash",
-    "proAction": "1 ₽ evaziga sinab ko‘ring / hafta",
+    "proAction": "1 ₽ evaziga sinab ko‘ring",
     "promoAction": "Promokod kiritish",
     "reviews": [
       {
@@ -521,7 +524,8 @@
       }
     ],
     "soon": "Tez orada",
-    "partnerAction": "Batafsil"
+    "partnerAction": "Batafsil",
+    "proTrial": "Sinov haftasi 1 rublga."
   },
   "az": {
     "compatTitle": "BukaGo ailənizə uyğundurmu?",
@@ -587,7 +591,7 @@
       "Vahid ailə — birlikdə idarə edin"
     ],
     "freeAction": "Pulsuz başla",
-    "proAction": "1 ₽ üçün sınayın / həftə",
+    "proAction": "1 ₽ üçün sınayın",
     "promoAction": "Promokod daxil et",
     "reviews": [
       {
@@ -651,6 +655,7 @@
       }
     ],
     "soon": "Tezliklə",
-    "partnerAction": "Ətraflı"
+    "partnerAction": "Ətraflı",
+    "proTrial": "Sınaq həftəsi 1 rubla."
   }
 }

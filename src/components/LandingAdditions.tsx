@@ -54,6 +54,7 @@ export function LandingAdditions({ locale }: { locale: Locale }) {
             })}</ul>
             <div className={styles.planFooter}>
               <a className={`${styles.planAction} ${styles.proAction}`} href={siteUrl(`${languageFor(locale).home}#download`)}><span>{m.proAction}</span><PricingIcon kind="arrow" /></a>
+              <p className={styles.planTrial}>{m.proTrial}</p>
             </div>
           </article>
         </div>
