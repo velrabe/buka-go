@@ -163,6 +163,3 @@ for (let t = 1.15; t <= 1.9; t += .01) {
 }
 const landingHtml = readFileSync(new URL("../out/index.html", import.meta.url), "utf8");
 assert.ok(landingHtml.includes('data-figma-node="2799:62447"'), "Landing renders the complete content screen");
-const alternateHtml = readFileSync(new URL("../out/alt/index.html", import.meta.url), "utf8");
-assert.ok(alternateHtml.includes('data-figma-node="3874:64675"'), "Alternate landing renders the compact Figma frame");
-assert.ok(!alternateHtml.includes('data-demo-target="quick"'), "Compact demo has no smart-mode controls");

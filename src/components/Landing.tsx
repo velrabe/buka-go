@@ -9,7 +9,7 @@ import { TaskDemos } from "./TaskDemos";
 import { LandingAdditions } from "./LandingAdditions";
 import { TimeVisual } from "./TimeVisual";
 import { StaticProgramsScreen, StaticSuccessScreen, StaticHealthyScreen, StaticMapScreen } from "./FeatureScreens";
-import { ContentScreen, StaticContentBody } from "./ContentScreen";
+import { StaticContentBody } from "./ContentScreen";
 import { HeroComposition } from "./HeroComposition";
 import { ConnectionSteps } from "./ConnectionSteps";
 import { ArticleStack } from "./ArticleStack";
@@ -26,11 +26,9 @@ function ArticleTags({ items }: { items: string[] }) {
 export function Landing({
   locale,
   messages: m,
-  alternative = false,
 }: {
   locale: Locale;
   messages: Messages;
-  alternative?: boolean;
 }) {
   const articleDate = new Intl.DateTimeFormat(locale, {
     day: "numeric", month: "long", year: "numeric", timeZone: "UTC",
@@ -53,12 +51,7 @@ export function Landing({
         <div className="container feature-list">
           {Object.values(m.control.items).map((item, i) => (
             <article className={i === 0 ? "feature feature-time" : "feature"} key={i}>
-              {i === 0 ? <TimeVisual className={alternative ? "" : "time-visual-layered"}>
-                {alternative && <div className="time-visual-scene">
-                <img className="time-visual-bg" src={siteUrl("/assets/mobile-features/bg1.png")} width="390" height="483" alt="" loading="lazy" />
-                <img className="time-visual-kid" src={siteUrl("/assets/mobile-features/k1.png")} width="248" height="178.533" alt="" loading="lazy" />
-                </div>}
-                {alternative ? <div className="time-visual-phone"><ContentScreen locale={locale} /></div> : <>
+              {i === 0 ? <TimeVisual className="time-visual-layered">
                   <div className="time-visual-main-screen" aria-hidden="true">
                     <div className="time-visual-screen-viewport">
                       <div className="time-visual-main-screen-scale">
@@ -69,7 +62,6 @@ export function Landing({
                     </div>
                   </div>
                   <img className="time-visual-foreground" src={siteUrl("/assets/mobile-features/f1.png")} width="1120" height="1120" alt="" loading="lazy" />
-                </>}
               </TimeVisual> : i === 1 ? <TimeVisual className="time-visual-layered time-visual-programs">
                 <div className="time-visual-main-screen" aria-hidden="true">
                   <div className="time-visual-screen-viewport">

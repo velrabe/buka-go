@@ -14,7 +14,6 @@ const categories = [
   { title: "Игры", minutes: 35, icon: "game-solid.svg", color: "#e7883f" },
 ];
 
-/** Figma 3874:64675: 375×286, padding/gaps 16, summary 343×145, action 343×56. */
 export function ScreenTimeSummary({ extended = false, standalone = false }: { extended?: boolean; standalone?: boolean }) {
   const frame = useContext(ContentDemoContext);
   const t = useScreenTranslation();

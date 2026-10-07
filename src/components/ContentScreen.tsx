@@ -109,7 +109,6 @@ export function ContentScreen({ locale, extended = false }: { locale: string; ex
   );
 }
 
-/** The same screen layers, expanded for static visual review. */
 export function StaticContentScreen() {
   return <div className={styles.phone} style={{ height: "auto" }}>
     <div className={styles.status}><Layer node={screen.status} /></div>
@@ -118,7 +117,6 @@ export function StaticContentScreen() {
   </div>;
 }
 
-/** Canonical Figma body used inside the animated feature-device viewport. */
 export function StaticContentBody({ locale = "ru" }: { locale?: string }) {
   const body = {
     ...screen.body,

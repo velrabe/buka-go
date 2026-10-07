@@ -7,7 +7,6 @@ declare global {
   }
 }
 
-/** The same functional sharing widget used by the original blog. */
 export function Share({ url, title }: { url: string; title: string }) {
   return (
     <>

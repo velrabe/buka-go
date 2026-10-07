@@ -20,7 +20,6 @@ const bodySteps = ["3888:65855", "3888:65857", "3888:65866", "3888:65931", "3888
 
 function Layer({ node, locale, animate = false }: { node: LayerNode; locale: Locale; animate?: boolean }) {
   const dictionary = translations[locale] as Record<string, string>;
-  // Missing original assets remain empty; do not invent replacements for the export.
   if (node.missingVector) return null;
   const text = node.text === undefined ? undefined : dictionary[node.text] ?? node.text;
   const step = bodySteps.indexOf(node.id);
