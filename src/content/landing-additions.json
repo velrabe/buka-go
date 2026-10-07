@@ -67,7 +67,7 @@
       "Блок «Добро» — отчисление баллов на реальную помощь животным и растениям."
     ],
     "freeAction": "Начать бесплатно",
-    "proAction": "Попробовать за 1 руб",
+    "proAction": "Попробовать за 1 руб / нед",
     "promoAction": "Ввести промокод",
     "reviews": [
       {
@@ -131,7 +131,6 @@
       }
     ],
     "soon": "Скоро",
-    "proTrial": "Пробная неделя за 1 руб",
     "partnerAction": "Подробнее"
   },
   "en": {
@@ -198,7 +197,7 @@
       "One family — manage together"
     ],
     "freeAction": "Start free",
-    "proAction": "Try for 1 ₽",
+    "proAction": "Try for 1 ₽ / week",
     "promoAction": "Enter promo code",
     "reviews": [
       {
@@ -262,7 +261,6 @@
       }
     ],
     "soon": "Soon",
-    "proTrial": "Trial week for 1 ruble.",
     "partnerAction": "Learn more"
   },
   "kk": {
@@ -329,7 +327,7 @@
       "Бір отбасы — бірге басқарыңыз"
     ],
     "freeAction": "Тегін бастау",
-    "proAction": "1 ₽ үшін көріңіз",
+    "proAction": "1 ₽ үшін көріңіз / апта",
     "promoAction": "Промокод енгізу",
     "reviews": [
       {
@@ -393,7 +391,6 @@
       }
     ],
     "soon": "Жақында",
-    "proTrial": "Сынақ аптасы 1 рубльге.",
     "partnerAction": "Толығырақ"
   },
   "uz": {
@@ -460,7 +457,7 @@
       "Yagona oila — birgalikda boshqarish"
     ],
     "freeAction": "Bepul boshlash",
-    "proAction": "1 ₽ evaziga sinab ko‘ring",
+    "proAction": "1 ₽ evaziga sinab ko‘ring / hafta",
     "promoAction": "Promokod kiritish",
     "reviews": [
       {
@@ -524,7 +521,6 @@
       }
     ],
     "soon": "Tez orada",
-    "proTrial": "Sinov haftasi 1 rublga.",
     "partnerAction": "Batafsil"
   },
   "az": {
@@ -591,7 +587,7 @@
       "Vahid ailə — birlikdə idarə edin"
     ],
     "freeAction": "Pulsuz başla",
-    "proAction": "1 ₽ üçün sınayın",
+    "proAction": "1 ₽ üçün sınayın / həftə",
     "promoAction": "Promokod daxil et",
     "reviews": [
       {
@@ -655,7 +651,6 @@
       }
     ],
     "soon": "Tezliklə",
-    "proTrial": "Sınaq həftəsi 1 rubla.",
     "partnerAction": "Ətraflı"
   }
 }
